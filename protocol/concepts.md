@@ -12,7 +12,7 @@
 
 Any user can create a new pool by calling `newBPool()` on the `BFactory` contract. The caller is set as the `controller` or pool owner.
 
-Pools can exist in one of two states: `controlled` or `finalized`. Pools start in a controlled state and the controller may choose to make the pool finalized by calling `finalize()`. While in a controlled state, outside actors cannot add liqudity. A controlled state allows the controller to set the pool's tokens and weights.
+Pools can exist in one of two states: `controlled` or `finalized`. Pools start in a controlled state and the controller may choose to make the pool finalized by calling `finalize()`. Finalize is a one-way transition. While in a controlled state, outside actors cannot add liqudity. A controlled state allows the controller to set the pool's tokens and weights.
 
 The table below illustrates pool states and the allowed calls:
 
@@ -71,7 +71,9 @@ The table below illustrates pool states and the allowed calls:
       </td>
     </tr>
   </tbody>
-</table>### Smart Contract Owned Controlled Pools
+</table>
+
+### Smart Contract Owned Controlled Pools
 
 One very powerful feature of Balancer is the concept of smart-contract owned controlled pools.
 

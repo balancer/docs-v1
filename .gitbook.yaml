@@ -1,5 +1,5 @@
 root: ./
 
 structure:
-  readme: index.md
+  readme: ./getting-started/overview.md
   summary: summary.md

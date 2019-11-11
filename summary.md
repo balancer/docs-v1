@@ -1,7 +1,5 @@
 # Table of contents
 
-* [Home](index.md)
-
 ## Getting Started
 
 * [Overview](getting-started/overview.md)
