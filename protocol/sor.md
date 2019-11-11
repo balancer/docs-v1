@@ -1,4 +1,4 @@
-## Smart Order Router
+# SOR
 
 Smart Order Router, henceforth known as SOR is an off-chain linear optimization of routing orders across pools for best price execution.
 

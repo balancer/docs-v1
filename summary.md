@@ -1,20 +1,22 @@
-# Summary
+# Table of contents
 
 * [Home](index.md)
 
 ## Getting Started
 
-* [Overview](overview/index.md)
-* [Use Cases](overview/use-cases.md)
-* [FAQ](overview/faq.md)
+* [Overview](getting-started/overview.md)
+* [Use Cases](getting-started/use-cases.md)
+* [FAQ](getting-started/faq.md)
 
 ## Protocol
+
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
-* [Math](protocol/math/index.md)
+* [Math](protocol/math/README.md)
   * [Exponentiation](protocol/math/approxing.md)
 
 ## Smart Contracts
 
-* [Summary](contracts/index.md)
-* [API](contracts/api.md)
+* [Summary](smart-contracts/index.md)
+* [API](smart-contracts/api.md)
+
