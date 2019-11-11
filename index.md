@@ -1,8 +1,6 @@
 <p align=center>
-<img width="128px" src="https://balancer-labs.github.io/pebbles/images/pebbles-pad.256w.png" alt="balancer pebbles logo"/>
+<img width="64px" src="https://balancer-labs.github.io/pebbles/images/pebbles-pad.256w.png" alt="balancer pebbles logo"/>
 </p>
-
-<h1 align=center><code>balancer</code></h1>
 
 **Balancer** is an automated **portfolio manager**, **liquidity provider**, and **price sensor**.
 

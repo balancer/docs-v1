@@ -9,10 +9,12 @@
 * [FAQ](overview/faq.md)
 
 ## Protocol
-
+* [Core Concepts](protocol/concepts.md)
+* [SOR](protocol/sor.md)
 * [Math](protocol/math/index.md)
-  * [Exponentation](protocol/math/approxing.md)
+  * [Exponentiation](protocol/math/approxing.md)
 
 ## Smart Contracts
 
 * [Summary](contracts/index.md)
+* [API](contracts/api.md)
