@@ -29,7 +29,18 @@ When we consider swap fees, we do exactly the same calculations as without fees 
 $$
 SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} } \cdot \frac{1}{(1-swapFee)}
 $$
- 
+
+```text
+    /**********************************************************************************************
+    // _calc_SpotPrice                                                                           //
+    // sP = spotPrice                                                                            //
+    // bI = tokenBalanceIn                ( bI / wI )         1                                  //
+    // bO = tokenBalanceOut         sP =  -----------  *  ----------                             //
+    // wI = tokenWeightIn                 ( bO / wO )     ( 1 - sF )                             //
+    // wO = tokenWeightOut                                                                       //
+    // sF = swapFee                                                                              //
+    **********************************************************************************************/
+```
 
 
 ### Out-Given-In
@@ -43,6 +54,19 @@ Using $A_i \cdot (1-swapFee)$ instead of $A_i$ we have the following formula:
 $$
 A_{o} = B_{o}  \cdot \left(1 - \left(\frac{B_{i}}{B_{i}+A_{i} \cdot (1-swapFee)}\right)^{\frac{W_{i}}{W_{o}}}\right)
 $$
+
+```text
+    /**********************************************************************************************
+    // _calc_OutGivenIn                                                                          //
+    // aO = tokenAmountOut                                                                       //
+    // bO = tokenBalanceOut                                                                      //
+    // bI = tokenBalanceIn              /      /            bI             \    (wI / wO) \      //
+    // aI = tokenAmountIn    aO = bO * |  1 - | --------------------------  | ^            |     //
+    // wI = tokenWeightIn               \      \ ( bI + ( aI * ( 1 - sF )) /              /      //
+    // wO = tokenWeightOut                                                                       //
+    // sF = swapFee                                                                              //
+    **********************************************************************************************/
+```
 
 ### In-Given-Out
 
@@ -58,6 +82,18 @@ $$
 A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right) \cdot \frac{1}{(1-swapFee)}
 $$
 
+```text
+    /**********************************************************************************************
+    // _calc_InGivenOut                                                                          //
+    // aI = tokenAmountIn                                                                        //
+    // bO = tokenBalanceOut               /  /     bO      \    (wO / wI)      \                 //
+    // bI = tokenBalanceIn          bI * |  | ------------  | ^            - 1  |                //
+    // aO = tokenAmountOut    aI =        \  \ ( bO - aO ) /                   /                 //
+    // wI = tokenWeightIn           --------------------------------------------                 //
+    // wO = tokenWeightOut                          ( 1 - sF )                                   //
+    // sF = swapFee                                                                              //
+    **********************************************************************************************/
+```
 
 ### In-Given-Price
 
@@ -84,6 +120,39 @@ $$
 A_{i-extra} = \frac{Error}{SpotPriceAfterSwap'(A_{i-e})}
 $$
 
+```text
+    /**********************************************************************************************
+    // _calc_InGivenPrice                                                                        //
+    // _calc_InGivenPriceNoFee + extraAmountIn                                                   //
+    **********************************************************************************************/
+```
+
+```text
+    /**********************************************************************************************
+    // _calc_InGivenPriceNoFee                                                                   //
+    // aI  = tokenAmountIn                                                                       //
+    // bI = tokenBalanceIn                    //   SP1    \     /   wO    \        \             //
+    // SP0 = spotPriceBefore       aI = bI * || ---------  | ^ | --------  |   - 1  |            //
+    // SP1 = spotPriceAfter                   \\   SP0    /     \ wO + wI /        /             //
+    // wI = tokenWeightIn                                                                        //
+    // wO = tokenWeightOut                                                                       //
+    **********************************************************************************************/
+```
+
+```text
+    /**********************************************************************************************
+    // _calc_extraAmountIn                                                                       //
+    // eAi = extraAmountIn               //                \      \                              //
+    // aI = tokenAmountIn               || ( 1 - sF) * aI ) | + bI | * ( mP - SP1 )              //
+    // mP = marginalPrice                \\                /      /                              //
+    // bI = tokenBalanceIn      eAi =  -----------------------------------------------           //
+    // wI = tokenWeightIn               /            /    wI \     (sF * bI) \                   //
+    // wO = tokenWeightOut             | (1 - sF) * | 1 + --  | +  ---------  | * SP1            //
+    // SP1 = spotPriceAfter             \            \    wO /     (aI + bI) /                   //
+    // sF = swapFee                                                                              //
+    **********************************************************************************************/
+```
+
 
 ### All-Asset Deposit/Withdrawal
 
@@ -91,7 +160,7 @@ $$
 D_k = \left(\frac{P_{supply}+P_{issued}}{P_{supply}}-1\right) \cdot B_k
 $$
 
-$
+$$
 A_k = \left(1-\frac{P_{supply}-P_{redeemed}}{P_{supply}}\right) \cdot B_k
 $$
 

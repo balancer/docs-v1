@@ -87,3 +87,9 @@ One very powerful feature of Balancer is the concept of smart-contract owned con
 
 Notice that e.g. `joinswap` requires both `JOIN` and `SWAP`.
 
+
+#### Token-specific state:
+
+* A token can be "bound" or not -- if it's bound, it is funded, has a valid denorm, and can be interacted with, assuming your address has a role with the right capabilities
+
+With this mental model in mind, you can proceed to the status functions for Bronze pools.
