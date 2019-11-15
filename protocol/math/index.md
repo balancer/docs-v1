@@ -379,7 +379,7 @@ function _calc_SingleInGivenPoolOut(
     uint newTokenBalanceIn = bmul(tokenInRatio, tokenBalanceIn);
     uint tokenAmountInAfterFee = bsub(newTokenBalanceIn, tokenBalanceIn);
     // Do reverse order of fees charged in joinswap_ExternAmountIn, this way 
-    //     ``` pAo == joinswap_ExternAmountIn(Ti, joinswap_PoolAmountOut(pAo, Ti)) ```
+    //  pAo == joinswap_ExternAmountIn(Ti, joinswap_PoolAmountOut(pAo, Ti))
     //uint tAi = tAiAfterFee / (1 - (1-weightTi) * swapFee) ;
     uint zar = bmul(bsub(BONE, normalizedWeight), swapFee);
     tokenAmountIn = bdiv(tokenAmountInAfterFee, bsub(BONE, zar));
