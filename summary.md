@@ -9,10 +9,10 @@
 * [FAQ](getting-started/faq.md)
 
 ## Protocol
-
+* [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
-* [Math](protocol/math/README.md)
+* [Math](protocol/math/index.md)
   * [Exponentiation](protocol/math/approxing.md)
 
 ## Smart Contracts
