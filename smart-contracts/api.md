@@ -47,7 +47,7 @@
 
 `isBound(address T) -> (bool)`
 
-A bound token has a valid balance and weight. A token cannot be bound without valid parameters which will enable e.g. `getSpotPrice` in terms of other tokens. However, disabling `isSwapPublic` and `isJoinPublic` will disable any interaction with this token in practice \(assuming there are no existing tokens in the pool, which can always `exitPool`\). This is one of many factors that could lead to `getSpotPrice` being an unreliable price sensor.
+A bound token has a valid balance and weight. A token cannot be bound without valid parameters which will enable e.g. `getSpotPrice` in terms of other tokens. However, disabling `isSwapPublic` will disable any interaction with this token in practice \(assuming there are no existing tokens in the pool, which can always `exitPool`\). This is one of many factors that could lead to `getSpotPrice` being an unreliable price sensor.
 
 #### `getNumTokens`
 
@@ -59,7 +59,7 @@ How many tokens are bound to this pool.
 
 `getController() -> (address)`
 
-Get the "controller" address, which can call `CONTROL` functions like `rebind`, `setFees`, or `finalize`.
+Get the "controller" address, which can call `CONTROL` functions like `rebind`, `setSwapFee`, or `finalize`.
 
 #### `bind`
 
@@ -98,11 +98,11 @@ Makes `isPublicSwap` return `isPublic` Requires caller to be controller and pool
 
 `finalize()`
 
-This makes the pool **finalized**. This is a one-way transition. `bind`, `rebind`, `unbind`, `setFees` and `setPublic<Swap/Join/Exit>` will all throw `ERR_IS_FINALIZED` after pool is finalized. This also switches `isSwapPublic` and `isJoinPublic` to true. `isExitPublic` is always true.
+This makes the pool **finalized**. This is a one-way transition. `bind`, `rebind`, `unbind`, `setSwapFee` and `setPublicSwap` will all throw `ERR_IS_FINALIZED` after pool is finalized. This also switches `isSwapPublic` to true.
 
-#### `setFees`
+#### `setSwapFee`
 
-`setFees(uint swapFee, uint exitFee)`
+`setSwapFee(uint swapFee)`
 
 Caller must be controller. Pool must NOT be finalized.
 
@@ -147,47 +147,51 @@ swap_ExactAmountOut(
 #### `swap_ExactMarginalPrice`
 
 ```text
-swap_ExactMarginalPrice( address tokenIn, uint maxIn
-                       , address tokenOut, uint maxOut
-                       , uint newPrice)
-    return (uint amountIn, uint amountOut)`
+swap_ExactMarginalPrice(
+    address tokenIn,
+    uint maxAmountIn,
+    address tokenOut,
+    uint minAmountOut,
+    uint marginalPrice
+)
+    return (uint tokenAmountIn, uint tokenAmountOut)`
 ```
 
 #### `joinPool`
 
-`joinPool(uint shares_out)`
+`joinPool(uint poolAmountOut)`
 
-Join the pool, getting `shares_out` pool tokens. This will pull some of each of the currently trading tokens in the pool, meaning you must have called `approve` for each token for this pool.
+Join the pool, getting `poolAmountOut` pool tokens. This will pull some of each of the currently trading tokens in the pool, meaning you must have called `approve` for each token for this pool.
 
 #### `exitPool`
 
-`exitPool(uint shares_in)`
+`exitPool(uint poolAmountIn)`
 
-Exit the pool, paying `shares_in` pool tokens and getting some of each of the currently trading tokens in return.
+Exit the pool, paying `poolAmountIn` pool tokens and getting some of each of the currently trading tokens in return.
 
 #### `joinswap_ExternAmountIn`
 
-`joinswap_ExternAmountIn(address T, uint tAi) -> (uint pAo)`
+`joinswap_ExternAmountIn(address tokenIn, uint tokenAmountIn) -> (uint poolAmountOut)`
 
-Pay `tAi` of token `T` to join the pool, getting `pAo` of the pool shares.
+Pay `tokenAmountIn` of token `tokenIn` to join the pool, getting `poolAmountOut` of the pool shares.
 
 #### `exitswap_ExternAmountOut`
 
-`exitswap_ExternAmountOut(address T, uint tAo) -> (uint pAi)`
+`exitswap_ExternAmountOut(address tokenOut, uint tokenAmountOut) -> (uint poolAmountIn)`
 
-Specify `tAo` of token `T` that you want to get out of the pool. This costs `pAi` pool shares \(these went into the pool\).
+Specify `tokenAmountOut` of token `tokenOut` that you want to get out of the pool. This costs `poolAmountIn` pool shares \(these went into the pool\).
 
 #### `joinswap_PoolAmountOut`
 
-`joinswap_PoolAmountOut(uint pAo, address T) -> (uint tAi)`
+`joinswap_PoolAmountOut(uint poolAmountOut, address tokenIn) -> (uint tokenAmountIn)`
 
-Specify `pAo` pool shares that you want to get, and a token `T` to pay with. This costs `tAi` tokens \(these went into the pool\).
+Specify `poolAmountOut` pool shares that you want to get, and a token `tokenIn` to pay with. This costs `tokenAmountIn` tokens \(these went into the pool\).
 
 #### `exitswap_PoolAmountIn`
 
-`exitswap_PoolAmountIn(uint pAi, address T) -> (uint tAo)`
+`exitswap_PoolAmountIn(uint poolAmountIn, address tokenOut) -> (uint tokenAmountOut)`
 
-Pay `pAi` pool shares into the pool, getting `tAo` of the given token `T` out of the pool.
+Pay `poolAmountIn` pool shares into the pool, getting `tokenAmountOut` of the given token `tokenOut` out of the pool.
 
 
 
