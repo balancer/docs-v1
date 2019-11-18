@@ -63,9 +63,9 @@ Get the "controller" address, which can call `CONTROL` functions like `rebind`, 
 
 #### `bind`
 
-`bind(address T, uint B, uint W)`
+`bind(address token, uint balance, uint denorm)`
 
-Binds the token with address `T`. Tokens will be pushed/pulled from caller to adjust match new balance. Token must not already be bound. `B` must be a valid balance and `W` must be a valid _denormalized_ weight.
+Binds the token with address `token`. Tokens will be pushed/pulled from caller to adjust match new balance. Token must not already be bound. `balance` must be a valid balance and `denorm` must be a valid _denormalized_ weight. `bind` creates the token record and then calls `rebind` for updating pool weights and token transfers.
 
 Possible errors:
 
@@ -73,25 +73,26 @@ Possible errors:
 * `ERR_IS_BOUND` -- `T` is already bound
 * `ERR_IS_FINALIZED` -- `isFinalized()` is true
 * `ERR_ERC20_FALSE` -- `ERC20` token returned false
+* `ERR_MAX_TOKENS` -- Only 8 tokens are allowed per pool
 * unspecified error thrown by token
 
 #### `rebind`
 
-`rebind(address T, uint B, uint W)`
+`rebind(address token, uint balance, uint denorm)`
 
 Changes the parameters of an already-bound token. Performs the same validation on the parameters.
 
 #### `unbind`
 
-`rebind(address T)`
+`unbind(address token)`
 
-Unbinds a token, clearing all of its parameters and pushing the entire balance to caller.
+Unbinds a token, clearing all of its parameters. Exit fee is charged and the remaining balance is sent to caller.
 
 #### `setPublicSwap`
 
 `setPublicSwap(bool isPublic)`
 
-Makes `isPublicSwap` return `isPublic` Requires caller to be controller and pool not to be finalized. Finalized pools always have public swap.
+Makes `isPublicSwap` return `_publicSwap` Requires caller to be controller and pool not to be finalized. Finalized pools always have public swap.
 
 
 #### `finalize`
