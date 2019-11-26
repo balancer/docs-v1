@@ -15,6 +15,9 @@
 * [BTokens](protocol/btoken.md)
 * [Math](protocol/math/index.md)
   * [Exponentiation](protocol/math/approxing.md)
+* Security
+  * [Audits](protocol/security/audits.md)
+  * [Bug Bounty](protocol/security/bounty.md)
 
 ## Smart Contracts
 
