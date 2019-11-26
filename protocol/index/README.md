@@ -14,10 +14,10 @@ $$
 
 Where:
 
-* $B\_i$ is the balance of token _i_, the token being sold by the trader which is going _into_ the pool.
-* $B\_o$ is the balance of token _o_, the token being bought by the trader which is going _out_ of the pool.
-* $W\_i$ is the weight of token _i_
-* $W\_o$ is the weight of token _o_
+* _Bi_ is the balance of token _i_, the token being sold by the trader which is going _into_ the pool.
+* _Bo_ is the balance of token _o_, the token being bought by the trader which is going _out_ of the pool.
+* _Wi_ is the weight of token _i_
+* _Wo_ is the weight of token _o_
 
 When we consider swap fees, we do exactly the same calculations as without fees but using $A\_i \cdot \(1-swapFee\)$ instead of only $A\_i$. This strategy is referred to as charging fees "on the way in". With the swap fee, the spot price increases. It becomes then:
 
