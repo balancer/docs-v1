@@ -25,3 +25,7 @@
 * [Summary](smart-contracts/index.md)
 * [API](smart-contracts/api.md)
 
+## Guides
+
+* [Creating a New Pool](guides/creating-a-new-pool.md)
+
