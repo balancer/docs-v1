@@ -94,7 +94,6 @@ Unbinds a token, clearing all of its parameters. Exit fee is charged and the rem
 
 Makes `isPublicSwap` return `_publicSwap` Requires caller to be controller and pool not to be finalized. Finalized pools always have public swap.
 
-
 #### `finalize`
 
 `finalize()`
@@ -193,8 +192,4 @@ Specify `poolAmountOut` pool shares that you want to get, and a token `tokenIn` 
 `exitswap_PoolAmountIn(uint poolAmountIn, address tokenOut) -> (uint tokenAmountOut)`
 
 Pay `poolAmountIn` pool shares into the pool, getting `tokenAmountOut` of the given token `tokenOut` out of the pool.
-
-
-
-
 

@@ -9,13 +9,14 @@
 * [FAQ](getting-started/faq.md)
 
 ## Protocol
+
 * [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
 * [BTokens](protocol/btoken.md)
-* [Math](protocol/math/index.md)
-  * [Exponentiation](protocol/math/approxing.md)
-* Security
+* [Math](protocol/index/README.md)
+  * [Exponentiation](protocol/index/approxing.md)
+* [Security](protocol/security/README.md)
   * [Audits](protocol/security/audits.md)
   * [Bug Bounty](protocol/security/bounty.md)
 

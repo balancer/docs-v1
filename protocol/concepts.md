@@ -14,7 +14,6 @@ Any user can create a new pool by calling `newBPool()` on the `BFactory` contrac
 
 Pools can exist in one of two states: `controlled` or `finalized`. Pools start in a controlled state and the controller may choose to make the pool finalized by calling `finalize()`. Finalize is a one-way transition. While in a controlled state, outside actors cannot add liqudity. A controlled state allows the controller to set the pool's tokens and weights.
 
-
 ### Smart Contract Owned Controlled Pools
 
 One very powerful feature of Balancer is the concept of smart-contract owned controlled pools.
@@ -28,9 +27,7 @@ One very powerful feature of Balancer is the concept of smart-contract owned con
 
 Notice that e.g. `joinswap` requires both `JOIN` and `SWAP`.
 
-
 #### Token-specific state:
 
 * A token can be "bound" or not -- if it's bound, it has a valid balance, denorm, and can be interacted with, assuming your address has a role with the right capabilities
-
 

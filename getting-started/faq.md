@@ -23,7 +23,7 @@ Traders can benefit from the diverse set of pools, each subject to different sli
 * Arbitrageurs seeking profit by levelling market inefficiencies between DEXs and even CEXs 
 * Ethereum Smart Contracts seeking liquidity for a variety of other use cases such as liquidating positions in other protocols, trading on behalf of users of other platforms, etc. 
 
-### Is Balancer Protocol fully permissionless?
+### Is Balancer Protocol fully permission-less?
 
 Yes. Balancer Pools cannot be censored or whitelisted. Traders cannot be censored or whitelisted. Balancer Labs does not have the power to stop or edit the smart contracts in any way after they’ve been deployed. There is no upgradeability, admin functionalities, or backdoors in the contracts.
 
@@ -55,7 +55,7 @@ Two main properties make Balancer Pools special:
 Only a few. Balancer Protocol limits pools in the following ways:
 
 * Maximum number of tokens: there can only be at most 8 different tokens in the pool.
-* Swap fee: the fee can be chosen to be any number between 0.0001% (1/100 of a basis point) and 10% 
+* Swap fee: the fee can be chosen to be any number between 0.0001% \(1/100 of a basis point\) and 10% 
 * ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. Future releases will allow non-standard ERC20's.
 
 ### How are Balancer Pools continuously rebalanced?
@@ -80,14 +80,14 @@ Balancer Pools can be controlled or finalized.
 
 There are a few ways a trader can interact with Balancer Protocol:
 
-* Through our exchange front-end (avaialable shortly)
+* Through our exchange front-end \(available shortly\)
 * Directly through our smart Contracts on Ethereum mainnet
 
 ### How can I use Balancer as a liquidity provider or portfolio manager?
 
 There are three main ways a liquidity provider or portfolio manager can interact with Balancer Protocol:
 
-* Through our pool manager front-end (available shortly)
+* Through our pool manager front-end \(available shortly\)
 * Directly through our smart Contracts on Ethereum mainnet
 
 Please [contact us](mailto:contact@balancer.finace) if you have a portfolio worth more than 100,000 USD and need special assistance.

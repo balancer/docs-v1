@@ -6,25 +6,20 @@ The [Balancer whitepaper](https://balancer.finance/whitepaper.html) describes a 
 
 [Approxing](approxing.md)
 
-
 ### Spot Price
 
 $$
-SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} } 
+SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} }
 $$
 
 Where:
 
-- $B_i$ is the balance of token *i*, the token being sold by the trader which is going *into* the pool.
+* $B\_i$ is the balance of token _i_, the token being sold by the trader which is going _into_ the pool.
+* $B\_o$ is the balance of token _o_, the token being bought by the trader which is going _out_ of the pool.
+* $W\_i$ is the weight of token _i_
+* $W\_o$ is the weight of token _o_
 
-- $B_o$ is the balance of token *o*, the token being bought by the trader which is going *out* of the pool.
-
-- $W_i$ is the weight of token *i*
-
-- $W_o$ is the weight of token *o*
-
-
-When we consider swap fees, we do exactly the same calculations as without fees but using $A_i \cdot (1-swapFee)$ instead of only $A_i$. This strategy is referred to as charging fees "on the way in". With the swap fee, the spot price increases. It becomes then:
+When we consider swap fees, we do exactly the same calculations as without fees but using $A\_i \cdot \(1-swapFee\)$ instead of only $A\_i$. This strategy is referred to as charging fees "on the way in". With the swap fee, the spot price increases. It becomes then:
 
 $$
 SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} } \cdot \frac{1}{(1-swapFee)}
@@ -59,14 +54,13 @@ function _calc_SpotPrice(
 }
 ```
 
-
 ### Out-Given-In
 
 $$
 A_{o} = B_{o}  \cdot \left(1 - \left(\frac{B_{i}}{B_{i}+A_{i}}\right)^{\frac{W_{i}}{W_{o}}}\right)
 $$
 
-Using $A_i \cdot (1-swapFee)$ instead of $A_i$ we have the following formula:
+Using $A\_i \cdot \(1-swapFee\)$ instead of $A\_i$ we have the following formula:
 
 $$
 A_{o} = B_{o}  \cdot \left(1 - \left(\frac{B_{i}}{B_{i}+A_{i} \cdot (1-swapFee)}\right)^{\frac{W_{i}}{W_{o}}}\right)
@@ -108,13 +102,11 @@ function _calc_OutGivenIn(
 
 ### In-Given-Out
 
-
 $$
-A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right) 
+A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right)
 $$
 
-
-Since $A_i$ is the amount the user has to swap to get a desired amount out $A_o$, all we have to do to include fees is divide the formula above without fees by $(1-swapFee)$. This is because we know the fee charged on the way in will multiply that amount by $(1-swapFee)$. This will cross out both terms $(1-swapFee)$ and the amount out will be $A_o$ as desired:
+Since $A\_i$ is the amount the user has to swap to get a desired amount out $A\_o$, all we have to do to include fees is divide the formula above without fees by $\(1-swapFee\)$. This is because we know the fee charged on the way in will multiply that amount by $\(1-swapFee\)$. This will cross out both terms $\(1-swapFee\)$ and the amount out will be $A\_o$ as desired:
 
 $$
 A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right) \cdot \frac{1}{(1-swapFee)}
@@ -159,20 +151,19 @@ $$
 A_i = B_i \cdot  \left( \left(\frac{SP'^o_i}{SP^o_i}\right)^\left({\frac{W_o}{W_o+W_i}}\right) - 1\right)
 $$
 
+Unfortunately, due to the non-linear characteristics of Balancer pools, when considering a swap fee there is no closed-form formula for $A\_i$ given a desired spot price, say $SP1$.
 
-Unfortunately, due to the non-linear characteristics of Balancer pools, when considering a swap fee there is no closed-form formula for $A_i$ given a desired spot price, say $SP1$. 
+We propose an approximation to obtain $A\_i$ such that the price is very close to the desired one, even in the presence of fees.
 
-We propose an approximation to obtain $A_i$ such that the price is very close to the desired one, even in the presence of fees. 
+An initial guess, $A_{i-e}$, is obtained by using the formula above without fees. By calculating the formula with $A_{i-e}$ we obtain $SP\_e$. We then have an error that we would like to eliminate:
 
-An initial guess, $A_{i-e}$, is obtained by using the formula above without fees. By calculating the formula with $A_{i-e}$ we obtain $SP_e$. We then have an error that we would like to eliminate:
+$Error = SP1 - SP\_e$
 
-$Error = SP1 - SP_e$
+To do that, we calculate an additional amount to be traded to get the pool spot price closer to the desired price $SP1$. Let's call that extra amount $A\_{i-extra}$.
 
-To do that, we calculate an additional amount to be traded to get the pool spot price closer to the desired price $SP1$. Let's call that extra amount $A_{i-extra}$. 
+We also need to define function $SpotPriceAfterSwap\(A\_i\)$ which returns the spot price after a trade of $A\_i$.
 
-We also need to define function $SpotPriceAfterSwap(A_i)$ which returns the spot price after a trade of $A_i$. 
-
-The extra amount $A_{i-extra}$ is then calculated by dividing the price error by the derivative of function $SpotPriceAfterSwap(A_i)$ at $A_i = A_{i-e}$.
+The extra amount $A_{i-extra}$ is then calculated by dividing the price error by the derivative of function $SpotPriceAfterSwap\(A\_i\)$ at $A\_i = A_{i-e}$.
 
 $$
 A_{i-extra} = \frac{Error}{SpotPriceAfterSwap'(A_{i-e})}
@@ -201,7 +192,7 @@ function _calc_InGivenPrice(
                             tokenWeightOut, spotPriceAfterNoFee);
     uint amountOutNoFee = _calc_OutGivenIn(tokenBalanceIn, tokenWeightIn, tokenBalanceOut,
                             tokenWeightOut, amountInNoFee, swapFee);
-    
+
     // Calculate what new spot price would be with Ai and Ao as calculated above
     uint spotPriceNoFee = _calc_SpotPrice(badd(tokenBalanceIn, amountInNoFee), tokenWeightIn, bsub(tokenBalanceOut, amountOutNoFee), tokenWeightOut, swapFee);
 
@@ -212,13 +203,12 @@ function _calc_InGivenPrice(
     // In this case SPNF is considered to be SP1 and no extraAi is needed.
 
     spotPriceNoFee > spotPriceAfter ? extraAmountIn = 0 : extraAmountIn = _calc_ExtraAmountIn(amountInNoFee, tokenBalanceIn, bdiv(tokenWeightIn, totalWeight), bdiv(tokenWeightOut, totalWeight), spotPriceNoFee, spotPriceAfter, swapFee);
-            
+
     // Update Ai by adding the extraAi and also Ao
     tokenAmountIn = badd(amountInNoFee, extraAmountIn);
-        
+
     return tokenAmountIn;
 }
-
 ```
 
 ```text
@@ -287,7 +277,6 @@ function _calc_ExtraAmountIn(
 }
 ```
 
-
 ### All-Asset Deposit/Withdrawal
 
 $$
@@ -298,11 +287,9 @@ $$
 A_k = \left(1-\frac{P_{supply}-P_{redeemed}}{P_{supply}}\right) \cdot B_k
 $$
 
-Balancer Labs takes a percentage of the pool tokens withdrawn as protocol fee. This is called the exit fee and is supposed to be around 1 to 10 basis points. From the amount of pool tokens the user redeems $P_{redeemed}$, Balancer Labs takes $exitFee \cdot P_{redeemed}$ pool tokens (that amount is not burned, it is just transferred to BLabs' multisig).
-
+Balancer Labs takes a percentage of the pool tokens withdrawn as protocol fee. This is called the exit fee and is supposed to be around 1 to 10 basis points. From the amount of pool tokens the user redeems $P_{redeemed}$, Balancer Labs takes $exitFee \cdot P_{redeemed}$ pool tokens \(that amount is not burned, it is just transferred to BLabs' multisig\).
 
 ### Single-Asset Depsoit / Withdrawal
-
 
 #### Single-Asset Deposit
 
@@ -372,7 +359,7 @@ function _calc_SingleInGivenPoolOut(
     uint normalizedWeight = bdiv(tokenWeightIn, totalWeight);
     uint newPoolSupply = badd(poolSupply, poolAmountOut);
     uint poolRatio = bdiv(newPoolSupply, poolSupply);
-  
+
     //uint newBalTi = poolRatio^(1/weightTi) * balTi;
     uint boo = bdiv(BONE, normalizedWeight); 
     uint tokenInRatio = bpow(poolRatio, boo);
@@ -418,7 +405,7 @@ function _calc_SingleOutGivenPoolIn(
     uint poolAmountInAfterExitFee = bmul(poolAmountIn, bsub(BONE, EXIT_FEE));
     uint newPoolSupply = bsub(poolSupply,poolAmountInAfterExitFee);
     uint poolRatio = bdiv(newPoolSupply, poolSupply);
- 
+
     // newBalTo = poolRatio^(1/weightTo) * balTo;
     uint tokenOutRatio = bpow(poolRatio, bdiv(BONE, normalizedWeight));
     uint newTokenBalanceOut = bmul(tokenOutRatio, tokenBalanceOut);
@@ -478,3 +465,4 @@ function _calc_PoolInGivenSingleOut(
     return poolAmountIn;
 }
 ```
+

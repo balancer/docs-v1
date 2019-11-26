@@ -12,8 +12,6 @@ Unless noted otherwise, this document describes the contract architecture for th
 
 Please take care to when interacting with a Balancer pool to ensure you know which release it is associated with. Objects in the Balancer system provide `getColor() returns (bytes32)`, which returns a left-padded ASCII representation of the all-caps color word, ie, `bytes32("BRONZE")`.
 
-
-
 ### Events
 
 `LOG_CALL` is an anonymous event which uses the function signature as the event signature. It is fired by all stateful functions.
@@ -47,3 +45,4 @@ event LOG_EXIT( address indexed caller
               , address indexed tokenOut
               , uint256         tokenAmountOut);
 ```
+
