@@ -14,6 +14,7 @@
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
 * [BTokens](protocol/btoken.md)
+* [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
   * [Exponentiation](protocol/index/approxing.md)
 * [Security](protocol/security/README.md)
