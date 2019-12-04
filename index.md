@@ -1,7 +1,5 @@
 # Home
 
-![balancer pebbles logo](https://balancer-labs.github.io/pebbles/images/pebbles-pad.256w.png)
-
 **Balancer** is an automated **portfolio manager**, **liquidity provider**, and **price sensor**.
 
 Balancer turns the concept of an index fund on its head: instead of a paying fees to portfolio managers to rebalance your portfolio, you collect fees from traders, who rebalance your portfolio by following arbitrage opportunities.
