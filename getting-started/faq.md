@@ -55,8 +55,9 @@ Two main properties make Balancer Pools special:
 Only a few. Balancer Protocol limits pools in the following ways:
 
 * Maximum number of tokens: there can only be at most 8 different tokens in the pool.
-* Swap fee: the fee can be chosen to be any number between 0.0001% \(1/100 of a basis point\) and 10% 
+* Swap fee: the fee can be chosen to be any number between 0 and 10% 
 * ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. Future releases will allow non-standard ERC20's.
+* There are a few additional ratio and balance constraints that can be found at [Limitations](../protocol/limitations.md)
 
 ### How are Balancer Pools continuously rebalanced?
 
@@ -64,15 +65,15 @@ This is probably the main innovation brought by Balancer Protocol. Pools are eff
 
 Imagine a portfolio that contains a proportion of token A and its price increases. A conventional rebalancing process would sell this token and consequently pay a fee for that trade. Balancer Protocol, instead, lets rational market actors actively buy token A from the pool. So instead of selling token A and paying a fee for that, the Balancer Pool let other actors buy token A and charge a fee for that.
 
-In summary, instead of paying fees to rebalance, Balancer Pools earn fees to let others rebalance them. For further technical details, please refer to our [white paper](http://a).
+In summary, instead of paying fees to rebalance, Balancer Pools earn fees to let others rebalance them. For further technical details, please refer to our [white paper](https://balancer.finance/whitepaper.html).
 
 ### How do Balancer Pools charge fees and how much are they?
 
-Balancer Protocol charges a percentage of the input amount traded for each trade against a Balancer Pool. The fee goes entirely to the Balancer Pool owner.
+Balancer Protocol charges a percentage of the input amount traded for each trade against a Balancer Pool. The fee goes entirely to the Balancer Pool liquidity providers.
 
 ### What types of Balancer pools are there?
 
-Balancer Pools can be controlled or finalized.
+Balancer Pools can be controlled or finalized. See more at [Core Concepts](../protocol/concepts.md)
 
 ## Using Balancer Protocol
 
@@ -104,5 +105,5 @@ We cannot provide tax or accounting advice. Tax regulations are specific to juri
 
 ### Are there risks in using Balancer Protocol?
 
-Balancer Protocol smart contracts have been designed having security as its top priority. We had our code be audited by best in class professionals. You can see the results of our audits [here](http://a). However, we cannot guarantee that bugs won’t be found in the future. If you use Balancer Protocol you are agreeing to our [terms & conditions](http://a).
+Balancer Protocol smart contracts have been designed having security as its top priority. We are having our code be audited by best in class professionals. However, we cannot guarantee that bugs won’t be found in the future.
 
