@@ -4,7 +4,7 @@
 
 The **🍂Bronze Release🍂** is the first of 3 planned releases of the Balancer Protocol. Bronze emphasizes code clarity for audit and verification, and does not go to great lengths to optimize for gas.
 
-The **❄️Silver Release❄️** will bring many gas optimizations and architecture changes that will reduce transaction overhead and enable more flexibile usage patterns.
+The **❄️Silver Release❄️** will bring many gas optimizations and architecture changes that will reduce transaction overhead and enable more flexible usage patterns.
 
 The **☀️Golden Release☀️** will introduce a few final features that will tie the whole system together.
 
@@ -50,5 +50,23 @@ event LOG_EXIT(
     address indexed tokenOut,
     uint256         tokenAmountOut
 );
+```
+
+### Mutex
+
+All stateful functions use either a `lock` or `viewlock` function modifier. A mutex places a lock on contract state and prevents any sort of re-entrancy.
+
+```text
+modifier _lock_() {
+    require(!_mutex, "ERR_REENTRY");
+    _mutex = true;
+    _;
+    _mutex = false;
+}
+
+modifier _viewlock_() {
+    require(!_mutex, "ERR_REENTRY");
+    _;
+}
 ```
 
