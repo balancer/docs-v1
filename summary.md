@@ -13,7 +13,7 @@
 * [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
-* [BTokens](protocol/btoken.md)
+* [BPTs](protocol/btoken.md)
 * [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
   * [Exponentiation](protocol/index/approxing.md)
