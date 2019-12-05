@@ -1,6 +1,6 @@
 # FAQ
 
-## FAQ
+## Basics
 
 ### What is Balancer Protocol?
 
@@ -20,7 +20,7 @@ Liquidity providers can be really any holder of 2 or more ERC20 tokens like:
 Traders can benefit from the diverse set of pools, each subject to different slippage, fees and spot prices between any pair of their tokens. They can be:
 
 * Conventional traders seeking to exchange any token for another with the best return possible 
-* Arbitrageurs seeking profit by levelling market inefficiencies between DEXs and even CEXs 
+* Arbitrageurs seeking profit by levelling market inefficiencies between Balancer pools and other DEXs or CEXs 
 * Ethereum Smart Contracts seeking liquidity for a variety of other use cases such as liquidating positions in other protocols, trading on behalf of users of other platforms, etc. 
 
 ### Is Balancer Protocol fully permission-less?
@@ -33,7 +33,7 @@ We are working on putting together a more detailed roadmap. The bronze release i
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
-A very small exit fee of 0.1% is charged. This fee goes to Balancer Labs, the company that created Balancer Protocol, and is used to support and further develop Balancer Protocol.
+---
 
 ### Is there a Balancer Protocol token?
 
@@ -55,7 +55,7 @@ Two main properties make Balancer Pools special:
 Only a few. Balancer Protocol limits pools in the following ways:
 
 * Maximum number of tokens: there can only be at most 8 different tokens in the pool.
-* Swap fee: the fee can be chosen to be any number between 0 and 10% 
+* Swap fee: the fee can be chosen to be any number between 0.0001% and 10% 
 * ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. Future releases will allow non-standard ERC20's.
 * There are a few additional ratio and balance constraints that can be found at [Limitations](../protocol/limitations.md)
 
@@ -69,7 +69,7 @@ In summary, instead of paying fees to rebalance, Balancer Pools earn fees to let
 
 ### How do Balancer Pools charge fees and how much are they?
 
-Balancer Protocol charges a percentage of the input amount traded for each trade against a Balancer Pool. The fee goes entirely to the Balancer Pool liquidity providers.
+Balancer pools charge a percentage of the input amount traded for each trade. The fee goes entirely to the Balancer Pool liquidity providers.
 
 ### What types of Balancer pools are there?
 
