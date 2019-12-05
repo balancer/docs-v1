@@ -1,6 +1,8 @@
 # Math
 
-The [Balancer whitepaper](https://balancer.finance/whitepaper.html) describes a set of formulas derived from the value function for interacting with the protocol. These functions represent the purest form of the math. The math used in the protocol differs in two key ways: exponentiation approximation and the addition of swap fees.
+The [Balancer whitepaper](https://balancer.finance/whitepaper.html) describes a set of formulas derived from the value function for interacting with the protocol. The formulas in the Theory section are sufficient to describe the functional specification, but they are not straightforward to implement for the EVM, in part due to a lack of mature fixed-point math libraries.
+
+Our implementation uses a combination of a few algebraic transformations, approximation functions, and numerical hacks to compute these formulas with bounded maximum error and reasonable gas cost.
 
 ## Exponentiation Approximation
 
