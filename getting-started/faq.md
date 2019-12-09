@@ -33,8 +33,6 @@ We are working on putting together a more detailed roadmap. The bronze release i
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
----
-
 ### Is there a Balancer Protocol token?
 
 Not initially. There might be some experimentation towards protocol tokens and liquidity mining in future versions. A token will never be required to trade or interact with the protocol. Any protocol upgrade/migration in that regard would be discussed with the community of users of the protocol well in advance.

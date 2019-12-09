@@ -1,12 +1,12 @@
 # Background
 
-Automated Market Makers (AMMs) have been around in their simplest form for as long as trades could be automated in the conventional financial markets. AMMs are essentially automated agents that are controlled by algorithms that define rules for trades. Usually AMMs are continuously active in both directions of a trading pair. It's profit comes basically from a spread between buy and sell prices. 
+Automated Market Makers \(AMMs\) have been around in their simplest form for as long as trades could be automated in the conventional financial markets. AMMs are essentially automated agents that are controlled by algorithms that define rules for trades. Usually AMMs are continuously active in both directions of a trading pair. It's profit comes basically from a spread between buy and sell prices.
 
-Smart contract platforms like Ethereum have brought AMMs to a whole new level. They have, for the first time in history, combined both the *custody* of assets traded by AMMs and also the *algorithms* dictating how the assets should be traded. This led to interesting new features like atomic trading, instant feedback loops for correcting prices offered by an AMM among others.
+Smart contract platforms like Ethereum have brought AMMs to a whole new level. They have, for the first time in history, combined both the _custody_ of assets traded by AMMs and also the _algorithms_ dictating how the assets should be traded. This led to interesting new features like atomic trading, instant feedback loops for correcting prices offered by an AMM among others.
 
 ## AMMs in Ethereum
 
-Alan Lu from Gnosis has been the first in the Ethereum community to propose the simplest version of AMM: a pool with two tokens that respects the constant product formula k = x * y, meaning that the multiplication of the token balances is a constant. Martin Köppelmann and Vitalik Buterin also promoted this idea that eventually got implemented by Hayden Adams on Uniswap.
+Alan Lu from Gnosis has been the first in the Ethereum community to propose the simplest version of AMM: a pool with two tokens that respects the constant product formula k = x \* y, meaning that the multiplication of the token balances is a constant. Martin Köppelmann and Vitalik Buterin also promoted this idea that eventually got implemented by Hayden Adams on Uniswap.
 
 Balancer can be seen as a generalization of the constant product rule, allowing for 2 or more tokens as well as the choice of arbitrary value weights for each token. The weigths represent the share of value each token represents in the total pool value.
 
