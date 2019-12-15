@@ -10,11 +10,15 @@ The max number of tokens that can be in a given pool is 8.
 
 **Maximum Swap In Ratio - 1/2**
 
-A maximum swap in ratio of 0.50 means an user can only swap in less than 50% of the current balance of `tokenIn`
+A maximum swap in ratio of 0.50 means an user can only swap in less than 50% of the current balance of `tokenIn` for a given pool
 
 **Maximum Swap Out Ratio - 1/3**
 
-A maximum swap out ratio of 1/3 means an user can only swap out less than 33.33% of the current balance of `tokenOut`
+A maximum swap out ratio of 1/3 means an user can only swap out less than 33.33% of the current balance of `tokenOut` for a given pool
+
+**Minimum Swap Fee - 0.0001%**
+
+There is a minimum swap fee of 0.0001% \(or a hundredth of a basis point\) to counteract any unfavorable pool rounding.
 
 **Maximum Swap Fee - 10%**
 
