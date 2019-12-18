@@ -24,13 +24,13 @@ There is a minimum swap fee of 0.0001% \(or a hundredth of a basis point\) to co
 
 This is to prevent malicious pool controllers from setting predatory trading fees.
 
-**Minimum Balance - 0.0001%**
+**Minimum Balance - \(10^18\) / \(10^12\)**
 
-The minimum balance of any token in a pool is 0.0001% \(or a hundredth of a basis point\).
+The minimum balance of any token in a pool is 10^6 wei. Important note: this is agnostic to token decimals and may cause issues for tokens with less than 6 decimals.
 
-**Maximum Balance - 10^12**
+**Maximum Balance - \(10^18\) \* \(10^12\)**
 
-The maximum balance of any token in a pool is 10^12.
+The maximum balance of any token in a pool is 10^12 ether.
 
 
 
