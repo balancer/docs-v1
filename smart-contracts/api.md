@@ -4,18 +4,17 @@
 
 | Function |
 | :--- |
-| [`swap_ExactAmountIn(tokenIn,tokenAmountIn,tokenOut,minAmountOut,maxPrice)->(tokenAmountOut,spotPriceTarget)`](api.md#swap_exactamountin) |
-| [`swap_ExactAmountOut(tokenIn,maxAmountIn,tokenOut,tokenAmountOut,maxPrice)->(tokenAmountIn,spotPriceTarget)`](api.md#swap_exactamountout) |
-| [`swap_ExactMarginalPrice(tokenIn,minAmountIn,tokenOut,maxAmountOut,marginalPrice)->(tokenAmountIn,tokenAmountOut)`](api.md#swap_exactmarginalprice) |
-| [`joinPool(poolAmountOut)`](api.md#joinpool) |
-| [`exitPool(poolAmountIn)`](api.md#exitpool) |
-| [`joinswap_ExternAmountIn(tokenIn, tokenAmountIn)->(poolAmountOut)`](api.md#joinswap_externamountin) |
-| [`exitswap_ExternAmountOut(tokenOut, tokenAmountOut)->(poolAmountIn)`](api.md#joinswap_externamountout) |
-| [`joinswap_PoolAmountOut(poolAmountOut,tokenIn)->(tokenAmountIn)`](api.md#joinswap_poolamountout) |
-| [`exitswap_PoolAmountIn(poolAmountIn,tokenOut)->(tokenAmountOut)`](api.md#joinswap_poolamountin) |
+| [`swapExactAmountIn(tokenIn, tokenAmountIn, tokenOut, minAmountOut, maxPrice)->(tokenAmountOut, spotPriceAfter)`](api.md#swapexactamountin) |
+| [`swapExactAmountOut(tokenIn, maxAmountIn, tokenOut, tokenAmountOut, maxPrice)->(tokenAmountIn, spotPriceAfter)`](api.md#swapexactamountout) |
+| [`joinPool(poolAmountOut, [maxAmountsIn])`](api.md#joinpool) |
+| [`exitPool(poolAmountIn, [minAMountsOut])`](api.md#exitpool) |
+| [`joinswapExternAmountIn(tokenIn, tokenAmountIn, minPoolAmountOut)->(poolAmountOut)`](api.md#joinswapexternamountin) |
+| [`exitswapExternAmountOut(tokenOut, tokenAmountOut, maxPoolAmountIn)->(poolAmountIn)`](api.md#joinswapexternamountout) |
+| [`joinswapPoolAmountOut(poolAmountOut, tokenIn, maxAmountIn)->(tokenAmountIn)`](api.md#joinswappoolamountout) |
+| [`exitswapPoolAmountIn(poolAmountIn, tokenOut, minAmountOut)->(tokenAmountOut)`](api.md#joinswappoolamountin) |
 | - |
 | [`getSpotPrice(tokenIn,tokenOut)->(spotPrice)`](api.md#getspotprice) |
-| [`getSpotPriceSansFee(tokenIn,tokenOut)->(spotPrice)`](api.md#getspotprice) |
+| [`getSpotPriceSansFee(tokenIn,tokenOut)->(spotPrice)`](api.md#getspotpricesansfee) |
 | [`getSwapFee()->(swapFee)`](api.md#getswapfee) |
 | - |
 | [`bind(token, balance, denorm)`](api.md#bind) |
@@ -23,7 +22,6 @@
 | [`unbind(token)`](api.md#unbind) |
 | [`setPublicSwap(bool)`](api.md#setPublicSwap) |
 | [`setSwapFee(swapFee)`](api.md#setswapfee) |
-| [`collect()`](api.md#collect) |
 | [`finalize()`](api.md#finalize) |
 | [`gulp(token)`](api.md#gulp) |
 | - |
@@ -47,7 +45,7 @@
 
 `isBound(address T) -> (bool)`
 
-A bound token has a valid balance and weight. A token cannot be bound without valid parameters which will enable e.g. `getSpotPrice` in terms of other tokens. However, disabling `isSwapPublic` will disable any interaction with this token in practice \(assuming there are no existing tokens in the pool, which can always `exitPool`\). This is one of many factors that could lead to `getSpotPrice` being an unreliable price sensor.
+A bound token has a valid balance and weight. A token cannot be bound without valid parameters which will enable e.g. `getSpotPrice` in terms of other tokens. However, disabling `isSwapPublic` will disable any interaction with this token in practice \(assuming there are no existing tokens in the pool, which can always `exitPool`\).
 
 #### `getNumTokens`
 
@@ -114,82 +112,69 @@ The `finalized` state lets users know that the weights, balances, and fees of th
 
 ### Trading and Liquidity Functions
 
-#### `swap_ExactAmountIn`
+#### `swapExactAmountIn`
 
 ```text
-swap_ExactAmountIn(
+swapExactAmountIn(
     address tokenIn,
     uint tokenAmountIn,
     address tokenOut,
     uint minAmountOut,
     uint maxPrice
 )
-    returns (uint tokenAmountOut, uint spotPriceTarget)
+    returns (uint tokenAmountOut, uint spotPriceAfter)
 ```
 
 Trades an exact `tokenAmountIn` of `tokenIn` taken from the caller by the pool, in exchange for at least `minAmountOut` of `tokenOut` given to the caller from the pool, with a maximum marginal price of `maxPrice`.
 
-Returns `(tokenAmountOut, spotPriceTarget)`, where `tokenAmountOut` is the amount of token that came out of the pool, and MP is the new marginal spot price, ie, the result of `getSpotPrice` after the call. \(These values are what are limited by the arguments; you are guaranteed `tokenAmountOut >= minAmountOut` and `spotPriceTarget <= maxPrice`\).
+Returns `(tokenAmountOut, spotPriceAfter)`, where `tokenAmountOut` is the amount of token that came out of the pool, and `spotPriceAfter` is the new marginal spot price, ie, the result of `getSpotPrice` after the call. \(These values are what are limited by the arguments; you are guaranteed `tokenAmountOut >= minAmountOut` and `spotPriceAfter <= maxPrice`\).
 
-#### `swap_ExactAmountOut`
+#### `swapExactAmountOut`
 
 ```text
-swap_ExactAmountOut(
+swapExactAmountOut(
     address tokenIn,
     uint maxAmountIn,
     address tokenOut,
     uint minAmountOut,
     uint maxPrice
 )
-    returns (uint tokenAmountIn, uint spotPriceTarget)
-```
-
-#### `swap_ExactMarginalPrice`
-
-```text
-swap_ExactMarginalPrice(
-    address tokenIn,
-    uint maxAmountIn,
-    address tokenOut,
-    uint minAmountOut,
-    uint marginalPrice
-)
-    return (uint tokenAmountIn, uint tokenAmountOut)`
+    returns (uint tokenAmountIn, uint spotPriceAfter)
 ```
 
 #### `joinPool`
 
-`joinPool(uint poolAmountOut)`
+`joinPool(uint poolAmountOut, uint[] calldata maxAmountsIn)`
 
-Join the pool, getting `poolAmountOut` pool tokens. This will pull some of each of the currently trading tokens in the pool, meaning you must have called `approve` for each token for this pool.
+Join the pool, getting `poolAmountOut` pool tokens. This will pull some of each of the currently trading tokens in the pool, meaning you must have called `approve` for each token for this pool. These values are limited by the array of `maxAmountsIn` in the order of the pool tokens.
 
 #### `exitPool`
 
-`exitPool(uint poolAmountIn)`
+`exitPool(uint poolAmountIn, uint[] calldata minAmountsOut)`
 
-Exit the pool, paying `poolAmountIn` pool tokens and getting some of each of the currently trading tokens in return.
+Exit the pool, paying `poolAmountIn` pool tokens and getting some of each of the currently trading tokens in return. These values are limited by the array of `minAmountsOut` in the order of the pool tokens.
 
-#### `joinswap_ExternAmountIn`
+#### `joinswapExternAmountIn`
 
-`joinswap_ExternAmountIn(address tokenIn, uint tokenAmountIn) -> (uint poolAmountOut)`
+`joinswapExternAmountIn(address tokenIn, uint tokenAmountIn, uint minPoolAmountOut) -> (uint poolAmountOut)`
 
 Pay `tokenAmountIn` of token `tokenIn` to join the pool, getting `poolAmountOut` of the pool shares.
 
-#### `exitswap_ExternAmountOut`
+#### `exitswapExternAmountOut`
 
-`exitswap_ExternAmountOut(address tokenOut, uint tokenAmountOut) -> (uint poolAmountIn)`
+`exitswapExternAmountOut(address tokenOut, uint tokenAmountOut, uint maxPoolAmountIn) -> (uint poolAmountIn)`
 
 Specify `tokenAmountOut` of token `tokenOut` that you want to get out of the pool. This costs `poolAmountIn` pool shares \(these went into the pool\).
 
-#### `joinswap_PoolAmountOut`
+#### `joinswapPoolAmountOut`
 
-`joinswap_PoolAmountOut(uint poolAmountOut, address tokenIn) -> (uint tokenAmountIn)`
+`joinswapPoolAmountOut(uint poolAmountOut, address tokenIn, uint maxAmountIn) -> (uint tokenAmountIn)`
 
 Specify `poolAmountOut` pool shares that you want to get, and a token `tokenIn` to pay with. This costs `tokenAmountIn` tokens \(these went into the pool\).
 
-#### `exitswap_PoolAmountIn`
+#### `exitswapPoolAmountIn`
 
-`exitswap_PoolAmountIn(uint poolAmountIn, address tokenOut) -> (uint tokenAmountOut)`
+`exitswapPoolAmountIn(uint poolAmountIn, address tokenOut, uint minAmountOut) -> (uint tokenAmountOut)`
 
 Pay `poolAmountIn` pool shares into the pool, getting `tokenAmountOut` of the given token `tokenOut` out of the pool.
 
