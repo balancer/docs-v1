@@ -6,8 +6,6 @@
 
 Balancer is a protocol for multi-token [automated market-making](../protocol/background.md). It enables portfolio owners to create Balancer Pools and traders to trade against these pools. Balancer Pools contain 2 or more tokens each with arbitrary weights of the total pool value. The pools provide the Balancer Protocol with liquidity, and charge traders a trading fee in return. Pools can be considered automated market-makers since anyone can trade between any two tokens present in any pool.
 
-See [Balancer Pools](http://a) for more details.
-
 ### What can Balancer Protocol be useful for?
 
 There are two categories of users who can benefit from Balancer Protocol: liquidity providers ‒ who own Balancer Pools or participate in shared pools ‒ and traders ‒ who use pools to trade.
@@ -29,7 +27,7 @@ Yes. Balancer Pools cannot be censored or whitelisted. Traders cannot be censore
 
 ### Is there a roadmap?
 
-We are working on putting together a more detailed roadmap. The bronze release is planned to go live in January 2020. Silver is currently in a design phase and will likely release late 2020.
+We are working on putting together a more detailed roadmap. The bronze release is planned to go live in February 2020. Silver is currently in a design phase and will likely release late 2020.
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
