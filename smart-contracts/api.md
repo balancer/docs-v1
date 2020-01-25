@@ -10,8 +10,8 @@
 | [`exitPool(poolAmountIn, [minAMountsOut])`](api.md#exitpool) |
 | [`joinswapExternAmountIn(tokenIn, tokenAmountIn, minPoolAmountOut)->(poolAmountOut)`](api.md#joinswapexternamountin) |
 | [`exitswapExternAmountOut(tokenOut, tokenAmountOut, maxPoolAmountIn)->(poolAmountIn)`](api.md#joinswapexternamountout) |
-| [`joinswapPoolAmountOut(poolAmountOut, tokenIn, maxAmountIn)->(tokenAmountIn)`](api.md#joinswappoolamountout) |
-| [`exitswapPoolAmountIn(poolAmountIn, tokenOut, minAmountOut)->(tokenAmountOut)`](api.md#joinswappoolamountin) |
+| [`joinswapPoolAmountOut(tokenIn, poolAmountOut, maxAmountIn)->(tokenAmountIn)`](api.md#joinswappoolamountout) |
+| [`exitswapPoolAmountIn(tokenOut, poolAmountIn, minAmountOut)->(tokenAmountOut)`](api.md#joinswappoolamountin) |
 | - |
 | [`getSpotPrice(tokenIn,tokenOut)->(spotPrice)`](api.md#getspotprice) |
 | [`getSpotPriceSansFee(tokenIn,tokenOut)->(spotPrice)`](api.md#getspotpricesansfee) |
@@ -168,13 +168,13 @@ Specify `tokenAmountOut` of token `tokenOut` that you want to get out of the poo
 
 #### `joinswapPoolAmountOut`
 
-`joinswapPoolAmountOut(uint poolAmountOut, address tokenIn, uint maxAmountIn) -> (uint tokenAmountIn)`
+`joinswapPoolAmountOut(address tokenIn, uint poolAmountOut, uint maxAmountIn) -> (uint tokenAmountIn)`
 
 Specify `poolAmountOut` pool shares that you want to get, and a token `tokenIn` to pay with. This costs `tokenAmountIn` tokens \(these went into the pool\).
 
 #### `exitswapPoolAmountIn`
 
-`exitswapPoolAmountIn(uint poolAmountIn, address tokenOut, uint minAmountOut) -> (uint tokenAmountOut)`
+`exitswapPoolAmountIn(address tokenOut, uint poolAmountIn, uint minAmountOut) -> (uint tokenAmountOut)`
 
 Pay `poolAmountIn` pool shares into the pool, getting `tokenAmountOut` of the given token `tokenOut` out of the pool.
 
