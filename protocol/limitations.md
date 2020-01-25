@@ -26,11 +26,7 @@ This is to prevent malicious pool controllers from setting predatory trading fee
 
 **Minimum Balance - \(10^18\) / \(10^12\)**
 
-The minimum balance of any token in a pool is 10^6 wei. Important note: this is agnostic to token decimals and may cause issues for tokens with less than 6 decimals.
-
-**Maximum Balance - \(10^18\) \* \(10^12\)**
-
-The maximum balance of any token in a pool is 10^12 ether.
+The minimum balance of any token in a pool is 10^6 wei. **Important**: this is agnostic to token decimals and may cause issues for tokens with less than 6 decimals. Also note that this is only enforced on initial token binding. Future exits can potentially bring the pool below the minimum balance threshold and users should be aware of potential rounding errors.
 
 
 
