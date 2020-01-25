@@ -21,7 +21,7 @@ Follow the remaining steps at: [https://github.com/dapphub/dapptools/tree/master
 Run the below lines in your terminal to setup environment variables that will be used later in the guide.
 
 ```text
-BFACTORY=0x9c84391b443ea3a48788079a5f98e2ead55c9309
+BFACTORY=0x8f7F78080219d4066A8036ccD30D588B416a40DB
 FAUCET=0xb48Cc42C45d262534e46d5965a9Ac496F1B7a830
 WETH=0xd0A1E359811322d97991E03f863a0C30C2cF029C
 DAI=0x1528F3FCc26d13F7079325Fb78D9442607781c8C
@@ -147,11 +147,10 @@ seth send $BPOOL "setSwapFee(uint256)" $fee
 
 We have a valid pool with 3 bound tokens and a swap fee of 0.3%. At this point, a decision has to be made whether to `finalize` the pool. A pool can either be private or shared. A private pool allows the owner to continually adjust tokens, balances, weights, and fees. But prevents anyone else from adding or removing liquidity to that pool - it wouldn't be fair if the owner changed weights if other users have contributed liquidity! A shared pool is created when the `finalize` function is called and is a one-way transition. This locks all of the tokens, balances, weights, and opens the ability for outside users to add and remove liquidity.
 
-For our example, we want other users to be able to add liquidity so let's finalize it. The `supply` variable we are passing the function is the number of Balancer Pool Tokens to mint as part of the pool finalization. Balancer Pool Tokens, or BPTs represent proportional ownership of a pools liquidity. The initial supply can be an arbitrary number, but any future joins or exits are calculated based on the relative liquidity being added.
+For our example, we want other users to be able to add liquidity so let's finalize it. 100 Balancer Pool Tokens will be minted as part of the pool finalization regardless of bound token balances. Balancer Pool Tokens, or BPTs represent proportional ownership of a pools liquidity. Any future joins or exits are calculated based on the relative liquidity being added.
 
 ```text
-supply=$(seth --to-uint256 $(seth --to-wei 100 ether))
-seth send $BPOOL "finalize(uint256)" $supply
+seth send $BPOOL "finalize()"
 ```
 
 All done, now anyone can add liquidity and swap against the assets in the pool!
