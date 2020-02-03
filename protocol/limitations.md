@@ -2,9 +2,7 @@
 
 Balancer is meant to be a flexible and agnostic primitive. Due to constraints such as gas and math approximations, there are some limitations built into the protocol.
 
-**ERC20 Tokens**
 
-ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. ****There are no upgrade mechanisms in the contracts to allow for token upgrades. Any upgrade will need to be manually coordinated and moved into new pools.
 
  **Maximum Bound Tokens - 8**
 
