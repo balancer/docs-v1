@@ -53,6 +53,12 @@ A bound token has a valid balance and weight. A token cannot be bound without va
 
 How many tokens are bound to this pool.
 
+#### `getNormalizedWeight`
+
+`getNormalizedWeight(address token) -> (uint)`
+
+The normalized weight of a token. The combined normalized weights of all tokens will sum up to 1. \(Note: the actual sum may be 1 plus or minus a few wei due to division precision loss\)
+
 #### `getController`
 
 `getController() -> (address)`
