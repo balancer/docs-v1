@@ -4,7 +4,6 @@
 
 ## Getting Started
 
-* [Overview](getting-started/overview.md)
 * [Use Cases](getting-started/use-cases.md)
 * [FAQ](getting-started/faq.md)
 
