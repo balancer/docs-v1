@@ -28,6 +28,5 @@
 ## Guides
 
 * [Testing on Kovan](guides/testing-on-kovan.md)
-* [Creating a New Pool](guides/creating-a-new-pool.md)
 * [Making A Trade](guides/making-a-trade.md)
 
