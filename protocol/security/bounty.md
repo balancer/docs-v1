@@ -8,9 +8,9 @@ Balancer has completed smart contract audits with Trail of Bits. We also will ru
 
 The bug bounty covers any of the core smart contracts deployed on mainnet. The code can be found at: [https://github.com/balancer-labs/balancer-core](https://github.com/balancer-labs/balancer-core)
 
-Submissions should be based off commit hash: 
+Submissions should be based off commit hash: [https://github.com/balancer-labs/balancer-core/tree/2d88257fb27ad3c84b5166304a342e66055a81b3](https://github.com/balancer-labs/balancer-core/tree/2d88257fb27ad3c84b5166304a342e66055a81b3)
 
-Mainnet contracts can be found at:
+Mainnet BFactory can be found at: [https://etherscan.io/address/0x9424b1412450d0f8fc2255faf6046b98213b76bd](https://etherscan.io/address/0x9424b1412450d0f8fc2255faf6046b98213b76bd)
 
 _Additional second layer contracts such as the exchange proxy or individual smart pool contracts may be added at a further date._
 
