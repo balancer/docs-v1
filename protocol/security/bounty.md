@@ -34,7 +34,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       <td style="text-align:left">
         <ul>
           <li>Stealing assets from a pool</li>
-          <li>Permanently freezing a pools assets</li>
+          <li>Permanently freezing pool assets</li>
         </ul>
       </td>
     </tr>
