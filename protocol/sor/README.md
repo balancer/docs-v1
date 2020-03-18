@@ -26,7 +26,7 @@ Even though SOR runs totally off-chain, it has been designed to be EVM-tractable
 
 In order to make SOR EVM-tractable, the function that calculates the spot price of a Balancer pool after a given amount is traded \(the price increases due to slippage\) has been linearized for our algorithm. We refer to EP – the estimated price – as the spot price a pool will have after a trade according to that linearized approximation. The figure below shows the real spot price after a given amount is traded \(non-linear\) versus its linearized approximation which we use.
 
-![](../.gitbook/assets/picture1.png)
+![](../../.gitbook/assets/picture1.png)
 
 ### Prices of interest
 
@@ -39,13 +39,13 @@ To help visualize what this means, imagine there are 3 Balancer pools that conta
 
 The figure below shows the 6 different EPs of interest for that case.
 
-![](../.gitbook/assets/picture2.png)
+![](../../.gitbook/assets/picture2.png)
 
 ### Solution example
 
 To reduce clutter and simplify the visualization, we consider only pools 1 and 2 for the following walk through.
 
-![](../.gitbook/assets/picture3.png)
+![](../../.gitbook/assets/picture3.png)
 
 Let _A_ be the amount of _token in_  to be traded on pool 1 such that its price increases from EP1 \(initial spot price of pool 1\) to EP2 \(initial spot price of pool 2\). The solution of SOR for any amount of tokens lower than _A_ is simply: "trade all the amount desired with pool 1".
 

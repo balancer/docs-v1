@@ -11,7 +11,8 @@
 
 * [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
-* [SOR](protocol/sor.md)
+* [SOR](protocol/sor/README.md)
+  * [Developing](protocol/sor/developing.md)
 * [BPTs](protocol/btoken.md)
 * [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
