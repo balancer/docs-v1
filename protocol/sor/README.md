@@ -10,7 +10,7 @@ Liquidity aggregators are free to use the SOR npm package or create their own or
 
 ## Motivation
 
-Since there might be many Balancer pools that contain a given pair, trading only with be most liquid pool is not ideal. The fact that after a one-pool-trade arbitrageurs can profit by leveling all pool prices means the one-pool trader left value on the table.
+Since there might be many Balancer pools that contain a given pair, trading only with the most liquid pool is not ideal. The fact that after a one-pool-trade arbitrageurs can profit by leveling all pool prices means the one-pool trader left value on the table.
 
 The ideal solution in a world where there were no gas costs or gas limits would be to trade with all pools available in the desired pair. The amount traded with each pool should move them all to the same new spot price. This would mean all pools would be in an arbitrage free state and no value could be further extracted by arbitrageurs \(which always comes at the expense of the trader\).
 
@@ -32,7 +32,7 @@ In order to make SOR EVM-tractable, the function that calculates the spot price 
 
 Since we linearize the spot price functions of all Balancer pools, we can interpolate prices and amounts to make our optimization solution simpler. 
 
-To help visualize what this means, imagine there are 3 Balancer pools that contain a pair of tokens that SOR has to find a solution for. We define EPs of interest the sets of prices where either:
+To help visualize what this means, imagine there are 3 Balancer pools that contain a pair of tokens that SOR has to find a solution for. We define EPs of interest as the sets of prices where either:
 
 1. there is a pool with that initial spot price; or
 2. the spot prices of two pools cross at that price.

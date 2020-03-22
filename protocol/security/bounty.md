@@ -46,7 +46,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
         <ul>
           <li>Severe rounding errors where an attacker can steal significant funds in
             excess of any gas costs or swap fees</li>
-          <li>Manipulating a finalized pools assets / weights / fees</li>
+          <li>Manipulating a finalized pool&apos;s assets / weights / fees</li>
         </ul>
       </td>
     </tr>
@@ -57,7 +57,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       <td style="text-align:left">
         <ul>
           <li>Minor rounding errors that allow an attacker to slowly manipulate funds
-            in their advantage</li>
+            to their advantage</li>
         </ul>
       </td>
     </tr>

@@ -85,7 +85,7 @@ Since Balancer allows for depositing and withdrawing liquidity to Balancer pools
 
 Another way of justifying the need for charging a swap fee when a liquidity provider does a single-asset deposit is that they are getting a share of a pool that contains a basket of different assets. So in essence what they are doing is a trade of one of the pool assets \(the token _t_ being deposited\) for all of the pool assets proportionally to their weights. 
 
-Since the pool already has a share of its value in token t, represented by the weight$$W_t$$, it only makes sense to charge a swap fee for the remaining proportion of the deposit $$A_t \cdot(1 - W_t)$$
+Since the pool already has a share of its value in token _t_, represented by the weight$$W_t$$, it only makes sense to charge a swap fee for the remaining proportion of the deposit $$A_t \cdot(1 - W_t)$$
 
 The formula then becomes:
 

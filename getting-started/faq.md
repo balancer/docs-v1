@@ -31,6 +31,8 @@ We are working on putting together a more detailed roadmap. The bronze release i
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
+Not in the bronze release, although the code shows how an `EXIT_FEE` may be introduced in future versions.
+
 ### Is there a Balancer Protocol token?
 
 Not initially. There might be some experimentation towards protocol tokens and liquidity mining in future versions. A token will never be required to trade or interact with the protocol. Any protocol upgrade/migration in that regard would be discussed with the community of users of the protocol well in advance.

@@ -1,6 +1,6 @@
 # Background
 
-Automated Market Makers \(AMMs\) have been around in their simplest form for as long as trades could be automated in the conventional financial markets. AMMs are essentially automated agents that are controlled by algorithms that define rules for trades. Usually AMMs are continuously active in both directions of a trading pair. It's profit comes basically from a spread between buy and sell prices.
+Automated Market Makers \(AMMs\) have been around in their simplest form for as long as trades could be automated in the conventional financial markets. AMMs are essentially automated agents that are controlled by algorithms that define rules for trades. Usually AMMs are continuously active in both directions of a trading pair. The liquidity provider's profit comes basically from a spread between buy and sell prices.
 
 Smart contract platforms like Ethereum have brought AMMs to a whole new level. They have, for the first time in history, combined both the _custody_ of assets traded by AMMs and also the _algorithms_ dictating how the assets should be traded. This led to interesting new features like atomic trading, instant feedback loops for correcting prices offered by an AMM among others.
 

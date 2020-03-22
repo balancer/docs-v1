@@ -10,7 +10,7 @@ The **☀️Golden Release☀️** will introduce a few final features that will
 
 Unless noted otherwise, this document describes the contract architecture for the **🍂Bronze Release🍂**. We have attempted to make note of the functionality that will change for future releases, but it is possible for _any aspect_ of the design to change in both very large and also very subtle ways.
 
-Please take care to when interacting with a Balancer pool to ensure you know which release it is associated with. Objects in the Balancer system provide `getColor() returns (bytes32)`, which returns a left-padded ASCII representation of the all-caps color word, ie, `bytes32("BRONZE")`.
+Please take care when interacting with a Balancer pool to ensure you know which release it is associated with. Objects in the Balancer system provide `getColor() returns (bytes32)`, which returns a left-padded ASCII representation of the all-caps color word, ie, `bytes32("BRONZE")`.
 
 ### Events
 
