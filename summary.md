@@ -11,8 +11,7 @@
 
 * [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
-* [SOR](protocol/sor/README.md)
-  * [Developing](protocol/sor/developing.md)
+* [SOR](protocol/sor.md)
 * [BPTs](protocol/btoken.md)
 * [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
@@ -25,6 +24,10 @@
 
 * [Summary](smart-contracts/index.md)
 * [API](smart-contracts/api.md)
+
+## SOR
+
+* [Development](sor/development.md)
 
 ## Guides
 
