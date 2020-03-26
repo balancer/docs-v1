@@ -67,7 +67,6 @@ export const smartOrderRouter = (
 Below is an example snippet that uses most helper functions along with the order routing to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or use another solution to atomically execute the trades.
 
 ```javascript
-require('dotenv').config()
 const sor = require('@balancer-labs/sor');
 const BigNumber = require('bignumber.js');
 const ethers = require('ethers');
