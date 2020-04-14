@@ -38,9 +38,9 @@ export interface Pool {
 }
 ```
 
-#### `parsePoolDataOnChain(pools, tokenIn, tokenOut, multiAddress, providerUrl): Pool[]`
+#### `parsePoolDataOnChain(pools, tokenIn, tokenOut, multiAddress, provider): Pool[]`
 
-This function is the exact same as `parsePoolData` but instead pulls all balances, weights, and fees onchain using [multicall](https://github.com/makerdao/multicall). This requires a web3 connection \(ex: local node or infura\) that can be passed using `providerUrl`. `multiAddress` is the address for the deployed multicall contract - on mainnet this is `0xeefba1e63905ef1d7acba5a8513c70307c1ce441`
+This function is the exact same as `parsePoolData` but instead pulls all balances, weights, and fees onchain using [multicall](https://github.com/makerdao/multicall). This requires a web3 provider \(ex: local node or infura\) that can be passed using `provider`. `multiAddress` is the address for the deployed multicall contract - on mainnet this is `0xeefba1e63905ef1d7acba5a8513c70307c1ce441`
 
 ## smartOrderRouter
 
@@ -115,7 +115,8 @@ const ethers = require('ethers');
 
 const MAX_UINT = ethers.constants.MaxUint256;
 
-const providerUrl = 'http://localhost:8545'
+const providerUrl = 'http://localhost:8545' // can use infura, etc.
+const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
 // MAINNET
 const multi = '0xeefba1e63905ef1d7acba5a8513c70307c1ce441'
@@ -126,7 +127,7 @@ const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' // WETH
 (async function() {
     const data = await sor.getPoolsWithTokens(tokenIn, tokenOut);
 
-    const poolData = await sor.parsePoolDataOnChain(data.pools, tokenIn, tokenOut, multi, providerUrl));
+    const poolData = await sor.parsePoolDataOnChain(data.pools, tokenIn, tokenOut, multi, provider));
 
     const sorSwaps = sor.smartOrderRouter(
         poolData,
