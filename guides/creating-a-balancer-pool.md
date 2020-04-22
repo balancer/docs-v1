@@ -66,7 +66,7 @@ Simply go to that token’s contract page and find the “Contract - Write” or
 
 We’ll approve an allowance of 20 USDC to the pool, which means we’re trusting this contract with this much balance \(even though the tokens don’t leave your wallet right away\).
 
-Now we call approve\(pool\_address, desired\_allowance\_in\_base\_units\). For our desired allowance, the numeric field will be set to 20 USDC x 106 decimals = 20000000 base units. It’ll look like this:
+Now we call approve\(pool\_address, desired\_allowance\_in\_base\_units\). For our desired allowance, the numeric field will be set to 20 USDC x 10^6 decimals = 20000000 base units. It’ll look like this:
 
 ![](../.gitbook/assets/6.png)
 
@@ -80,11 +80,11 @@ Now let’s get back to our pool’s contract.
 
 The weight \(percentage\) of a token within the pool is chosen with the “denorm” field. It’s a denormalized variable, meaning the sum of all denorm values doesn’t have to equal a specific number.
 
-As a protocol requirement, the value of denorm must range between 1 x 1018 and 50 x 1018. A good rule of thumb is to choose a value that is half of the desired percentage times 1018. This way the pool will allow each token to have any percentage between 2% and 98%.
+As a protocol requirement, the value of denorm must range between 1 x 10^18 and 50 x 10^18. A good rule of thumb is to choose a value that is half of the desired percentage times 10^18. This way the pool will allow each token to have any percentage between 2% and 98%.
 
 First we determine how much money the pool will start with. Let’s say it’s $10.
 
-Suppose our intention is to have 15% of the pool’s total value in USDC, so $1.50. We should then bind 1.50 USDC to the pool \(balance = 1.5 \* 10decimals\), with a denorm of 7.5 x 1018.
+Suppose our intention is to have 15% of the pool’s total value in USDC, so $1.50. We should then bind 1.50 USDC to the pool \(balance = 1.5 \* 10^decimals\), with a denorm of 7.5 x 1018.
 
 ![](../.gitbook/assets/8.png)
 
@@ -92,7 +92,7 @@ Click “Write”. After the transaction is mined, check that the amount of toke
 
 ![](../.gitbook/assets/9.png)
 
-Now we need to bind the remaining 85% of the pool: $8.50 worth and 42.5 x 1018 of denorm.
+Now we need to bind the remaining 85% of the pool: $8.50 worth and 42.5 x 10^18 of denorm.
 
 Our second token will be DAI, at a 20% weight.
 
@@ -101,7 +101,7 @@ Our second token will be DAI, at a 20% weight.
 Being the DeFi trailblazer that you are, you already know what to do:
 
 1. Approve a DAI allowance to the pool.
-2. Bind $2 worth of DAI \(currently about 1.975 DAI\) with a denorm of 10 x 1018.
+2. Bind $2 worth of DAI \(currently about 1.975 DAI\) with a denorm of 10 x 10^18.
 
 This is what our second call to bind should look like:
 
@@ -113,7 +113,7 @@ Our third and final token will be PieDAO’s BTC++.
 
 First we approve a BTC++ allowance to our pool.
 
-Targeting the remaining 65% of the pool’s value, we should bind $6.50 worth \(about 0.000965 BTC++, or 9.65 x 10-4 x 1018 = 9.65 x 1014\), with a denorm of 32.5 x 1018. Easy peasy:
+Targeting the remaining 65% of the pool’s value, we should bind $6.50 worth \(about 0.000965 BTC++, or 9.65 x 10^-4 x 10^18 = 9.65 x 10^14\), with a denorm of 32.5 x 10^18. Easy peasy:
 
 ![](../.gitbook/assets/11.png)
 
@@ -133,7 +133,7 @@ Looking good.
 
 At its first version, the Balancer protocol doesn’t charge a protocol-level fee. But liquidity providers do charge a swap fee from traders.
 
-When a pool is created, its swap fee is initialized to the minimum value allowed by the protocol: 0.0001% \(aka 0.000001 or one hundredth of a basis point\). Since a fee of 1 is expressed as 1018 base units, our initial value is 1012 base units:
+When a pool is created, its swap fee is initialized to the minimum value allowed by the protocol: 0.0001% \(aka 0.000001 or one hundredth of a basis point\). Since a fee of 1 is expressed as 10^18 base units, our initial value is 10^12 base units:
 
 ![](../.gitbook/assets/14.png)
 
@@ -141,7 +141,7 @@ As a rule of thumb, when the assets within the pool have typically more stable p
 
 Let’s say for this pool we want a fee of 0.29%.
 
-We can accomplish this with a simple call to setSwapFee\(0.0029 x 1018 = 2.9 x 1015\):
+We can accomplish this with a simple call to setSwapFee\(0.0029 x 10^18 = 2.9 x 10^15\):
 
 ![](../.gitbook/assets/15.png)
 
