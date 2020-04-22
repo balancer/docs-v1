@@ -84,7 +84,7 @@ As a protocol requirement, the value of denorm must range between 1 x 10^18 and 
 
 First we determine how much money the pool will start with. Let’s say it’s $10.
 
-Suppose our intention is to have 15% of the pool’s total value in USDC, so $1.50. We should then bind 1.50 USDC to the pool \(balance = 1.5 \* 10^decimals\), with a denorm of 7.5 x 1018.
+Suppose our intention is to have 15% of the pool’s total value in USDC, so $1.50. We should then bind 1.50 USDC to the pool \(balance = 1.5 \* 10^decimals\), with a denorm of 7.5 x 10^18.
 
 ![](../.gitbook/assets/8.png)
 
