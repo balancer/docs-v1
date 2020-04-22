@@ -11,7 +11,6 @@
 
 * [Background](protocol/background.md)
 * [Core Concepts](protocol/concepts.md)
-* [Creating a Balancer Pool](protocol/creating-a-balancer-pool.md)
 * [SOR](protocol/sor.md)
 * [BPTs](protocol/btoken.md)
 * [Limitations](protocol/limitations.md)
@@ -34,4 +33,5 @@
 
 * [Testing on Kovan](guides/testing-on-kovan.md)
 * [Making A Trade](guides/making-a-trade.md)
+* [Creating a Balancer Pool](guides/creating-a-balancer-pool.md)
 
