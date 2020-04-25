@@ -6,7 +6,9 @@ Balancer is meant to be a flexible and agnostic primitive. Due to constraints su
 
 ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. ****There are no upgrade mechanisms in the contracts to allow for token upgrades. Any upgrade will need to be manually coordinated and moved into new pools.
 
- **Maximum Bound Tokens - 8**
+Tokens that have internal transfer fees or other non-standard balance updates may create arbitrage opportunities. Ex: DGX has both a demurrage and a transfer fee that will change a pool's balance compared to the internal accounting balance
+
+**Maximum Bound Tokens - 8**
 
 The max number of tokens that can be in a given pool is 8.
 
