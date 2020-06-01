@@ -1,4 +1,4 @@
-# Withdrawing liquidity via Etherscan
+# Withdrawing Liquidity via Etherscan
 
 If a pool is still private \(i.e. not finalized\), you can withdraw liquidity by simply unbinding each of its tokens:
 

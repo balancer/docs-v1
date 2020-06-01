@@ -1,4 +1,4 @@
-# Making A Trade
+# Making a Trade
 
 WIP
 
