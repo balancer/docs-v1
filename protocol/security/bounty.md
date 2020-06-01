@@ -72,7 +72,9 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       </td>
     </tr>
   </tbody>
-</table>### Reporting / Disclosures
+</table>
+
+### Reporting / Disclosures
 
 Please report any findings to [security@balancer.finance](mailto:security@balancer.finance) with full details about any vulnerability and steps / code to reproduce. Allow us time to review and remediate any findings before public disclosure.
 
