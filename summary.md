@@ -13,6 +13,8 @@
 * [Core Concepts](protocol/concepts.md)
 * [SOR](protocol/sor.md)
 * [BPTs](protocol/btoken.md)
+* [BAL - Balancer Governance Token](protocol/bal-balancer-governance-token.md)
+* [BAL Liquidity Mining](protocol/bal-liquidity-mining.md)
 * [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
   * [Exponentiation](protocol/index/approxing.md)
