@@ -36,6 +36,6 @@
 
 * [Testing on Kovan](guides/testing-on-kovan.md)
 * [Making a Trade](guides/making-a-trade.md)
-* [Creating a Balancer Pool](guides/creating-a-balancer-pool.md)
+* [Creating a Shared Balancer Pool](guides/creating-a-balancer-pool.md)
 * [Withdrawing Liquidity via Etherscan](guides/withdrawing-liquidity-via-etherscan.md)
 
