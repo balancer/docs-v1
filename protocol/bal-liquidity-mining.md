@@ -13,10 +13,12 @@ In practice, every week Balancer Labs has to:
 
 ![](https://miro.medium.com/max/980/1*3v3dcbR5t2m1JslUwrM2Jw@2x.png)
 
-* This creates the following bell-shaped curve for feeFactor, which means for example that a pool with a 0.5% fee has a feeFactor of ~0.94 and a pool with a 1% fee has a feeFactor of ~0.78:
+This creates the following bell-shaped curve for feeFactor, which means for example that a pool with a 0.5% fee has a feeFactor of ~0.94 and a pool with a 1% fee has a feeFactor of ~0.78:
 
 ![](https://miro.medium.com/max/2724/1*07aShFlZ136DIIx8ltsWPA@2x.png)
 
+* **UPDATED for week 2** \(starting June 8th 00:00 UTC\), multiply the pool liquidity by a **ratioFactor**. Since pools that are imbalanced contribute less with trading volume \(because they offer higher slippage\), the community approved a [proposal to add a ratioFactor](https://forum.balancer.finance/t/introduction-of-a-weight-ratio-factor-in-liquidity-mining/15). This way highly imbalanced pools \(like with 98/2 weights\) have a much lower weight for the final BAL distribution.
+* **UPDATED for week 3** \(starting June 15th 00:00 UTC\), multiply the pool liquidity by a **wrapFactor**. Since pools that contain pairs of tokens that have a hard peg \(e.g. DAI and cDAI\) do not contribute much with trading volume \(because traders can wrap DAI for cDAI and vice-versa\), the community approved a [proposal to add a wrapFactor](https://forum.balancer.finance/t/wrapfactor-penalizing-pairs-of-equivalent-tokens-in-liquidity-mining/28/3). This way, liquidity in such pairs \(like cETH/ WETH\) has a 0.1 wrapFactor \(i.e. counts 10 times less than for other regular pairs\), reducing the amount of BAL received by their liquidity providers.
 * Calculate the proportional liquidity USD value that each liquidity provider has in the pool. The table below shows an example for a pool that has 100$ worth of liquidity \(already corrected by the feeFactor\):
 
 ![](https://miro.medium.com/max/1472/1*2EM2KXgvt48qVK8FKQRmcw@2x.png)
