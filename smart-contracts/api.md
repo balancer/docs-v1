@@ -104,6 +104,14 @@ Makes `isPublicSwap` return `_publicSwap` Requires caller to be controller and p
 
 This makes the pool **finalized**. This is a one-way transition. `bind`, `rebind`, `unbind`, `setSwapFee` and `setPublicSwap` will all throw `ERR_IS_FINALIZED` after pool is finalized. This also switches `isSwapPublic` to true.
 
+#### `gulp`
+
+`gulp(address token)`
+
+This syncs the internal `balance` of `token` within a pool with the actual `balance` registered on the ERC20 contract. This is useful to account for airdropped tokens or any tokens sent to the pool without using the `join` or `joinSwap` methods. 
+
+As an example, pools that contain `COMP` tokens can have the `COMP` balance [updated with the rewards sent by Compound protocol](https://etherscan.io/tx/0xeccd42bf2b8a180a561c026717707d9024a083059af2f22c197ee511d1010e23). In order for any airdrop balance to be gulped, the token must be bound to the pool. So if a shared pool \(which is immutable\) does not have a given token, any airdrops in that token will be locked in the pool forever. 
+
 #### `setSwapFee`
 
 `setSwapFee(uint swapFee)`
