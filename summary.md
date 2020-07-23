@@ -27,6 +27,7 @@
 * [Summary](smart-contracts/index.md)
 * [API](smart-contracts/api.md)
 * [Interfaces](smart-contracts/interfaces.md)
+* [Addresses](smart-contracts/addresses.md)
 
 ## SOR
 
