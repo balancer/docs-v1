@@ -13,7 +13,7 @@ In practice, every week Balancer Labs has to:
 
 ![](../.gitbook/assets/fee_factor_calc.png)
 
-The constant, `k`, was initially set to 0.5, but beginning in week 8 \(July 27th 00:00 UTC\), the community approved a [proposal to to change `k` to 0.25](https://forum.balancer.finance/t/introduction-of-a-weight-ratio-factor-in-liquidity-mining/15) in order to ease the penalty for higher-fee pools. This creates the following bell-shaped curve for feeFactor, which means for example that a pool with a 0.5% fee has a feeFactor of ~0.98, a pool with a 1% fee has a feeFactor of ~0.94, and a pool with a 2% fee has a feeFactor of ~0.78:
+The constant, `k`, was initially set to 0.5, but beginning in week 8 \(July 27th 00:00 UTC\), the community approved a [proposal to to change `k` to 0.25](https://forum.balancer.finance/t/modifying-feefactor-toward-reducing-the-mining-penalty-for-high-fee-pools/103) in order to ease the penalty for higher-fee pools. This creates the following bell-shaped curve for feeFactor, which means for example that a pool with a 0.5% fee has a feeFactor of ~0.98, a pool with a 1% fee has a feeFactor of ~0.94, and a pool with a 2% fee has a feeFactor of ~0.78:
 
 ![](../.gitbook/assets/fee_factor_plot.png)
 
