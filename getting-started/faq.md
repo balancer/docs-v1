@@ -89,7 +89,7 @@ There are three main ways a liquidity provider or portfolio manager can interact
 * Through our pool manager front-end \(available shortly\)
 * Directly through our smart Contracts on Ethereum mainnet
 
-Please [contact us](mailto:contact@balancer.finace) if you have a portfolio worth more than 100,000 USD and need special assistance.
+Please [contact us](mailto:contact@balancer.finance) if you have a portfolio worth more than 100,000 USD and need special assistance.
 
 ### Can Balancer be used as an Index Fund?
 
