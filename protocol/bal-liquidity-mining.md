@@ -34,7 +34,7 @@ All the calculations described above depend exclusively on on-chain data and his
 
 ### Token Whitelist and Eligible Pools for Liquidity Mining <a id="84fc"></a>
 
-**UPDATED for week 5** \(starting June 29th 00:00 UTC\): All tokens present in the whitelist created by the community \(see whitelist proposal\) are eligible for BAL liquidity mining. The [most up to date list](https://github.com/balancer-labs/pool-management/blob/master/src/deployed.json) is maintained on Balancer's github. All tokens listed under the `"mainnet"` list in the json file linked are eligible. This list will evolve over time with input from the community.
+**UPDATED for week 5** \(starting June 29th 00:00 UTC\): All tokens present in the whitelist created by the community \(see whitelist proposal\) are eligible for BAL liquidity mining. The [most up to date list](https://github.com/balancer-labs/assets/blob/master/lists/eligible.json) is maintained on Balancer's github. All tokens listed under the `"homestead"` list in the json file linked are eligible. This list will evolve over time with input from the community.
 
 Only Balancer pools containing 2 or more whitelisted tokens will be eligible for BAL liquidity mining.
 
