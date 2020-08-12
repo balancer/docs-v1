@@ -27,7 +27,7 @@ Yes. Balancer Pools cannot be censored or whitelisted. Traders cannot be censore
 
 ### Is there a roadmap?
 
-We are working on putting together a more detailed roadmap. The bronze release is planned to go live in February 2020. Silver is currently in a design phase and will likely release late 2020.
+We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) went live on February 26, 2020. Silver is currently in a design phase and will likely release late 2020.
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
@@ -36,6 +36,15 @@ Not in the bronze release, although the code shows how an `EXIT_FEE` may be intr
 ### Is there a Balancer Protocol token?
 
 Not initially. There might be some experimentation towards protocol tokens and liquidity mining in future versions. A token will never be required to trade or interact with the protocol. Any protocol upgrade/migration in that regard would be discussed with the community of users of the protocol well in advance.
+
+### Is there a Balancer Governance Token?
+
+Yes, Balancer Governance Token, [BAL](../protocol/bal-balancer-governance-token), can be used to vote on proposals and steer the direction of the protocol. Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. They are typically distributed directly to liquidity providers on Tuesdays at 2300 UTC.
+
+* 25M BAL tokens were initially allocated to founders, stock options, advisors and investors, all subject to vesting periods.
+* 5M were allocated for the Balancer Ecosystem Fund. This fund will be deployed to attract and incentivize strategic partners that will help the Balancer ecosystem grow and thrive. BAL holders will ultimately decide how this fund is used over the coming years.
+* 5M were allocated for the Fundraising Fund. Balancer Labs raised a pre-seed and seed round. This fund will be used for future fundraising rounds to support Balancer Labs' operations and growth. BAL tokens will never be sold to retail investors.
+* The remaining 65M tokens are intended to be mostly distributed to liquidity providers in the coming years. 
 
 ## Balancer Pools
 
