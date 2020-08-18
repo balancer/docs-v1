@@ -150,7 +150,7 @@ swapExactAmountOut(
     address tokenIn,
     uint maxAmountIn,
     address tokenOut,
-    uint minAmountOut,
+    uint tokenAmountOut,
     uint maxPrice
 )
     returns (uint tokenAmountIn, uint spotPriceAfter)
