@@ -12,10 +12,6 @@ This guide will use `seth` - a tool built by Dapphub to interact directly with s
 curl https://dapp.tools/install | sh
 ```
 
-{% hint style="info" %}
-Nix is broken on MacOS Catalina. To fix, follow the steps at: [https://github.com/NixOS/nix/issues/2925\#issuecomment-539570232](https://github.com/NixOS/nix/issues/2925#issuecomment-539570232)
-{% endhint %}
-
 Follow the remaining steps at: [https://github.com/dapphub/dapptools/tree/master/src/seth\#example-sethrc-file](https://github.com/dapphub/dapptools/tree/master/src/seth#example-sethrc-file) in order to select the `SETH_CHAIN` and address / key.
 
 Run the below lines in your terminal to setup environment variables that will be used later in the guide.
