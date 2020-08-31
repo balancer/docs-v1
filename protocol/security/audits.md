@@ -10,5 +10,5 @@ Balancer has completed full audits with both Trail of Bits and Consensys Diligen
 
 {% embed url="https://diligence.consensys.net/audits/2020/05/balancer-finance/" %}
 
-
+[https://blog.openzeppelin.com/balancer-contracts-audit/](https://blog.openzeppelin.com/balancer-contracts-audit/)
 

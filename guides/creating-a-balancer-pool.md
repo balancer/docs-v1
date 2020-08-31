@@ -4,7 +4,7 @@
 
 All the interactions to add liquidity or to create Balancer pools on our UIs happen through a proxy. This way our UI can simplify the UX by avoiding to ask for token approvals for every new pool the user interacts with.
 
-You'll be asked to setup a proxy when your address is interacting with our UI for the first time, for example if you click on "Create Pool" on our [pool management interface](https://pools.balancer.exchange/#/): 
+You'll be asked to setup a proxy when your address is interacting with our UI for the first time, for example if you click on "Create Pool" on our [pool management interface](https://pools.balancer.exchange/#/):
 
 ![](../.gitbook/assets/image%20%283%29.png)
 
@@ -18,7 +18,7 @@ An interesting observation: we use the same DSProxy smart contracts as MakerDAO,
 
 ### Shared Pool Creation
 
-At the moment there is only the possibility of creating **shared pools** on our UI. There will be soon the option to also create and manage private pools. As a reminder: 
+At the moment there is only the possibility of creating **shared pools** on our UI. There will be soon the option to also create and manage private pools. As a reminder:
 
 * **shared pools** are open to anyone to join by adding liquidity and getting BPTs \(Balancer Pool Tokens\) in return, but all the pool parameters are immutable
 * **private pools** only allow the owner to add liquidity to the pool but all its parameters are flexible. So the owner of the private pool can change the swap fees, pause trades, add/remove tokens, change token weights etc.
@@ -31,11 +31,11 @@ If the token you want to add is not listed on the token picker panel, you can ad
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
-**IMPORTANT**: make sure that the custom token you are adding complies with the ERC20 standard. For example it has to allow 0 value transfers and the transfer function must return a boolean. You can check if the token you are adding is on any of these two lists that gather many tokens that are not ERC20-compliant: 
+**IMPORTANT**: make sure that the custom token you are adding complies with the ERC20 standard. For example it has to allow 0 value transfers and the transfer function must return a boolean. You can check if the token you are adding is on any of these two lists that gather many tokens that are not ERC20-compliant:
 
-{% embed url="https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca" %}
+{% embed url="https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca" caption="" %}
 
-{% embed url="https://github.com/sec-bit/awesome-buggy-erc20-tokens" %}
+{% embed url="https://github.com/sec-bit/awesome-buggy-erc20-tokens" caption="" %}
 
 These lists though are **NOT** exhaustive, so make sure you check your token is compatible before creating a pool with it to avoid losing your tokens forever.
 

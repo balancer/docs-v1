@@ -6,9 +6,9 @@ This guide will walk through the process of interacting with Balancer on Kovan d
 
 ### Setup
 
-This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS 
+This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS
 
-```
+```text
 curl https://dapp.tools/install | sh
 ```
 
@@ -66,7 +66,7 @@ Repeat the above steps for any additional tokens you would like to interact with
 
 ### Pool Creation
 
-Next we're going to create a new pool. This guide will create a 50% WETH, 25% DAI, 25% MKR pool. Feel free to use any of the tokens 
+Next we're going to create a new pool. This guide will create a 50% WETH, 25% DAI, 25% MKR pool. Feel free to use any of the tokens
 
 {% hint style="warning" %}
 Some tokens do not use the standard 18 decimals. Be aware of balance calculations and weights when using tokens with different decimals.
@@ -95,7 +95,7 @@ seth send $DAI "approve(address,uint256)" $BPOOL $amount
 seth send $MKR "approve(address,uint256)" $BPOOL $amount
 ```
 
-After all approvals are confirmed, tokens are bound to a specific pool by calling ``bind(address token, uint balance, uint denorm)```
+After all approvals are confirmed, tokens are bound to a specific pool by calling \`\`bind\(address token, uint balance, uint denorm\)\`\`\`
 
 `denorm` is the denormalized weight for the token being added. Weights are stored in this fashion to prevent unnecessary gas costs of recalculating weights every time a new token is added. In our example, since we want 50% WETH, 25% DAI, and 25% MKR we can use the following denormalized weights: 10, 5, 5. \(Note: the denorm weights are in the 10^18 scale to allow for non-integer weights\)
 
@@ -156,6 +156,4 @@ Let's confirm that we received BPTs by calling `balanceOf` directly on the pool 
 ```text
 seth --from-wei $(seth --to-dec $(seth call $BPOOL "balanceOf(address)" $ETH_FROM))
 ```
-
-
 

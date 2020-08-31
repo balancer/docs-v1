@@ -39,7 +39,7 @@ Not initially. There might be some experimentation towards protocol tokens and l
 
 ### Is there a Balancer Governance Token?
 
-Yes, Balancer Governance Token, [BAL](../protocol/bal-balancer-governance-token), can be used to vote on proposals and steer the direction of the protocol. Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. They are typically distributed directly to liquidity providers on Tuesdays at 2300 UTC.
+Yes, Balancer Governance Token, [BAL](https://github.com/balancer-labs/docs/tree/1d12c9a19497529cf518328e06d801f8f1c89d7f/protocol/bal-balancer-governance-token/README.md), can be used to vote on proposals and steer the direction of the protocol. Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. They are typically distributed directly to liquidity providers on Tuesdays at 2300 UTC.
 
 * 25M BAL tokens were initially allocated to founders, stock options, advisors and investors, all subject to vesting periods.
 * 5M were allocated for the Balancer Ecosystem Fund. This fund will be deployed to attract and incentivize strategic partners that will help the Balancer ecosystem grow and thrive. BAL holders will ultimately decide how this fund is used over the coming years.
