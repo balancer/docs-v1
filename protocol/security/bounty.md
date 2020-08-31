@@ -2,7 +2,7 @@
 
 ### Overview
 
-Balancer has completed smart contract audits with Trail of Bits. We also will run a continuous bug bounty program for the bronze release of Balancer core.
+Balancer has completed smart contract audits with Trail of Bits, Consensys Diligence and OpenZeppelin. We also will run a continuous bug bounty program for the first release of Balancer core.
 
 ### Scope
 
@@ -16,7 +16,7 @@ _Additional second layer contracts such as the exchange proxy or individual smar
 
 ### Rewards
 
-The bounty program will pay out rewards according to the severity of a vulnerability. The final reward amount is at the sole discretion of Balancer Labs.
+The bounty program will pay out rewards according to the severity of a vulnerability. The final reward amount is at the sole discretion of Balancer Labs. See eligibility section below for more details.
 
 <table>
   <thead>
@@ -28,7 +28,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><b>$10,000 - $25,000</b>
+      <td style="text-align:left"><b>$20,000 - $50,000</b>
       </td>
       <td style="text-align:left">Critical</td>
       <td style="text-align:left">
@@ -39,7 +39,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>$5,000 - $10,000</b>
+      <td style="text-align:left"><b>$10,000 - $20,000</b>
       </td>
       <td style="text-align:left">High</td>
       <td style="text-align:left">
@@ -51,7 +51,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>$1,000 - $2,500</b>
+      <td style="text-align:left"><b>$2,000 - $5,000</b>
       </td>
       <td style="text-align:left">Medium</td>
       <td style="text-align:left">
@@ -62,7 +62,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>$0 - $1,000</b>
+      <td style="text-align:left"><b>$0 - $2,000</b>
       </td>
       <td style="text-align:left">Low</td>
       <td style="text-align:left">
@@ -81,5 +81,6 @@ Please report any findings to [security@balancer.finance](mailto:security@balanc
 ### Ineligible Findings
 
 * Duplicate vulnerabilities. Only the first reporter will be rewarded.
-* Findings already known as part of a formal audit
+* Findings already known as part of a formal audit.
+* Findings related to non-standard ERC20 tokens might be ineligible as many vulnerabilities might be inserted in non-standard ERC20 tokens on purpose for applying for this bug bounty. 
 
