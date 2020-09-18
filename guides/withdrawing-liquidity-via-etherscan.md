@@ -22,7 +22,7 @@ The simpler way to remove liquidity \(either fully or partially\) from a shared 
 
 #### Bonus Points: Removing Liquidity from a Shared Pool via Etherscan
 
-If you don’t want to depend on Balancer’s website being always operational, you may choose to run it locally \(it’s open-source\).
+If you don’t want to depend on Balancer’s website being always operational; you may choose to run it locally \(it’s open-source\).
 
 But maybe you want to understand a bit better what happens under the hood during a withdrawal. 
 
@@ -39,6 +39,8 @@ To withdraw all your liquidity in one transaction, simply give back to the pool 
 
 And what is the point of getting to know the actual function being called and its parameters? 
 
-One use case that comes to mind is to keep handy \(e.g. saved on a mobile phone\) a pre-signed transaction withdrawing all your funds from a pool. This would be useful in an emergency: you could immediately broadcast your transaction, from any device \(that doesn’t hold the private key to that account\).  
+One use case that comes to mind is to keep handy \(e.g. saved on a mobile phone\) a pre-signed transaction withdrawing all your funds from a pool. This would be useful in an emergency: you could immediately broadcast your transaction, from any device \(that doesn’t hold the private key to that account\).
+
+  
 After clicking “Write” at the figure above, you can copy the DATA field shown in Metamask, and use it to craft an offline transaction using [MyEtherWallet](https://www.myetherwallet.com/interface/send-offline).
 

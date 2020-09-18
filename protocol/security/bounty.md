@@ -2,17 +2,17 @@
 
 ### Overview
 
-Balancer has completed smart contract audits with Trail of Bits, Consensys Diligence and OpenZeppelin. We also will run a continuous bug bounty program for the first release of Balancer core.
+Balancer has completed smart contract audits with Trail of Bits and Open Zeppelin. We also will run a continuous bug bounty program for the bronze release of Balancer core.
 
 ### Scope
 
-The bug bounty covers any of the core smart contracts deployed on mainnet. The code can be found at: [https://github.com/balancer-labs/balancer-core](https://github.com/balancer-labs/balancer-core)
+The bug bounty covers any of the core smart contracts deployed on Mainnet. The code can be found at: [https://github.com/balancer-labs/balancer-core](https://github.com/balancer-labs/balancer-core)
 
 Submissions should be based off commit hash: [https://github.com/balancer-labs/balancer-core/tree/2d88257fb27ad3c84b5166304a342e66055a81b3](https://github.com/balancer-labs/balancer-core/tree/2d88257fb27ad3c84b5166304a342e66055a81b3)
 
 Mainnet BFactory can be found at: [https://etherscan.io/address/0x9424b1412450d0f8fc2255faf6046b98213b76bd](https://etherscan.io/address/0x9424b1412450d0f8fc2255faf6046b98213b76bd)
 
-_Additional second layer contracts such as the exchange proxy or individual smart pool contracts may be added at a further date._
+_Additional second layer contracts, such as the exchange proxy or individual smart pool contracts, may be added at a further date._
 
 ### Rewards
 
@@ -76,7 +76,7 @@ The bounty program will pay out rewards according to the severity of a vulnerabi
 
 ### Reporting / Disclosures
 
-Please report any findings to [security@balancer.finance](mailto:security@balancer.finance) with full details about any vulnerability and steps / code to reproduce. Allow us time to review and remediate any findings before public disclosure.
+Please report any findings to [security@balancer.finance](mailto:security@balancer.finance), with full details about any vulnerability and steps / code to reproduce. Allow us time to review and remediate any findings before public disclosure.
 
 ### Ineligible Findings
 

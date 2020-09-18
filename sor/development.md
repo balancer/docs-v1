@@ -6,13 +6,13 @@ Documentation for working with the `@balancer-labs/sor` package. For a descripti
 Please take caution as the SOR is under heavy development and may have breaking changes.
 {% endhint %}
 
-The SOR package includes a primary `smartOrderRouter` function along with several helper functions for working with the subgraph and formatting data.
+The SOR package includes a primary `smartOrderRouter` function, along with several helper functions for working with the subgraph and formatting data.
 
 ## Subgraph
 
-All numerical data such as balances, weights, fees, etc. stored in subgraph are stored in a normalized decimal point form. This is to allow for easy integrations with partners and teams building on top of Balancer.
+All numerical data such as balances, weights, fees, etc. stored in subgraph are stored in normalized decimal point form. This is to allow for easy integrations with partners and teams building on top of Balancer.
 
-The network subgraph can be chosen using the environment variable: `REACT_APP_SUBGRAPH_URL`. It currently defaults to mainnet which is: [https://api.thegraph.com/subgraphs/name/balancer-labs/balancer](https://api.thegraph.com/subgraphs/name/balancer-labs/balancer)
+The network subgraph can be chosen using the environment variable: `REACT_APP_SUBGRAPH_URL`. It currently defaults to Mainnet, which is: [https://api.thegraph.com/subgraphs/name/balancer-labs/balancer](https://api.thegraph.com/subgraphs/name/balancer-labs/balancer)
 
 Several helper functions exist for common queries against the subgraph:
 
@@ -22,7 +22,7 @@ This returns a list of all pools in the balancer ecosystem that include the pair
 
 #### `parsePoolData(pools, tokenIn, tokenOut): Pool[]`
 
-This function formats all the returned pool data from `getPoolsWithTokens` into a format that the SOR needs. Includes scaling balances to their wei representation based on token decimals and converting denormalized weights into normalized weights. Returns an array of type Pool:
+This function formats all the returned pool data from `getPoolsWithTokens` into a format compatible with the SOR. It includes scaling balances to their wei representations based on token decimals, and converting denormalized weights into normalized weights. Returns an array of type Pool:
 
 ```javascript
 export interface Pool {
@@ -40,11 +40,11 @@ export interface Pool {
 
 #### `parsePoolDataOnChain(pools, tokenIn, tokenOut, multiAddress, provider): Pool[]`
 
-This function is the exact same as `parsePoolData` but instead pulls all balances, weights, and fees onchain using [multicall](https://github.com/makerdao/multicall). This requires a web3 provider \(ex: local node or infura\) that can be passed using `provider`. `multiAddress` is the address for the deployed multicall contract - on mainnet this is `0xeefba1e63905ef1d7acba5a8513c70307c1ce441`
+This function is the same as `parsePoolData`, but pulls all balances, weights, and fees on-chain using [multicall](https://github.com/makerdao/multicall). This requires a web3 provider \(ex: local node or Infura\) that can be passed using `provider`. `multiAddress` is the address for the deployed multicall contract - on Mainnet this is `0xeefba1e63905ef1d7acba5a8513c70307c1ce441`
 
 ## smartOrderRouter
 
-The `smartOrderRouter` function takes in pool data and trade parameters and does an optimization for best price execution.
+The `smartOrderRouter` function takes in pool data and trade parameters and performs an optimization for the best price execution.
 
 ```javascript
 export const smartOrderRouter = (
@@ -58,17 +58,17 @@ export const smartOrderRouter = (
 
 `balancers` - array of type `Pool` shown above
 
-`swapType` - string of either `swapExactIn` or `swapExactOut`
+`swapType` - string: either `swapExactIn` or `swapExactOut`
 
-`targetInputAmount` -  amount to be traded in wei form
+`targetInputAmount` -  amount to be traded, in Wei
 
 `maxBalancers` - max number of pools to split the trade across
 
-`costOutputToken` - the cost of the output token in ETH multiplied by the swap gas cost. This is used to determine if the gas costs of using an additional pool outweigh the better price from splitting. We are working to have helper data for this parameter. In the meantime, it is recommended to set this as `0` and limit the number of `maxBalancers` to a reasonable number given gas costs.
+`costOutputToken` - the cost of the output token in ETH multiplied by the gas cost to perform the swap. This is used to determine whether the lower price obtained through including an additional pool in the transaction outweigh the gas costs. We are working to have helper data for this parameter. In the meantime, we recommend setting this to `0`, and limiting the number of `maxBalancers` to a reasonable number given gas costs.
 
 ## Example
 
-Below is an example snippet that uses most helper functions along with the order routing to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or use another solution to atomically execute the trades.
+Below is an example snippet that uses most helper functions, along with order routing, to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
 
 ```javascript
 const sor = require('@balancer-labs/sor');
@@ -105,7 +105,7 @@ const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' // WETH
 
 ## Example using onchain balances
 
-Below is the same example as above but instead uses `parsePoolDataOnChain`
+Below is the same example as above, but using `parsePoolDataOnChain`
 
 ```javascript
 const sor = require('@balancer-labs/sor');

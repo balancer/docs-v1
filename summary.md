@@ -25,7 +25,12 @@
 ## Smart Contracts
 
 * [Summary](smart-contracts/index.md)
-* [API](smart-contracts/api.md)
+* [Configurable Rights Pool](smart-contracts/configurable-rights-pool.md)
+* [Rights Manager](smart-contracts/rights-manager.md)
+* [Component Libraries](smart-contracts/component-libraries.md)
+* [Smart Pool Templates](smart-contracts/smart-pool-templates.md)
+* [API \(Core BPool\)](smart-contracts/api.md)
+* [CRP Class Diagram](smart-contracts/crp-class-diagram.md)
 * [Interfaces](smart-contracts/interfaces.md)
 * [Addresses](smart-contracts/addresses.md)
 
@@ -39,4 +44,12 @@
 * [Making a Trade](guides/making-a-trade.md)
 * [Creating a Shared Balancer Pool](guides/creating-a-balancer-pool.md)
 * [Withdrawing Liquidity via Etherscan](guides/withdrawing-liquidity-via-etherscan.md)
+* [CRP Tutorial](guides/crp-tutorial.md)
+* [Liquidity Bootstrapping](guides/liquidity-bootstrapping.md)
+* [Smart Pool Templates \(GUI\)](guides/smart-pool-templates-gui/README.md)
+  * [Liquidity Bootstrapping Pool](guides/smart-pool-templates-gui/liquidity-bootstrapping-pool.md)
+  * [Swing Trading Pool](guides/smart-pool-templates-gui/swing-trading-pool.md)
+  * [Perpetual Synthetic Pool](guides/smart-pool-templates-gui/perpetual-synthetic-pool.md)
+  * [Investors' Club](guides/smart-pool-templates-gui/investors-club.md)
+  * [Experimental](guides/smart-pool-templates-gui/experimental.md)
 

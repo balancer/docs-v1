@@ -6,15 +6,19 @@ The **🍂Bronze Release🍂** is the first of 3 planned releases of the Balance
 
 The **❄️Silver Release❄️** will bring many gas optimizations and architecture changes that will reduce transaction overhead and enable more flexible usage patterns.
 
-The **☀️Golden Release☀️** will introduce a few final features that will tie the whole system together.
+The **☀️Gold Release☀️** will introduce a few final features that will tie the whole system together.
 
 Unless noted otherwise, this document describes the contract architecture for the **🍂Bronze Release🍂**. We have attempted to make note of the functionality that will change for future releases, but it is possible for _any aspect_ of the design to change in both very large and also very subtle ways.
 
 Please take care when interacting with a Balancer pool to ensure you know which release it is associated with. Objects in the Balancer system provide `getColor() returns (bytes32)`, which returns a left-padded ASCII representation of the all-caps color word, ie, `bytes32("BRONZE")`.
 
+Similarly, Configurable Rights Smart Pools have getter functions to return the version of the Smart Pool Manager, Rights Manager, and Safe Math library versions they were linked to on deployment. Of course, you can also retrieve the underlying Core Pool controlled by the Smart Pool, and call getColor\(\) on it.
+
+This is one reason the CRPFactory takes a BFactory parameter - in the future, passing a Silver or Gold BFactory would create an underlying pool corresponding to that version.
+
 ### Events
 
-`LOG_CALL` is an anonymous event which uses the function signature as the event signature. It is fired by all stateful functions.
+`LOG_CALL` is an anonymous event which uses the function signature as the event signature. It is fired by all stateful functions. The following applies to Balancer Core pools. Smart Pools have similar events and modifiers.
 
 ```text
 event LOG_CALL(

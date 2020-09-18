@@ -1,0 +1,14 @@
+# Smart Pool Templates \(GUI\)
+
+Here we detail several applications of the core Configurable Rights Pool, and show how you would configure your custom people \(on creation from the factory\), to accommodate each use case. \(Eventually we will have a GUI wizard to guide you through this process.\)
+
+The use cases we cover here are:
+
+* [Liquidity Bootstrapping](liquidity-bootstrapping-pool.md) \(token launch\)
+* [Swing Trading Pool](swing-trading-pool.md) \(Index fund\)
+* [Perpetual Synthetic Pool](perpetual-synthetic-pool.md)
+* [Investors' Club](investors-club.md) \(KYC\)
+* [Experimental](experimental.md) \(Capped\)
+
+For each type of pool, we will provide a typical configuration appropriate for the use case, enabling enough flexibility to accomplish all the required interventions, while minimizing the trust required of the pool operator.
+

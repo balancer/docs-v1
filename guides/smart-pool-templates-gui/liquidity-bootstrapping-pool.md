@@ -1,0 +1,45 @@
+# Liquidity Bootstrapping Pool
+
+Here again is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the legal and regulatory issues.
+
+The idea is to launch a token with low capital requirements, by setting up a two-token pool with a project and a collateral token. The weights are initially set heavily in favor of the project token, then gradually "flip" to favor the collateral coin by the end of the sale. The sale can be calibrated to keep the price more or less steady \(maximizing revenue\), or declining to a desired minimum \(e.g., the initial offering price\).
+
+Legend**: required;** ~~not required;~~ _optional_
+
+**Rights configuration:**
+
+* _canPauseSwapping_
+* ~~canChangeSwapFee~~
+* **canChangeWeights**
+* _canAddRemoveTokens_
+* **canWhitelistLPs**
+* ~~canChangeCap~~
+
+Pausing swapping is an optional feature here. You might want to halt trading for various reasons \(e.g., stronger than expected demand is driving up the price, and people are selling tokens back to the pool for profit instead of buying them\). There isn't much of a trust issue here - the purpose is to sell tokens, so the pool operator has an incentive to leave swapping enabled.
+
+In a token sale, you want to keep fees low to encourage trading; there's really no reason to change it. So best practice would be set it to the minimum on creation and don't enable changing it. You want to enable as few rights as possible. More rights = more possible manipulation from the pool operator = more trust required.
+
+Since the core of the strategy is changing weights, you absolutely need to enable that right.
+
+The add/remove tokens right depends on your future intentions, since there are two ways to remove your liquidity at the conclusion of the sale. If this is a one-off auction, you can enable the right, and redeem through two "removeToken" calls. This is simple, but destroys the pool.
+
+If you want to re-use the pool \(e.g., there are "phases" or multiple releases\), you can leave this right disabled, and retrieve the proceeds through repeated calls to exitPool \(1/3 at a time, due to token ratio constraints\). To add more project tokens, you would need to add yourself to the whitelist, and joinPool.
+
+In a token sale \(vs an investment pool\), you don't want anyone else providing liquidity. Only the pool creator should be issued pool tokens, and only they should be able to redeem the proceeds at the end. This is most easily accomplished by using the whitelist. If you enable this right and don't add anyone to the whitelist, no one can "join" the pool.
+
+You could also prevent others from adding liquidity through the cap right. If you enable it, the cap will be set to the initial supply, which has the same effect as the whitelist. However, you will need to be careful when you redeem the pool tokens at the end of the sale, since any token redemption would reduce the supply below the cap and present a window for others to join the pool. To prevent this, you could set the cap to 0 before withdrawing the proceeds.
+
+One other important consideration is the "block time" settings - the minimum time between weight updates, and the minimum duration of each gradual update. These times default to 2 hours and 2 weeks, meaning the weights cannot change faster than every 2 hours, and once you start a gradual update, you cannot add a token or do a manual update for 2 weeks.
+
+You can make these periods arbitrarily short \(even zero\), but then the pool operators have greater control, and more trust is required.
+
+Also keep in mind that contracts cannot change state by themselves - weights only change when someone calls `pokeWeights`. A common mechanism is for the pool operator to set up something like a cron job to call it automatically, though it is a public function that anyone can call.
+
+Note that `pokeWeights` changes weights, but not balances - therefore, it can change the price \(albeit only along the trajectory set by the last call the updateWeightsGradually\).
+
+The controller function `updateWeight` changes weights directly - but not the price. This means it must also adjust the balances at the same time \(i.e., transfer tokens\). So the controller can set weights arbitrarily -- but not while an `updateWeightsGradually` is running. And they must have the tokens available to do it.
+
+
+
+
+

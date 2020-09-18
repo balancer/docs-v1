@@ -2,13 +2,13 @@
 
 ## Setting up a proxy
 
-All the interactions to add liquidity or to create Balancer pools on our UIs happen through a proxy. This way our UI can simplify the UX by avoiding to ask for token approvals for every new pool the user interacts with.
+All the interactions to add liquidity or to create Balancer pools on our UIs happen through a proxy. This way our UI can simplify the UX by avoiding token approvals on every new pool the user interacts with.
 
-You'll be asked to setup a proxy when your address is interacting with our UI for the first time, for example if you click on "Create Pool" on our [pool management interface](https://pools.balancer.exchange/#/):
+You'll be asked to setup a proxy when your address is interacting with our UI for the first time. For example, when you click on "Create Pool" on our [pool management interface](https://pools.balancer.exchange/#/):
 
 ![](../.gitbook/assets/image%20%283%29.png)
 
-After clicking on "Create Pool" you'll see the setup button:
+After clicking on "Create Pool," you'll see the setup button:
 
 ![](../.gitbook/assets/image%20%284%29.png)
 
@@ -18,10 +18,10 @@ An interesting observation: we use the same DSProxy smart contracts as MakerDAO,
 
 ### Shared Pool Creation
 
-At the moment there is only the possibility of creating **shared pools** on our UI. There will be soon the option to also create and manage private pools. As a reminder:
+At the moment you can only create **shared pools** on our UI. There will be soon the option to create and manage private pools. As a reminder:
 
 * **shared pools** are open to anyone to join by adding liquidity and getting BPTs \(Balancer Pool Tokens\) in return, but all the pool parameters are immutable
-* **private pools** only allow the owner to add liquidity to the pool but all its parameters are flexible. So the owner of the private pool can change the swap fees, pause trades, add/remove tokens, change token weights etc.
+* **private pools** only allow the owner to add liquidity to the pool, but all its parameters are flexible. So the owner of the private pool can change the swap fees, pause trades, add/remove tokens, change token weights, etc.
 
 A Balancer pool allows up to 8 tokens and the weights have to be between 2% and 98%. The swap fee can be between 0.0001% and 10%.
 

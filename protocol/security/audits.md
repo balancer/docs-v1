@@ -4,7 +4,7 @@ description: Audits of the balance-core smart contracts
 
 # Audits
 
-Balancer has completed 3 full audits with some of the best auditors in the space:
+Balancer has completed full audits with Consensys Diligence, Trail of Bits, and Open Zeppelin. Links to the audit reports can be found below.
 
 * Trail of Bits
 
@@ -13,6 +13,8 @@ Balancer has completed 3 full audits with some of the best auditors in the space
 *  Consensys Diligence
 
 {% embed url="https://diligence.consensys.net/audits/2020/05/balancer-finance/" %}
+
+[Open Zeppelin Full Audit](https://blog.openzeppelin.com/balancer-contracts-audit/)
 
 * OpenZeppelin
 

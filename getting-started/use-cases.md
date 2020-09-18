@@ -1,15 +1,17 @@
 # Use Cases
 
-There are two categories of users who can benefit from Balancer Protocol: liquidity providers ‒ who own Balancer Pools or participate in shared pools ‒ and traders ‒ who use pools to trade.
+There are two categories of users who can benefit from the Balancer Protocol: liquidity providers - who own Balancer Pools or participate in shared pools, and traders - who buy or sell the underlying pool assets on the open market.
 
-Liquidity providers can be really any holder of 2 or more ERC20 tokens like:
+Anyone with two or more ERC20 tokens can be a liquidity provider. For example:
 
-* Portfolio managers who want to have controlled exposure to different assets without having to deal with complicated and/or expensive rebalancing procedures 
-* Investors who have ERC20 tokens sitting idly in a wallet and would like to put them to work so they can effortlessly earn fees 
+* Portfolio managers, who want to have controlled exposure to different assets without complicated and expensive rebalancing 
+* Investors who have ERC20 tokens sitting idly in a wallet, and would like to put them to work earning passive income from fees 
 
-Traders can benefit from the diverse set of pools, each subject to different slippage, fees and spot prices between any pair of their tokens. They can be:
+Traders can choose from a diverse set of pools, each presenting a unique set of investment opportunities and challenges through its particular configuration of tokens, weights, and fees. The interplay between these settings, pool volume, and external prices generates market forces which incentivize traders to maintain stable token ratios, thereby preserving asset value for liquidity providers.
 
-* Conventional traders seeking to exchange any token for another with the best return possible 
-* Arbitrageurs seeking profit by levelling market inefficiencies between DEXs and even CEXs 
-* Ethereum Smart Contracts seeking liquidity for a variety of other use cases such as liquidating positions in other protocols, trading on behalf of users of other platforms, etc. 
+There are three main categories:
+
+* "Retail" traders seeking to exchange tokens with low slippage at favorable rates
+* Arbitrageurs seeking profit through leveling market inefficiencies between DEXs or CEXs 
+* Ethereum smart contracts seeking liquidity for a variety of reasons, such as liquidating positions on other protocols, trading on behalf of users, etc. 
 
