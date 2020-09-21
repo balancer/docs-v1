@@ -2,7 +2,7 @@
 
 There are two categories of users who can benefit from the Balancer Protocol: liquidity providers - who own Balancer Pools or participate in shared pools, and traders - who buy or sell the underlying pool assets on the open market.
 
-Anyone with two or more ERC20 tokens can be a liquidity provider. For example:
+Anyone can be a liquidity provider. For example:
 
 * Portfolio managers, who want to have controlled exposure to different assets without complicated and expensive rebalancing 
 * Investors who have ERC20 tokens sitting idly in a wallet, and would like to put them to work earning passive income from fees 
