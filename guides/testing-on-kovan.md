@@ -4,11 +4,7 @@
 
 This guide will walk through the process of interacting with Balancer on Kovan directly with the smart contracts along with additional tooling such as the subgraph and SOR.
 
-This guide will walk through the process of interacting with Balancer on Kovan directly with the smart contracts along with additional tooling such as the subgraph and SOR.
-
 ### Setup
-
-This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS 
 
 This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS
 
@@ -21,8 +17,6 @@ Nix is broken on MacOS Catalina. To fix, follow the steps at: [https://github.co
 {% endhint %}
 
 Follow the remaining steps at: [https://github.com/dapphub/dapptools/tree/master/src/seth\#example-sethrc-file](https://github.com/dapphub/dapptools/tree/master/src/seth#example-sethrc-file) in order to select the `SETH_CHAIN` and address / key.
-
-Run the lines below in your terminal, to setup environment variables that will be used later in the guide.
 
 Run the below lines in your terminal to setup environment variables that will be used later in the guide.
 
@@ -59,10 +53,6 @@ ZRX=0xccb0F4Cf5D3F97f4a55bb5f5cA321C3ED033f244
 ### Acquire Test Funds
 
 All pools use wrapped ETH. In order to get WETH, either use the faucet at [https://faucet.kovan.network](https://faucet.kovan.network/) and then `deposit()` into the WETH contract. Or the faucet below may have some available WETH.
-
-All pools use wrapped ETH. In order to get WETH either use the faucet at [https://faucet.kovan.network](https://faucet.kovan.network/) and then `deposit()` into the WETH contract. Or the faucet below may have some available WETH.
-
-For all other tokens, Balancer has deployed a set of test tokens and a faucet on Kovan. The guide below will use DAI & MKR, but feel free to use any of the available tokens. A user can call `drip` once per day per token.
 
 For all other tokens, Balancer has deployed a set of test tokens and a faucet on Kovan. The guide below will use DAI & MKR, but feel free to use any of the available tokens. An user can call `drip` once per day per token.
 
@@ -109,8 +99,6 @@ Any Compound token - 8
 seth send --gas 5000000 $BFACTORY "newBPool()"
 ```
 
-Make note of the created contract address and set the `BPool` variable to the address returned. This can be found on Etherscan by looking at the internal txs of the tx hash.
-
 Make note of the created contract address and set the below `BPool` variable to the address returned. This can be found on etherscan by looking at the internal txs of the tx hash.
 
 ```text
@@ -120,8 +108,6 @@ export BPOOL=0x... (address returned from previous step)
 ```text
 BPOOL=0x... (address returned from previous step)
 ```
-
-Token approvals are needed for any tokens you plan on adding to the pool. Approvals per pool are only required when interacting with the contracts directly. The front end interfaces will all use a proxy, so there will only be a single approval transaction to interact with all pools in the Balancer ecosystem.
 
 Token approvals are needed for any tokens you plan on adding to the pool. Approvals per pool is only required when interacting with the contracts directly. The frontend interfaces will all use a proxy so there will only be 1 time approvals to interact with all pools in the Balancer ecosystem.
 
@@ -136,8 +122,6 @@ After all approvals are confirmed, tokens are bound to a specific pool by callin
 
 `denorm` is the denormalized weight for the token being added. Weights are stored in this fashion to prevent unnecessary gas costs of recalculating weights every time a new token is added. In our example, since we want 50% WETH, 25% DAI, and 25% MKR we can use the following denormalized weights: 10, 5, 5. \(Note: the denorm weights are scaled to Wei; i.e., "1" = 10^18, to allow for non-integer weights.\)
 
-`denorm` is the denormalized weight for the token being added. Weights are stored in this fashion to prevent unnecessary gas costs of recalculating weights every time a new token is added. In our example, since we want 50% WETH, 25% DAI, and 25% MKR we can use the following denormalized weights: 10, 5, 5. \(Note: the denorm weights are in the 10^18 scale to allow for non-integer weights\)
-
 Valid denorm values range from 1 to 50 - and the total sum must be &lt;= 50. In practice, to ensure the math always works, best practice is to use a smaller range, such as 2 - 40.
 
 ```text
@@ -148,8 +132,6 @@ seth send $BPOOL "bind(address, uint256, uint256)" $WETH $amount $weight
 ```
 
 Since we also want to bind DAI and MKR, and we know the desired weights, we have to calculate a balance for each token such that the internal token prices calculated by the protocol - based only on the weights and balances - match the external market prices of the tokens. \(Otherwise, there would be immediate, unintended arbitrage opportunities as soon as you created the pool.\) This example will assume the following asset prices: ETH - $200, MKR - $400, DAI - $1.
-
-Since we also want to bind DAI and MKR and know the weights specified, we have to calculate a balance to bind so that given the asset prices the weights & balances are what we expect. This example will assume the following asset prices: ETH - $200, MKR - $400, DAI - $1.
 
 Since we bound 1 WETH at a price of $200 and we want that to be 50% of the pool, we want to bind $100 of both DAI and MKR.
 
@@ -166,8 +148,6 @@ seth send $BPOOL "bind(address, uint256, uint256)" $MKR $amount $weight
 ```
 
 Let's confirm that all the tokens were added by using some view functions. This will get a token's normalized weight, or percentage of the pool, to make sure our original math was correct.
-
-Let's confirm that all the tokens were added by using some view functions. This will get a token's normalized weight, or percent of the pool, to make sure our original math was correct.
 
 ```text
 seth call $BPOOL "getNumTokens()"
@@ -188,13 +168,9 @@ seth send $BPOOL "setSwapFee(uint256)" $fee
 
 We have a valid pool with 3 bound tokens and a swap fee of 0.3%. At this point, a decision has to be made whether to `finalize` the pool. A pool can either be private or shared. A private pool allows the owner to continually adjust tokens, balances, weights, and fees. But prevents anyone else from adding or removing liquidity to that pool - it wouldn't be fair if the owner changed weights if other users have contributed liquidity! A shared pool is created when the `finalize` function is called and is a one-way transition. This locks all of the tokens, balances, weights, and opens the ability for outside users to add and remove liquidity.
 
-We have a valid pool with 3 bound tokens and a swap fee of 0.3%. At this point, a decision has to be made whether to `finalize` the pool. A pool can either be private or shared. A private pool allows the owner to continually adjust tokens, balances, weights, and fees. But prevents anyone else from adding or removing liquidity to that pool - it wouldn't be fair if the owner changed weights if other users have contributed liquidity! A shared pool is created when the `finalize` function is called and is a one-way transition. This locks all of the tokens, balances, weights, and opens the ability for outside users to add and remove liquidity.
-
 A private pool allows the owner to continually adjust tokens, balances, weights, and fees - but prevents anyone else from adding or removing liquidity to that pool. After all, it wouldn't be fair if the owner changed weights after other users contributed liquidity! A shared pool is created when the `finalize` function is called - and this is a one-way transition. This locks all of the tokens, balances, weights, and opens the pool to outside users to add and remove liquidity.
 
 For our example, we want other users to be able to add liquidity, so let's finalize it. 100 Balancer Pool Tokens will be minted as part of the pool finalization regardless of the bound token balances. Balancer Pool Tokens, or BPTs, represent proportional ownership of a pools liquidity. Any future joins or exits are calculated based on the relative liquidity being added.
-
-For our example, we want other users to be able to add liquidity so let's finalize it. 100 Balancer Pool Tokens will be minted as part of the pool finalization regardless of bound token balances. Balancer Pool Tokens, or BPTs represent proportional ownership of a pools liquidity. Any future joins or exits are calculated based on the relative liquidity being added.
 
 ```text
 seth send $BPOOL "finalize()"
