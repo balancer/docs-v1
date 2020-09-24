@@ -52,4 +52,8 @@
   * [Perpetual Synthetic Pool](guides/smart-pool-templates-gui/perpetual-synthetic-pool.md)
   * [Investors' Club](guides/smart-pool-templates-gui/investors-club.md)
   * [Experimental](guides/smart-pool-templates-gui/experimental.md)
+* [Hackathons](guides/hackathons/README.md)
+  * [Hacking & Testing](guides/hackathons/hacking-and-testing.md)
+  * [Judging](guides/hackathons/judging.md)
+  * [Ideas](guides/hackathons/ideas.md)
 
