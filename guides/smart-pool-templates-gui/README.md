@@ -1,6 +1,6 @@
 # Smart Pool Templates \(GUI\)
 
-Here we detail several applications of the core Configurable Rights Pool, and show how you would configure your custom people \(on creation from the factory\), to accommodate each use case. \(Eventually we will have a GUI wizard to guide you through this process.\)
+Here we detail several applications of the core Configurable Rights Pool, and show how you would configure your custom pool \(on creation from the factory\), to accommodate each use case. \(Eventually we will have a GUI wizard to guide you through this process.\)
 
 The use cases we cover here are:
 
