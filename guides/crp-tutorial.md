@@ -73,6 +73,12 @@ await crpPool.createPool(toWei('100'));
 
 Now we're in business! The pool will already be set up for public swapping, and depending on the permissions settings, possibly public liquidity provision as well. The Core Pool will show up on the Exchange GUI.
 
+{% hint style="info" %}
+Note that if your pool is eligible for BAL rewards, you **must** apply to redirect them to a regular account! By default, they will go to the owner of the underlying BPool - which is the CRP contract. If you don't redirect, and BAL tokens get sent there, they are **not** recoverable.
+
+We will endeavor to make this process easier \(and take further failsafe measures to prevent it from happening\), but for now the process is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\).
+{% endhint %}
+
 Note that there is also an overloaded version of createPool, where you can specify additional parameters related to updateWeightsGradually.
 
 ```text
