@@ -7,7 +7,7 @@ Token listings are managed in [this repository](https://github.com/balancer-labs
 * `ui-not-eligible.json`: assets vetted by community members
 * `untrusted.json`: assets that are incompatible with Balancer
 
-There are two kinds of token "listings" on Balancer. The first is listing on the [Exchange](https://balancer.exchange/#/swap) - listed tokens appear on the main page as swapping options. \(It is possible to access unlisted pairs through a "deep link" with their addresses \(balancer.exchange/\#/swap/&lt;address1&gt;/&lt;address2&gt;\), but unlisted tokens would be shown as addresses, and with a warning.\) New tokens can be added upon request, after review by the team.
+There are two kinds of token "listings" on Balancer. The first is listing on the [Exchange](https://balancer.exchange/#/swap) - listed tokens appear on the main page as swapping options. It is possible to access unlisted pairs through a "deep link" with their addresses \(balancer.exchange/\#/swap/&lt;address1&gt;/&lt;address2&gt;\), but unlisted tokens would be shown as addresses, and with a warning. New tokens can be added upon request, after review by the team. \(Just post to \#token-requests on the [Discord](https://discord.gg/ARJWaeF) channel.\)
 
 The second kind of listing is eligibility for  BAL rewards. New tokens are listed \(and occasionally removed\) through a weekly governance process on the [Balancer Forum](https://forum.balancer.finance/). There is a streamlined process for simply listing a new token - tokens that meet a set of technical criteria below can be approved without requiring community vote. Only increasing the cap, introducing "controversial" or non-conforming tokens, or adjusting the reward process or its parameters requires a vote.
 
