@@ -1,4 +1,4 @@
-# Exchange and Reward listing
+# Exchange and Reward Listing
 
 Token listings are managed in [this repository](https://github.com/balancer-labs/assets), with the following categories:
 

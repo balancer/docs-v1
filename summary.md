@@ -15,7 +15,7 @@
 * [BPTs](protocol/btoken.md)
 * [BAL - Balancer Governance Token](protocol/bal-balancer-governance-token.md)
 * [BAL Liquidity Mining](protocol/bal-liquidity-mining/README.md)
-  * [Exchange and Reward listing](protocol/bal-liquidity-mining/exchange-and-reward-listing.md)
+  * [Exchange and Reward Listing](protocol/bal-liquidity-mining/exchange-and-reward-listing.md)
 * [Limitations](protocol/limitations.md)
 * [Math](protocol/index/README.md)
   * [Exponentiation](protocol/index/approxing.md)
