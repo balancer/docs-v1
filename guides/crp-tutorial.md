@@ -83,6 +83,10 @@ If your pool is eligible for BAL rewards, you **must** apply to redirect them to
 We will endeavor to make this process easier \(and take further failsafe measures to prevent it from happening\), but for now the process is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\).
 {% endhint %}
 
+{% hint style="info" %}
+On a related note, while it is possible to send tokens directly to a core pool contract - as long as they are in the pool, you they can be recovered with gulp\(\) - this is not the case for smart pools! Any tokens sent directly to the CRP contract will be unrecoverable. \(This can happen in some circumstances even without a direct transfer, such as airdrops to token holders.\)
+{% endhint %}
+
 Note that there is also an overloaded version of createPool, where you can specify additional parameters related to updateWeightsGradually.
 
 ```text
