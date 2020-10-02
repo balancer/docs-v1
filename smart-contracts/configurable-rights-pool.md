@@ -6,6 +6,8 @@ It is also designed to be easily extensible, and we showcase examples of Configu
 
 For example, the first template is [Ampleforth's](https://www.ampleforth.org/) Elastic Supply Pool, which features a different mechanism for updating weights, consistent with its daily rebase operation. We will add more templates as we discover further interesting use cases! \(If you have a suggestion, we'd love to hear from you on the smart-pool-dev channel on [Discord](https://discord.gg/qjFcczk).\)
 
+You will find the addresses for deployed contracts on all networks [here](addresses.md).
+
 ### How is a Smart Pool different from a Core Pool?
 
 As explained in [Core Concepts](../protocol/concepts.md), a core Balancer Pool's parameters can be changed at will while in the "controlled" state - when only the pool creator can add liquidity. The only way to "open" the pool to outside investment is to "finalize" it - after which all pool parameters are fixed. This is great for security and trust minimization - but what if you want to do liquidity bootstrapping, dynamically adjust swap fees, handle a token with unique properties \(such as AMPL\), or implement a complex investment strategy? For that, you'll need to change parameters dynamically on "live" pools - and that requires a Smart Pool.
