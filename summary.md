@@ -47,7 +47,7 @@
 * [Withdrawing Liquidity via Etherscan](guides/withdrawing-liquidity-via-etherscan.md)
 * [CRP Tutorial](guides/crp-tutorial.md)
 * [Liquidity Bootstrapping](guides/liquidity-bootstrapping.md)
-* [Smart Pool Templates \(GUI\)](guides/smart-pool-templates-gui/README.md)
+* [Smart Pool Use Cases](guides/smart-pool-templates-gui/README.md)
   * [Liquidity Bootstrapping Pool](guides/smart-pool-templates-gui/liquidity-bootstrapping-pool.md)
   * [Swing Trading Pool](guides/smart-pool-templates-gui/swing-trading-pool.md)
   * [Perpetual Synthetic Pool](guides/smart-pool-templates-gui/perpetual-synthetic-pool.md)

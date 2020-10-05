@@ -7,11 +7,15 @@ Token listings are managed in [this repository](https://github.com/balancer-labs
 * `ui-not-eligible.json`: assets vetted by community members
 * `untrusted.json`: assets that are incompatible with Balancer
 
-There are two kinds of token "listings" on Balancer. The first is listing on the [Exchange](https://balancer.exchange/#/swap) - listed tokens appear on the main page as swapping options. It is possible to access unlisted pairs through a "deep link" with their addresses \(balancer.exchange/\#/swap/&lt;address1&gt;/&lt;address2&gt;\), but unlisted tokens would be shown as addresses, and with a warning. New tokens can be added upon request, after review by the team. \(Just post to \#token-requests on the [Discord](https://discord.gg/ARJWaeF) channel.\)
+There are two kinds of token "listings" on Balancer. The first is listing on the [Exchange](https://balancer.exchange/#/swap). Listed tokens appear on the main page as swapping options. It is possible to access unlisted pairs through a "deep link" with their addresses \(balancer.exchange/\#/swap/&lt;address1&gt;/&lt;address2&gt;\), but it display unlisted tokens as addresses, and with a warning.
 
-The second kind of listing is eligibility for  BAL rewards. New tokens are listed \(and occasionally removed\) through a weekly governance process on the [Balancer Forum](https://forum.balancer.finance/). There is a streamlined process for simply listing a new token - tokens that meet a set of technical criteria below can be approved without requiring community vote. Only increasing the cap, introducing "controversial" or non-conforming tokens, or adjusting the reward process or its parameters requires a vote.
+There is no formal process for listing tokens on the Balancer exchange UI. That is up to the team's discretion and relies on internal factors around trading volume, usage, and legitimacy. \(As noted above, it's always possible to trade tokens via contract address.\)
 
-The criteria below are taken from this [accepted proposal](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217/4). \(We will endeavor to keep this up-to-date, but see the [Balancer Forum](https://forum.balancer.finance/) for the very latest.\)
+The second kind of listing is eligibility for  BAL rewards. New tokens are listed \(and occasionally removed\) through a weekly governance process There is a streamlined process for simply listing a new token - tokens that meet a set of technical criteria below can be approved without requiring community vote. Only increasing the cap, introducing "controversial" or non-conforming tokens, or adjusting the reward process or its parameters requires a vote.
+
+To request approving your token for BAL rewards, just post to \#token-requests on the [Discord](https://discord.gg/ARJWaeF) channel. Each weekly reward period begins at 00:00 UTC on Monday; any requests approved after then will take effect the following week.
+
+The listing criteria below are taken from this [accepted proposal](https://forum.balancer.finance/t/proposal-to-update-the-whitelist-process/217/4). \(We will endeavor to keep this up-to-date, but see the [Balancer Forum](https://forum.balancer.finance/) for the very latest.\)
 
 1. The token’s smart contract must be verified on [Etherscan](https://etherscan.io/). Neglecting this small degree of transparency adds unnecessary friction to the process of vetting for the remaining criteria.
 2. The token must conform to the ERC-20 interface described in [EIP-20](https://eips.ethereum.org/EIPS/eip-20). Namely, the functions `transfer()`, `transferFrom()`, and `approve()` must return booleans.
