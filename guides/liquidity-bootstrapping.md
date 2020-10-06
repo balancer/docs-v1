@@ -1,4 +1,4 @@
-# Liquidity Bootstrapping
+# Liquidity Bootstrapping Example
 
 Let's walk through a complete example, using the [Liquidity Bootstrapping](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) use case.
 
