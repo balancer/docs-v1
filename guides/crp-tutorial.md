@@ -35,7 +35,7 @@ struct PoolParams {
 
 Since the [Balancer Pool Tokens](../protocol/btoken.md) are themselves ERC20 tokens, they have symbols and names. You can set both when creating your pool.
 
-The tokens must be addresses of conforming ERC20 tokens. Balances and weights are expressed in Wei - and the weights are denormalized, not percentages. Valid denormalized weights range from 1 to 49, since the maximum total denormalized weight is 50. \(This corresponds to a percentage range from 2% to 98%.\)
+The tokens must be addresses of conforming ERC20 tokens. Balances and weights are expressed in Wei - and the weights are denormalized, not percentages. Valid denormalized weights range from 1 to 49, since the maximum total denormalized weight is 50. \(This corresponds to a percentage range from 2% to 98%: 1/\(1+49\) = 2%; 49/\(1+49\) = 98%\)
 
 The swap fee is also expressed in Wei, as a percentage. For instance, toWei\("0.01"\) means a 1% fee.
 
@@ -101,7 +101,7 @@ If the pool you're creating doesn't have permission to change weights, or you ac
 
 _initialSupply_ can be set to a value of your choice - within min/max limits \(currently 100 - 1 billion, in ether units\).
 
-_minimumWeightChangeBlockPeriod_ enforces a minimum time between the start and end blocks of a gradual update. _addTokenTimeLockInBlocks_ has two functions. It is the minimum time delay between weight updates \(e.g., you can specify that the weights cannot change more frequently than every tenth block, or hundredth block, etc.\) It is also used when adding a token \(if you have the AddRemoveTokens permission\), as the minimum wait time between committing a new token, and applying it \(i.e., actually adding it to the pool\).
+_minimumWeightChangeBlockPeriod_ enforces a minimum time between the start and end blocks of a gradual update. _addTokenTimeLockInBlocks_ is used when adding a token \(if you have the AddRemoveTokens permission\), as the minimum wait time between committing a new token, and applying it \(i.e., actually adding it to the pool\). There is one additional constraint: _minimumWeightChangeBlockPeriod &gt;= addTokenTimeLockInBlocks._
 
 These parameters have default values, and can only be changed by overriding them in this version of createPool. The addTokenTimeLock defaults to 500 blocks \(~ 2 hours\), and the blockPeriod defaults to 90,000 \(~ 2 weeks\). If you want to use different minimum values, be sure to set them in createPool, since they are immutable thereafter!
 
