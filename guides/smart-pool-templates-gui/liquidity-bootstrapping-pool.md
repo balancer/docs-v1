@@ -29,6 +29,16 @@ In a token sale \(vs an investment pool\), you don't want anyone else providing 
 
 You could also prevent others from adding liquidity through the cap right. If you enable it, the cap will be set to the initial supply, which has the same effect as the whitelist. However, you will need to be careful when you redeem the pool tokens at the end of the sale, since any token redemption would reduce the supply below the cap and present a window for others to join the pool. To prevent this, you could set the cap to 0 before withdrawing the proceeds.
 
+Watch out for some subtleties here! Some LBP owners might want to allow public LPs; Uniswap does, after all. If you don't have the whitelist right or the cap right, anyone can add liquidity. This means the LBP controller is not the sole "owner" of the pool, since others also have pool tokens. Consequently, if the controller tries to destroy the pool after the sale with calls to removeToken -- it won't work, because they won't have enough pool tokens. This makes sense - otherwise, pool owners could "drain the pool" just by calling `removeToken`!
+
+Depending on the balances, removing one of the tokens "might" work. For instance, say you're at the end of the sale, so you have a small balance of your project token, and a large balance of DAI. You would probably have enough pool tokens to remove the project token. At that point, you would have a 1-token pool of DAI, and -- unless all the other LPs exit the pool - you would not be able to call `removeToken` on DAI. You could only exitPool with whatever pool tokens you had - and the remaining DAI balance would represent the amount of liquidity added by the other LPs.
+
+So the upshot of all this is if you intend to allow public LPs on your LBP, maybe you don't need the add/remove token right. \(This would make your pool more trustless.\)
+
+It could also happen that you don't have enough to call `removeToken` on either. For instance, if a purchaser sold a large amount of your project token back into the pool, or someone added a large amount of liquidity. If you need to call `removeToken` to reuse the pool, remember you can always "buy out" the other LPs. If you're 250 pool tokens short of what you need to remove the project token, you can join with 250 pool tokens' worth of DAI, after which `removeToken` will succeed. All the other LPs wishing to withdraw their liquidity would get their proceeds entirely in DAI.
+
+This is something to keep in mind when investing in Balancer Pools in general - when you withdraw liquidity, you will get the token\(s\) in whatever proportion they are in at the time of withdrawal. If the pool controller has the add/remove token right, they might not even be the same tokens. \(This would surely be the case for "perpetual synthetic" pools that add and remove synthetics as they are minted and expire.\)
+
 One other important consideration is the "block time" settings - the minimum time between weight updates, and the minimum duration of each gradual update. These times default to 2 hours and 2 weeks, meaning the weights cannot change faster than every 2 hours, and once you start a gradual update, you cannot add a token or do a manual update for 2 weeks.
 
 You can make these periods arbitrarily short \(even zero\), but then the pool operators have greater control, and more trust is required.
