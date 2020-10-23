@@ -51,6 +51,7 @@
 * [Smart Pool Use Cases](guides/smart-pool-templates-gui/README.md)
   * [Liquidity Bootstrapping Pool](guides/smart-pool-templates-gui/liquidity-bootstrapping-pool.md)
   * [Swing Trading Pool](guides/smart-pool-templates-gui/swing-trading-pool.md)
+  * [Smart Treasury](guides/smart-pool-templates-gui/smart-treasury.md)
   * [Perpetual Synthetic Pool](guides/smart-pool-templates-gui/perpetual-synthetic-pool.md)
   * [Investors' Club](guides/smart-pool-templates-gui/investors-club.md)
   * [Experimental](guides/smart-pool-templates-gui/experimental.md)
