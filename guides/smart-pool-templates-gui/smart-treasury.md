@@ -12,12 +12,12 @@ Legend**: required;** ~~not required;~~ _optional_
 
 **Rights configuration:**
 
-* ~~canPauseSwapping~~
+* _canPauseSwapping_
 * _canChangeSwapFee_
 * ~~canChangeWeights~~
 * ~~canAddRemoveTokens~~
 * **canWhitelistLPs**
 * ~~canChangeCap~~
 
-The Smart Pool Treasury is by definition the only liquidity provider, so the only right you really need is whitelisting \(only the controller would be on the whitelist, enabling buybacks\). Change swap fee could be used to modulate trading to some degree if necessary.
+The Smart Pool Treasury is by definition the only liquidity provider, so the only right you really need is whitelisting \(only the controller would be on the whitelist, enabling buybacks\). Change swap fee could be used to modulate trading to some degree if necessary. If you want to be able to prevent trading against the pool altogether, you could enable pause swapping \(though since this is the mechanism of automatic buyback, it should be used sparingly\).
 
