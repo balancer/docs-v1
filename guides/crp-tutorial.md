@@ -37,6 +37,10 @@ Since the [Balancer Pool Tokens](../protocol/btoken.md) are themselves ERC20 tok
 
 The tokens must be addresses of conforming ERC20 tokens. Balances and weights are expressed in Wei - and the weights are denormalized, not percentages. Valid denormalized weights range from 1 to 49, since the maximum total denormalized weight is 50. \(This corresponds to a percentage range from 2% to 98%: 1/\(1+49\) = 2%; 49/\(1+49\) = 98%\)
 
+{% hint style="warning" %}
+Note that if you're going to be doing gradual weight updates, using denorm totals near the maximum 50 can be problematic! It is possible for `pokeWeights`to fail if the weights are 45/5, since the contract will never allow the total to go over 50 - even temporarily during an intermediate step. Unless you truly need the full range, best practice is to use a lower total, like 40; e.g.; for 90/10, use 36/4.
+{% endhint %}
+
 The swap fee is also expressed in Wei, as a percentage. For instance, toWei\("0.01"\) means a 1% fee.
 
 Finally, the Rights struct defines the permissions.
