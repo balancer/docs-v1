@@ -82,9 +82,9 @@ Refer to [Exchange and Reward Listing](../protocol/bal-liquidity-mining/exchange
 {% endhint %}
 
 {% hint style="danger" %}
-If your pool is eligible for BAL rewards, you **must** apply to redirect them to a regular account! By default, they will go to the owner of the underlying BPool - which is the CRP contract. If you don't redirect, and BAL tokens get sent there, they are **not** recoverable.
+If your smart pool is eligible for BAL rewards, rewards will be redirected to LPs - as long as you create the pool through our standard factory. If you create a new pool using a different factory, or deploy a pool contract directly, you will need to apply for a redirect.
 
-We will endeavor to make this process easier \(and take further failsafe measures to prevent it from happening\), but for now the process is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\). Here's an [example request](https://github.com/balancer-labs/bal-mining-scripts/pull/11).
+The process is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\). Here's an [example request](https://github.com/balancer-labs/bal-mining-scripts/pull/11).
 {% endhint %}
 
 {% hint style="warning" %}

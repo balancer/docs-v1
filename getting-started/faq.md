@@ -124,6 +124,14 @@ There are two main ways a liquidity provider or portfolio manager can interact w
 
 Please [contact us](mailto:contact@balancer.finance) if you have a portfolio worth more than 100,000 USD and need special assistance.
 
+### How can I claim BAL tokens as a Liquidity Provider?
+
+Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
+
+BAL tokens for liquidity mining of any given week will be available to be claimed the following Tuesday evening \(EST time\).
+
+This claiming mechanism will allow you to choose if you want to claim on a weekly basis or accrue and claim at a later date. At this time, BAL earned through liquidity mining does not expire, so you can take your time to claim them. If for some reason this changes in the future, everyone will be notified well in advance.
+
 ### Can Balancer be used as an Index Fund?
 
 Balancer Protocol is ideal for Index Funds, as it takes away all the hassle that managers have regarding rebalancing - and on top of that generates fees from trading.

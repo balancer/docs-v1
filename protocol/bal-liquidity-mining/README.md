@@ -4,6 +4,8 @@
 
 To make the token distribution as fair as possible, we distribute BAL tokens proportional to the amount of liquidity each address contributed, relative to the total liquidity on Balancer. Since there is liquidity in several different tokens, we use the USD value as the common measure.
 
+Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
+
 In practice, every week Balancer Labs has to:
 
 * Define the starting and ending block of the week. Both are chosen as the block with the closest timestamp to a fixed weekly time \(e.g. Sunday 1:00pm UTC\). For example, the starting block for a given week might be \#10,100,000 and the ending block \#10,140,000.
@@ -39,6 +41,6 @@ All the calculations described above depend exclusively on on-chain data and his
 Only Balancer pools containing two or more whitelisted tokens will be eligible for BAL liquidity mining.
 
 {% hint style="danger" %}
-Note that if you've created a [Smart Pool](../../smart-contracts/configurable-rights-pool.md) eligible for BAL rewards, you **must** apply to redirect them to a regular account! By default, they will go to the owner of the underlying BPool - which is the CRP contract. If you don't redirect, and BAL tokens get sent there, they are **not** recoverable.
+Note that if you've created a [Smart Pool](../../smart-contracts/configurable-rights-pool.md) eligible for BAL rewards - without going through our standard factory - you must apply to redirect them to a regular account. \(See the [CRP Tutorial](../../guides/crp-tutorial.md) for more details.\)
 {% endhint %}
 
