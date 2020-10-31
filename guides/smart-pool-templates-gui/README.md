@@ -6,6 +6,7 @@ The use cases we cover here are:
 
 * [Liquidity Bootstrapping](liquidity-bootstrapping-pool.md) \(token launch\)
 * [Swing Trading Pool](swing-trading-pool.md) \(Index fund\)
+* [Smart Treasury](smart-treasury.md) \(Buyback & Make\)
 * [Perpetual Synthetic Pool](perpetual-synthetic-pool.md)
 * [Investors' Club](investors-club.md) \(KYC\)
 * [Experimental](experimental.md) \(Capped\)
