@@ -41,6 +41,6 @@ All the calculations described above depend exclusively on on-chain data and his
 Only Balancer pools containing two or more whitelisted tokens will be eligible for BAL liquidity mining.
 
 {% hint style="danger" %}
-Note that if you've created a [Smart Pool](../../smart-contracts/configurable-rights-pool.md) eligible for BAL rewards - without going through our standard factory - you must apply to redirect them to a regular account. \(See the [CRP Tutorial](../../guides/crp-tutorial.md) for more details.\)
+Note that if you've created a [Smart Pool](../../smart-contracts/configurable-rights-pool.md) eligible for BAL rewards - without going through our standard factory - you must apply to either redirect them to a regular account \(e.g., for a single-LP, private pool\), or redistribute the rewards directly to LPs. \(See the [CRP Tutorial](../../guides/crp-tutorial.md) for more details.\)
 {% endhint %}
 
