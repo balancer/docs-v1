@@ -21,7 +21,7 @@ interface BPool {
     function isBound(address t) external view returns (bool);
     function getNumTokens() external view returns (uint);
     function getCurrentTokens() external view returns (address[] memory tokens);
-    function getFinalTokens() external view returns (address[] memory tokens)
+    function getFinalTokens() external view returns (address[] memory tokens);
     function getDenormalizedWeight(address token) external view returns (uint);
     function getTotalDenormalizedWeight() external view returns (uint);
     function getNormalizedWeight(address token) external view returns (uint);
