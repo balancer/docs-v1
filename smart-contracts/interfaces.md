@@ -7,7 +7,7 @@ interface BFactory {
 
     function isBPool(address b) external view returns (bool);
     function newBPool() external returns (BPool);
-    
+
 }
 ```
 
@@ -28,7 +28,7 @@ interface BPool {
     function getBalance(address token) external view returns (uint);
     function getSwapFee() external view returns (uint);
     function getController() external view returns (address);
-    
+
     function setSwapFee(uint swapFee) external;
     function setController(address manager) external;
     function setPublicSwap(bool public_) external;
@@ -51,7 +51,7 @@ interface BPool {
         uint minAmountOut,
         uint maxPrice
     ) external returns (uint tokenAmountOut, uint spotPriceAfter);
-    
+
     function swapExactAmountOut(
         address tokenIn,
         uint maxAmountIn,
@@ -71,7 +71,7 @@ interface BPool {
         uint poolAmountOut,
         uint maxAmountIn
     ) external returns (uint tokenAmountIn);
-    
+
     function exitswapPoolAmountIn(
         address tokenOut,
         uint poolAmountIn,
@@ -83,7 +83,7 @@ interface BPool {
         uint tokenAmountOut,
         uint maxPoolAmountIn
     ) external returns (uint poolAmountIn);
-    
+
     function totalSupply() external view returns (uint);
     function balanceOf(address whom) external view returns (uint);
     function allowance(address src, address dst) external view returns (uint);
@@ -93,7 +93,7 @@ interface BPool {
     function transferFrom(
         address src, address dst, uint amt
     ) external returns (bool);
-    
+
     function calcSpotPrice(
         uint tokenBalanceIn,
         uint tokenWeightIn,
@@ -101,7 +101,7 @@ interface BPool {
         uint tokenWeightOut,
         uint swapFee
     ) public pure returns (uint spotPrice);
-    
+
     function calcOutGivenIn(
         uint tokenBalanceIn,
         uint tokenWeightIn,
@@ -110,7 +110,7 @@ interface BPool {
         uint tokenAmountIn,
         uint swapFee
     ) public pure returns (uint tokenAmountOut);
-    
+
     function calcInGivenOut(
         uint tokenBalanceIn,
         uint tokenWeightIn,
@@ -119,7 +119,7 @@ interface BPool {
         uint tokenAmountOut,
         uint swapFee
     ) public pure returns (uint tokenAmountIn);
-    
+
     function calcPoolOutGivenSingleIn(
         uint tokenBalanceIn,
         uint tokenWeightIn,
@@ -128,7 +128,7 @@ interface BPool {
         uint tokenAmountIn,
         uint swapFee
     ) public pure returns (uint poolAmountOut);
-    
+
     function calcSingleInGivenPoolOut(
         uint tokenBalanceIn,
         uint tokenWeightIn,
@@ -137,7 +137,7 @@ interface BPool {
         uint poolAmountOut,
         uint swapFee
     ) public pure returns (uint tokenAmountIn)
-    
+
     function calcSingleOutGivenPoolIn(
         uint tokenBalanceOut,
         uint tokenWeightOut,
@@ -146,7 +146,7 @@ interface BPool {
         uint poolAmountIn,
         uint swapFee
     ) public pure returns (uint tokenAmountOut)
-    
+
     function calcPoolInGivenSingleOut(
         uint tokenBalanceOut,
         uint tokenWeightOut,
@@ -158,8 +158,6 @@ interface BPool {
 
 }
 ```
-
-
 
 **Exchange Proxy**
 
@@ -173,38 +171,38 @@ interface ExchangeProxy {
         uint totalAmountIn,
         uint minTotalAmountOut
     ) public returns (uint totalAmountOut);
-    
+
     function batchSwapExactOut(
         Swap[] memory swaps,
         address tokenIn,
         address tokenOut,
         uint maxTotalAmountIn
     ) public returns (uint totalAmountIn);
-    
+
     function batchEthInSwapExactIn(
         Swap[] memory swaps,
         address tokenOut,
         uint minTotalAmountOut
     ) public payable returns (uint totalAmountOut);
-    
+
     function batchEthOutSwapExactIn(
         Swap[] memory swaps,
         address tokenIn,
         uint totalAmountIn,
         uint minTotalAmountOut
     ) public returns (uint totalAmountOut);
-    
+
     function batchEthInSwapExactOut(
         Swap[] memory swaps,
         address tokenOut
     ) public payable returns (uint totalAmountIn);
-    
+
     function batchEthOutSwapExactOut(
         Swap[] memory swaps,
         address tokenIn,
         uint maxTotalAmountIn
     ) public returns (uint totalAmountIn);
-    
+
 }
 ```
 
