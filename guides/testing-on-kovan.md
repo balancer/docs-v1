@@ -6,11 +6,14 @@ This guide will walk through the process of interacting with Balancer on Kovan d
 
 ### Setup
 
-This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS
+This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS.
 
 ```text
 curl https://dapp.tools/install | sh
 ```
+
+If this doesn't work, you might need to install nix manually first:  
+`curl -L https://nixos.org/nix/install | sh`
 
 {% hint style="warning" %}
 Nix is broken on MacOS Catalina. To fix, follow the steps at: [https://github.com/NixOS/nix/issues/2925\#issuecomment-539570232](https://github.com/NixOS/nix/issues/2925#issuecomment-539570232)
