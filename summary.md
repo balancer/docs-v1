@@ -25,13 +25,15 @@
 
 ## Smart Contracts
 
-* [Summary](smart-contracts/index.md)
-* [Configurable Rights Pool](smart-contracts/configurable-rights-pool.md)
-* [Rights Manager](smart-contracts/rights-manager.md)
-* [Component Libraries](smart-contracts/component-libraries.md)
-* [Smart Pool Templates](smart-contracts/smart-pool-templates.md)
-* [API \(Core BPool\)](smart-contracts/api.md)
-* [CRP Class Diagram](smart-contracts/crp-class-diagram.md)
+* [Core Contracts](smart-contracts/core-contracts/README.md)
+  * [API](smart-contracts/core-contracts/api.md)
+* [Smart Pools](smart-contracts/smart-pools/README.md)
+  * [Configurable Rights Pool](smart-contracts/smart-pools/configurable-rights-pool.md)
+  * [Rights Manager](smart-contracts/smart-pools/rights-manager.md)
+  * [Component Libraries](smart-contracts/smart-pools/component-libraries.md)
+  * [Smart Pool Templates](smart-contracts/smart-pools/smart-pool-templates.md)
+* [Exchange Proxy](smart-contracts/exchange-proxy.md)
+* [On Chain Registry](smart-contracts/on-chain-registry.md)
 * [Interfaces](smart-contracts/interfaces.md)
 * [Addresses](smart-contracts/addresses.md)
 

@@ -166,43 +166,80 @@ interface ExchangeProxy {
 
     function batchSwapExactIn(
         Swap[] memory swaps,
-        address tokenIn,
-        address tokenOut,
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
         uint totalAmountIn,
         uint minTotalAmountOut
-    ) public returns (uint totalAmountOut);
+    )
+        public payable
+        returns (uint totalAmountOut);
 
     function batchSwapExactOut(
         Swap[] memory swaps,
-        address tokenIn,
-        address tokenOut,
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
         uint maxTotalAmountIn
-    ) public returns (uint totalAmountIn);
+    )
+        public payable
+        returns (uint totalAmountIn)
 
-    function batchEthInSwapExactIn(
-        Swap[] memory swaps,
-        address tokenOut,
-        uint minTotalAmountOut
-    ) public payable returns (uint totalAmountOut);
-
-    function batchEthOutSwapExactIn(
-        Swap[] memory swaps,
-        address tokenIn,
+    function multihopBatchSwapExactIn(
+        Swap[][] memory swapSequences,
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
         uint totalAmountIn,
         uint minTotalAmountOut
-    ) public returns (uint totalAmountOut);
+    )
+        public payable
+        returns (uint totalAmountOut)
 
-    function batchEthInSwapExactOut(
-        Swap[] memory swaps,
-        address tokenOut
-    ) public payable returns (uint totalAmountIn);
-
-    function batchEthOutSwapExactOut(
-        Swap[] memory swaps,
-        address tokenIn,
+    function multihopBatchSwapExactOut(
+        Swap[][] memory swapSequences,
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
         uint maxTotalAmountIn
-    ) public returns (uint totalAmountIn);
+    )
+        public payable
+        returns (uint totalAmountIn)
 
+    function smartSwapExactIn(
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
+        uint totalAmountIn,
+        uint minTotalAmountOut,
+        uint nPools
+    )
+        public payable
+        returns (uint totalAmountOut)
+
+    function smartSwapExactOut(
+        TokenInterface tokenIn,
+        TokenInterface tokenOut,
+        uint totalAmountOut,
+        uint maxTotalAmountIn,
+        uint nPools
+    )
+        public payable
+        returns (uint totalAmountIn)
+
+    function viewSplitExactIn(
+        address tokenIn,
+        address tokenOut,
+        uint swapAmount,
+        uint nPools
+    )
+        public view
+        returns (Swap[] memory swaps, uint totalOutput)
+
+    function viewSplitExactOut(
+        address tokenIn,
+        address tokenOut,
+        uint swapAmount,
+        uint nPools
+    )
+        public view
+        returns (Swap[] memory swaps, uint totalOutput)
 }
+
 ```
 
