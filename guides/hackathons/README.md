@@ -10,6 +10,7 @@ For an introduction and overview we recommend taking the time to read through th
 * [Balancer Website](https://balancer.finance/)
 * [White Paper](https://balancer.finance/whitepaper/)
 * [Balancer Blog](https://medium.com/balancer-protocol)
+* [Building On Balancer Video Intro](https://www.youtube.com/watch?v=HTk_H4ERya8&feature=youtu.be)
 * [Github](https://github.com/balancer-labs)
 * [Twitter](https://twitter.com/BalancerLabs)
 * [FAQ](https://docs.balancer.finance/getting-started/faq)
