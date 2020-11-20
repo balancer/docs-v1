@@ -10,6 +10,7 @@
 * BActions: `0xde4A25A0b9589689945d842c5ba0CF4f0D4eB3ac`
 * Exchange Proxy: `0x3E66B66Fd1d0b02fDa6C811Da9E0547970DB2f21`
 * Onchain Registry: `0x7226DaaF09B3972320Db05f5aB81FF38417Dd687`
+* [MerkleRedeem](https://github.com/balancer-labs/erc20-redeemable) \(BAL Distribution\) `0x6d19b2bF3A36A61530909Ae65445a906D98A2Fa8`
 
 ## Kovan
 
@@ -21,6 +22,7 @@
 * BActions: `0xeACBe91fE3F8eF6086027AEC0127De982205b1Aa`
 * Exchange Proxy: `0x4e67bf5bD28Dd4b570FBAFe11D0633eCbA2754Ec`
 * Onchain Registry: `0xC5570FC7C828A8400605e9843106aBD675006093`
+* [MerkleRedeem](https://github.com/balancer-labs/erc20-redeemable) \(BAL Distribution\) `0x3bc73D276EEE8cA9424Ecb922375A0357c1833B3`
 
 ## Rinkeby
 
