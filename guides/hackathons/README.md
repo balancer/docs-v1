@@ -17,5 +17,3 @@ For an introduction and overview we recommend taking the time to read through th
 * [FAQ](https://docs.balancer.finance/getting-started/faq)
 * [Our Discord](https://discord.gg/8wWewJt)
 
-
-
