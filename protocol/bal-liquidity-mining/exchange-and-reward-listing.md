@@ -1,4 +1,4 @@
-# Exchange and Reward Listing
+# Exchange Listing and Liquidity Mining Eligibility
 
 Token listings are managed in [this repository](https://github.com/balancer-labs/assets), with the following categories:
 
