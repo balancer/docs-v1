@@ -1,4 +1,4 @@
-# Exchange Listing and Liquidity Mining Eligibility
+# Exchange and Reward Listing
 
 Token listings are managed in [this repository](https://github.com/balancer-labs/assets), with the following categories:
 
@@ -11,7 +11,7 @@ There are two kinds of token "listings" on Balancer. The first is listing on the
 
 There is no formal process for listing tokens on the Balancer exchange UI. That is up to the team's discretion and relies on internal factors around trading volume, usage, and legitimacy. \(As noted above, it's always possible to trade tokens via contract address.\)
 
-The second kind of listing is eligibility for  BAL rewards. New tokens are listed \(and occasionally removed\) through a weekly governance process There is a streamlined process for simply listing a new token - tokens that meet a set of technical criteria below can be approved without requiring community vote. Only increasing the cap, introducing "controversial" or non-conforming tokens, or adjusting the reward process or its parameters requires a vote.
+The second kind of listing is eligibility for BAL rewards. New tokens are listed \(and occasionally removed\) through a weekly governance process There is a streamlined process for simply listing a new token - tokens that meet a set of technical criteria below can be approved without requiring community vote. Only increasing the cap, introducing "controversial" or non-conforming tokens, or adjusting the reward process or its parameters requires a vote.
 
 To request approving your token for BAL rewards, just post to \#token-requests on the [Discord](https://discord.gg/ARJWaeF) channel. Each weekly reward period begins at 00:00 UTC on Monday; any requests approved after then will take effect the following week.
 

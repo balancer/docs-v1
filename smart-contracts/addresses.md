@@ -29,6 +29,10 @@
 * Core Pool Factory: `0x9C84391B443ea3a48788079a5f98e2EaD55c9309`
 * BActions: `0xA492414f528175f7F5D7881eC01434eF62779502`
 * Exchange Proxy: `0xeF5f222c49c89a231F3aBE30114c77EE904e1e44`
+* BalancerSafeMath \(library\): `0x0F811b1AF2B6B447B008eFF31eCceeE5A0b1d842`
+* RightsManager \(library\): `0x4aCB6685da2B5FcB29b1614E71825CE67464440b`
+* SmartPoolManager \(library\): `0xb3a3f6826281525dd57f7BA837235E4Fa71C6248`
+* Smart Pool Factory: `0xA3F9145CB0B50D907930840BB2dcfF4146df8Ab4`
 
 ## Mumbai \(Matic Testnet\)
 
