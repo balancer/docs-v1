@@ -26,18 +26,20 @@ The constant, `k`, was initially set to 0.5, but beginning in week 8 \(July 20th
 * **UPDATED for week 13** \(starting August 23rd 00:00 UTC\): [Liquidity Staking](https://forum.balancer.finance/t/proposal-liquidity-staking/243) - liquidity in pairs formed by BAL and an uncapped token is amplified by a `stakingBoost`:
   * Calculate the sum of the adjusted liquidity of all pools \(`L1`\)
   * Calculate a hypothetical sum of the adjusted liquidity of all pools \(`L2`\) if a `stakingBoost` of `3` were to be applied to liquidity in pairs formed by BAL and an uncapped token
-  * Compute the `stakingBoost` that would be required in order for liquidity providers in BAL+uncapped\_tokens to be awarded 45k of the 145k BAL weekly mined
+  * Compute the `stakingBoost` that would be required in order for 45k of the 145k BAL weekly mined to be awarded exclusively to liquidity providers in BAL+uncapped\_tokens pairs.
     * `stakingBoost = 1 + 2 * (((L1 / (1 - 45/145)) - L1) / (L2 - L1))`
 * Calculate the proportional, adjusted, and capped \(see `capFactor` above\) liquidity USD value that each liquidity provider has in the pool, including the final `stakingBoost`computed in the previous step. The table below shows an example for a pool that has 100$ worth of liquidity \(already adjusted by all factors\):
-
-![](https://miro.medium.com/max/1472/1*2EM2KXgvt48qVK8FKQRmcw@2x.png)
-
 * Divide the weekly amount of BALs distributed by the number of snapshot blocks. Considering blocks lasting 15s, a week would have a total of 40,320 blocks \(=7\*24\*60\*60/15\). Of these, there would be 158 snapshot blocks \(=40,320/256\). With 145,000 BAL distributed per week, the number of BAL distributed per snapshot block would be approximately 918 \(=145,000/158\).
 * For each snapshot block, calculate the number of BAL tokens allocated to each address. This is calculated for each address proportional to the total liquidity of that account \(considering all pools they've contributed to\), divided by the total protocol liquidity. The table below shows an example of the final distribution for a snapshot block.
 
-![](https://miro.medium.com/max/1492/1*MvfWrMI2PovCLJiwaQr6EQ@2x.png)
+| Address | % of the total adjusted liquidity | BAL mined |
+| :--- | :--- | :--- |
+| 0xaaa | 1% | 9.18 |
+| 0xbbb | 2% | 18.36 |
+| ... | ... | ... |
+| Total: | 100% | 918 |
 
-All the calculations described above depend exclusively on on-chain data and historical token prices openly accessible on CoinGecko. This whole calculation process is fully auditable via [an open source script](https://github.com/balancer-labs), and BAL distribution results will be posted to IPFS and referenced on Balancer’s [twitter account](https://twitter.com/BalancerLabs).
+All the calculations described above depend exclusively on on-chain data and historical token prices openly accessible on CoinGecko. This whole calculation process is fully auditable via an [open source script](https://github.com/balancer-labs/bal-mining-scripts/).
 
 ## Token Whitelist and Eligible Pools for Liquidity Mining <a id="84fc"></a>
 
