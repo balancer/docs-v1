@@ -39,7 +39,8 @@
 
 ## SOR
 
-* [Development](sor/development.md)
+* [Development & Examples](sor/development.md)
+* [Migration to Version 0.4](sor/migration-to-version-0.4.md)
 
 ## Guides
 

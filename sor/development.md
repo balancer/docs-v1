@@ -1,4 +1,4 @@
-# Development
+# Development & Examples
 
 Documentation for working with the `@balancer-labs/sor` package. For a description of the SOR and math, see this [page](../protocol/sor.md#overview).
 
@@ -6,142 +6,266 @@ Documentation for working with the `@balancer-labs/sor` package. For a descripti
 Please take caution as the SOR is under heavy development and may have breaking changes.
 {% endhint %}
 
-The SOR package includes a primary `smartOrderRouter` function, along with several helper functions for working with the subgraph and formatting data.
+The SOR package includes a primary `SOR` object with an `SOR.getSwaps` function and several helper functions for retireving Balancer pool data.
 
-## Subgraph
+## SOR Object
 
-All numerical data such as balances, weights, fees, etc. stored in subgraph are stored in normalized decimal point form. This is to allow for easy integrations with partners and teams building on top of Balancer.
+When instantiating a new SOR object we must pass five parameters to the constructor:
 
-The network subgraph can be chosen using the environment variable: `REACT_APP_SUBGRAPH_URL`. It currently defaults to Mainnet, which is: [https://api.thegraph.com/subgraphs/name/balancer-labs/balancer](https://api.thegraph.com/subgraphs/name/balancer-labs/balancer)
+`const SOR = new sor.SOR(Provider: JsonRpcProvider, GasPrice: BigNumber, MaxPools: number, ChainId: number, PoolsUrl: string)`
 
-Several helper functions exist for common queries against the subgraph:
+Where:
 
-#### **`getPoolsWithTokens(tokenIn, tokenOut)`**
+* Provider is an Ethereum network provider \(ex: local node or Infura\).
+* GasPrice is used by the SOR as a factor to determine how many pools to swap against. i.e. higher cost means more costly to trade against lots of different pools. This value can be changed.
+* MaxPools is the max number of pools to split the trade across. Limit to a reasonable number given gas costs.
+* ChainId is the network chain ID \(i.e. 1=mainnet, 42=Kovan\)
+* PoolsUrl is a URL used to retrieve a JSON list of Balancer Pools to be considered. Balancer labs currently keeps an updated list at:
+  * Mainnet: [https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools](https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools)​
+  * Kovan: [https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools](https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools)
 
-This returns a list of all pools in the balancer ecosystem that include the pair: `tokenIn` & `tokenOut` and also have `publicSwap` enabled
+## Fetching Pool Data
 
-#### `parsePoolData(pools, tokenIn, tokenOut): Pool[]`
+The SOR requires an up to date list of pool data when calculating swap information and retrieves on-chain token balances for each pool. There are two available methods:
 
-This function formats all the returned pool data from `getPoolsWithTokens` into a format compatible with the SOR. It includes scaling balances to their wei representations based on token decimals, and converting denormalized weights into normalized weights. Returns an array of type Pool:
+####  `await SOR.fetchPools()` <a id="await-sor-fetchpools"></a>
 
-```javascript
-export interface Pool {
-    id: string;
-    balanceIn: BigNumber;
-    balanceOut: BigNumber;
-    weightIn: BigNumber;
-    weightOut: BigNumber;
-    swapFee: BigNumber;
-    spotPrice?: BigNumber;
-    slippage?: BigNumber;
-    limitAmount?: BigNumber;
-}
-```
+This will fetch all pools \(using the URL in constructor\) and on-chain balances. Returns `true` on success or `false` if there has been an error.
 
-#### `parsePoolDataOnChain(pools, tokenIn, tokenOut, multiAddress, provider): Pool[]`
+#### `await SOR.fetchFilteredPairPools(TokenIn, TokenOut)` <a id="await-sor-fetchfilteredpairpools-tokenin-tokenout"></a>
 
-This function is the same as `parsePoolData`, but pulls all balances, weights, and fees on-chain using [multicall](https://github.com/makerdao/multicall). This requires a web3 provider \(ex: local node or Infura\) that can be passed using `provider`. `multiAddress` is the address for the deployed multicall contract - on Mainnet this is `0xeefba1e63905ef1d7acba5a8513c70307c1ce441`
+A subset of valid pools for token pair, TokenIn/TokenOut, is found and on-chain balances retrieved. Returns `true` on success or `false` if there has been an error. This can be a quicker alternative to using fetchPools but will need to be called for every token pair of interest.
 
-## smartOrderRouter
+## Processing Swaps <a id="processing-swaps"></a>
 
-The `smartOrderRouter` function takes in pool data and trade parameters and performs an optimization for the best price execution.
+#### `async SOR.getSwaps(...)` <a id="async-sor-getswaps"></a>
+
+The `getSwaps` function will use the pool data and the trade parameters to perform an optimization for the best price execution. It returns swap information and the total that can then be used to execute the swaps on-chain.
 
 ```javascript
-export const smartOrderRouter = (
-    balancers: Pool[],
-    swapType: string,
-    targetInputAmount: BigNumber,
-    maxBalancers: number,
-    costOutputToken: BigNumber
-): SwapAmount[] => {
+[swaps, total] = await SOR.getSwaps(
+        tokenIn,
+        tokenOut,
+        swapType,
+        swapAmount
+    );
 ```
 
-`balancers` - array of type `Pool` shown above
+`tokenIn` - string: address of token in
+
+`tokenOut` - string: address of token out
 
 `swapType` - string: either `swapExactIn` or `swapExactOut`
 
-`targetInputAmount` -  amount to be traded, in Wei
+`swapAmount` - BigNumber: amount to be traded, in Wei
 
-`maxBalancers` - max number of pools to split the trade across
+#### `async SOR.setCostOutputToken(tokenOut)` <a id="async-sor-setcostoutputtoken-tokenout"></a>
 
-`costOutputToken` - the cost of the output token in ETH multiplied by the gas cost to perform the swap. This is used to determine whether the lower price obtained through including an additional pool in the transaction outweigh the gas costs. We are working to have helper data for this parameter. In the meantime, we recommend setting this to `0`, and limiting the number of `maxBalancers` to a reasonable number given gas costs.
+The cost of the output token in ETH multiplied by the gas cost to perform the swap. This is used to determine whether the lower price obtained through including an additional pool in the transaction outweigh the gas costs. This function can be called before getSwaps to retrieve and cache the cost which will then be used in any getSwap calls using that token. Defaults to 0 for a token if not previously set.
 
-## Example
+## Example - Using SOR To Get List Of Swaps
 
-Below is an example snippet that uses most helper functions, along with order routing, to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
+Below is an example snippet that uses the SOR to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
 
 ```javascript
-const sor = require('@balancer-labs/sor');
-const BigNumber = require('bignumber.js');
-const ethers = require('ethers');
-
-
-const MAX_UINT = ethers.constants.MaxUint256;
+import { sor } from '@balancer-labs/sor';
+import { BigNumber } from 'bignumber.js';
+import { JsonRpcProvider } from '@ethersproject/providers';
 
 // MAINNET
-const tokenIn = '0x6B175474E89094C44Da98b954EedeAC495271d0F' // DAI
-const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' // WETH
+const tokenIn = '0x6B175474E89094C44Da98b954EedeAC495271d0F'; // DAI
+const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // WETH
 
 
 (async function() {
-    const data = await sor.getPoolsWithTokens(tokenIn, tokenOut);
-
-    const poolData = sor.parsePoolData(data.pools, tokenIn, tokenOut);
-
-    const sorSwaps = sor.smartOrderRouter(
-        poolData,
-        'swapExactIn',
-        new BigNumber('10000000000000000000'),
-        new BigNumber('10'),
-        0
+    const provider = new JsonRpcProvider(
+        `https://mainnet.infura.io/v3/${process.env.INFURA}`
     );
-
-    const swaps = sor.formatSwapsExactAmountIn(sorSwaps, MAX_UINT, 0)
-
-    const expectedOut = sor.calcTotalOutput(swaps, poolData)
+    
+    const poolsUrl = `https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools`;
+    
+    const gasPrice = new BigNumber('30000000000');
+    
+    const maxNoPools = 4;
+    
+    const SOR = new sor.SOR(provider, gasPrice, maxNoPools, poolsUrl);
+    
+    // isFetched will be true on success
+    let isFetched = await SOR.fetchPools();
+    
+    await SOR.setCostOutputToken(tokenOut);
+    
+    const swapType = 'swapExactIn';
+    
+    const amountIn = new BigNumber('1000000000000000000');
+    
+    let [swaps, amountOut] = await SOR.getSwaps(
+        tokenIn,
+        tokenOut,
+        swapType,
+        amountIn
+    );
+    console.log(`Total Return: ${amountOut.toString()}`);
+    console.log(`Swaps: `);
+    console.log(swaps);
 })()
-
 ```
 
-## Example using onchain balances
+## Example - SOR & ExchangeProxy
 
-Below is the same example as above, but using `parsePoolDataOnChain`
+Balancer labs makes use of a [ExchangeProxy contract](https://github.com/balancer-labs/balancer-registry) that allows users to batch execute swaps recommended by the SOR. The following example shows how SOR and ExchangeProxy can be used together to execute on-chain trades.
 
 ```javascript
-const sor = require('@balancer-labs/sor');
-const BigNumber = require('bignumber.js');
-const ethers = require('ethers');
+require('dotenv').config();
+import { sor } from '@balancer-labs/sor';
+import { BigNumber } from 'bignumber.js';
+import { JsonRpcProvider } from '@ethersproject/providers';
+import { Wallet } from '@ethersproject/wallet';
+import { MaxUint256 } from '@ethersproject/constants';
+import { Contract } from '@ethersproject/contracts';
 
+async function makeSwap() {
+    // If running this example make sure you have a .env file saved in root DIR with INFURA=your_key, KEY=pk_of_wallet_to_swap_with
+    const isMainnet = false;
 
-const MAX_UINT = ethers.constants.MaxUint256;
+    let provider, WETH, USDC, DAI, chainId, poolsUrl, proxyAddr;
 
-const providerUrl = 'http://localhost:8545' // can use infura, etc.
-const provider = new ethers.providers.JsonRpcProvider(providerUrl);
+    const ETH = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+    // gasPrice is used by SOR as a factor to determine how many pools to swap against.
+    // i.e. higher cost means more costly to trade against lots of different pools.
+    // Can be changed in future using SOR.gasPrice = newPrice
+    const gasPrice = new BigNumber('25000000000');
+    // This determines the max no of pools the SOR will use to swap.
+    const maxNoPools = 4;
+    const MAX_UINT = MaxUint256;
 
-// MAINNET
-const multi = '0xeefba1e63905ef1d7acba5a8513c70307c1ce441'
-const tokenIn = '0x6B175474E89094C44Da98b954EedeAC495271d0F' // DAI
-const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2' // WETH
+    if (isMainnet) {
+        // Will use mainnet addresses - BE CAREFUL, SWAP WILL USE REAL FUNDS
+        provider = new JsonRpcProvider(
+            `https://mainnet.infura.io/v3/${process.env.INFURA}`
+        );
+        WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // Mainnet WETH
+        USDC = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'; // Mainnet USDC
+        DAI = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
+        chainId = 1;
+        poolsUrl = `https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools`;
+        proxyAddr = '0x3E66B66Fd1d0b02fDa6C811Da9E0547970DB2f21'; // Mainnet proxy
+    } else {
+        // Will use Kovan addresses
+        provider = new JsonRpcProvider(
+            `https://kovan.infura.io/v3/${process.env.INFURA}`
+        );
+        WETH = '0xd0A1E359811322d97991E03f863a0C30C2cF029C'; // Kovan WETH
+        USDC = '0x2F375e94FC336Cdec2Dc0cCB5277FE59CBf1cAe5'; // Kovan USDC
+        DAI = '0x1528F3FCc26d13F7079325Fb78D9442607781c8C'; // Kovan DAI
+        chainId = 42;
+        poolsUrl = `https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools`;
+        proxyAddr = '0x4e67bf5bD28Dd4b570FBAFe11D0633eCbA2754Ec'; // Kovan proxy
+    }
 
+    const SOR = new sor.SOR(provider, gasPrice, maxNoPools, chainId, poolsUrl);
 
-(async function() {
-    const data = await sor.getPoolsWithTokens(tokenIn, tokenOut);
+    // This fetches all pools list from URL in constructor then onChain balances using Multicall
+    console.log('Fetching pools...');
+    await SOR.fetchPools();
+    console.log('Pools fetched, get swap info...');
 
-    const poolData = await sor.parsePoolDataOnChain(data.pools, tokenIn, tokenOut, multi, provider));
+    let tokenIn = WETH;
+    let tokenOut = USDC;
+    let swapType = 'swapExactIn';
+    let amountIn = new BigNumber('1e16');
+    // This calculates the cost to make a swap which is used as an input to SOR to allow it to make gas efficient recommendations.
+    // Can be set once and will be used for further swap calculations.
+    // Defaults to 0 if not called or can be set manually using: await SOR.setCostOutputToken(tokenOut, manualPriceBn)
+    await SOR.setCostOutputToken(tokenOut);
 
-    const sorSwaps = sor.smartOrderRouter(
-        poolData,
-        'swapExactIn',
-        new BigNumber('10000000000000000000'),
-        new BigNumber('10'),
-        0
+    let [swaps, amountOut] = await SOR.getSwaps(
+        tokenIn,
+        tokenOut,
+        swapType,
+        amountIn
     );
 
-    const swaps = sor.formatSwapsExactAmountIn(sorSwaps, MAX_UINT, 0)
+    console.log(`Total Expected Out Of Token: ${amountOut.toString()}`);
 
-    const expectedOut = sor.calcTotalOutput(swaps, poolData)
-})()
+    console.log('Exectuting Swap Using Exchange Proxy...');
+
+    const wallet = new Wallet(process.env.KEY, provider);
+    const proxyArtifact = require('./abi/ExchangeProxy.json');
+    let proxyContract = new Contract(proxyAddr, proxyArtifact.abi, provider);
+    proxyContract = proxyContract.connect(wallet);
+
+    console.log(`Swapping using address: ${wallet.address}...`);
+    /*
+    This first swap is WETH>TOKEN.
+    The ExchangeProxy can accept ETH in place of WETH and it will handle wrapping to Weth to make the swap.
+    */
+
+    let tx = await proxyContract.multihopBatchSwapExactIn(
+        swaps,
+        ETH, // Note TokenIn is ETH address and not WETH as we are sending ETH
+        tokenOut,
+        amountIn.toString(),
+        amountOut.toString(), // This is the minimum amount out you will accept.
+        {
+            value: amountIn.toString(), // Here we send ETH in place of WETH
+            gasPrice: gasPrice.toString(),
+        }
+    );
+    console.log(`Tx Hash: ${tx.hash}`);
+    await tx.wait();
+
+    console.log('New Swap, ExactOut...');
+    /*
+    Now we swap TOKEN>TOKEN & use the swapExactOut swap type to set the exact amount out of tokenOut we want to receive.
+    ExchangeProxy will pull required amount of tokenIn to make swap so tokenIn approval must be set correctly.
+    */
+    tokenIn = USDC;
+    tokenOut = DAI;
+    swapType = 'swapExactOut'; // New Swap Type.
+    amountOut = new BigNumber(1e18); // This is the exact amount out of tokenOut we want to receive
+
+    const tokenArtifact = require('./abi/ERC20.json');
+    let tokenInContract = new Contract(tokenIn, tokenArtifact.abi, provider);
+    tokenInContract = tokenInContract.connect(wallet);
+    console.log('Approving proxy...');
+    tx = await tokenInContract.approve(proxyAddr, MAX_UINT);
+    await tx.wait();
+    console.log('Approved.');
+
+    await SOR.setCostOutputToken(tokenOut);
+
+    // We want to fetch pools again to make sure onchain balances are correct and we have most accurate swap info
+    console.log('Update pool balances...');
+    await SOR.fetchPools();
+    console.log('Pools fetched, get swap info...');
+
+    [swaps, amountIn] = await SOR.getSwaps(
+        tokenIn,
+        tokenOut,
+        swapType,
+        amountOut
+    );
+
+    console.log(`Required token input amount: ${amountIn.toString()}`);
+
+    console.log('Exectuting Swap Using Exchange Proxy...');
+
+    tx = await proxyContract.multihopBatchSwapExactOut(
+        swaps,
+        tokenIn,
+        tokenOut,
+        amountIn.toString(), // This is the max amount of tokenIn you will swap.
+        {
+            gasPrice: gasPrice.toString(),
+        }
+    );
+    console.log(`Tx Hash: ${tx.hash}`);
+    await tx.wait();
+    console.log('Check Balances');
+}
+
+makeSwap();
+
 ```
-
-\`\`
 

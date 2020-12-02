@@ -53,7 +53,9 @@ When the amount traded is greater than _A,_ SOR will start including pool 2 in t
 
 The solution for trading an amount B + C can be found by interpolating the trades that result in EP2 and EP3. By trading C with pool 1 and B with pool 2, both pools end at the same price \(Final Price\) which means that the best solution was found. 
 
+## Development
 
+Balancer labs have developed the [SOR npm package](https://www.npmjs.com/package/@balancer-labs/sor), an easy to use implementation of the above concepts. For documentation for working with the package please see this [page](https://docs.balancer.finance/sor/development).
 
 
 
