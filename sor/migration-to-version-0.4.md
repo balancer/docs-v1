@@ -44,6 +44,6 @@ A new ExchangeProxy contract that supports multihop swaps has been deployed to t
 ## Further Information
 
 * For more information on SOR functions and to see code examples \(including using with ExchangeProxy\) please see [Development & Examples](development.md). 
-* For a full example demonstrating use of SOR wrapper please see LINK TO GITHUB
-* There is also an example at LINK TO GITHUB showing how the SOR functions can be used without the wrapper.
+* For a full example demonstrating use of SOR wrapper please see [here](https://github.com/balancer-labs/balancer-sor/blob/master/test/testScripts/example-simpleSwap.ts).
+* There is also an [example](https://github.com/balancer-labs/balancer-sor/blob/master/test/testScripts/example-swapExactIn.ts) showing how the SOR functions can be used without the wrapper.
 
