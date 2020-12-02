@@ -40,7 +40,7 @@
 ## SOR
 
 * [Development & Examples](sor/development.md)
-* [Migration to Version 0.4](sor/migration-to-version-0.4.md)
+* [Migration to Version 1.0](sor/migration-to-version-0.4.md)
 
 ## Guides
 
