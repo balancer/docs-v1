@@ -4,7 +4,7 @@
 
 ### What is the Balancer Protocol?
 
-Balancer is a protocol for multi-token [automated market-making](../protocol/background.md). It enables portfolio owners to create Balancer Pools, and traders to trade against them. Balancer Pools contain two or more tokens, each with an independent weight representing its proportion of the total pool value. The pools provide the Balancer Protocol with liquidity, and charge traders a fee for access to it. Pools can be considered automated market-makers, since anyone can swap any two tokens, in any pool.
+Balancer is a protocol for multi-token [automated market-making](../core-concepts/protocol/background-1.md). It enables portfolio owners to create Balancer Pools, and traders to trade against them. Balancer Pools contain two or more tokens, each with an independent weight representing its proportion of the total pool value. The pools provide the Balancer Protocol with liquidity, and charge traders a fee for access to it. Pools can be considered automated market-makers, since anyone can swap any two tokens, in any pool.
 
 ### How is the Balancer Protocol useful?
 
@@ -74,7 +74,7 @@ Only a few. Balancer Protocol limits pools in the following ways:
 * Number of tokens: pools must contain at least two, and may contain up to eight tokens.
 * Swap fee: the fee must be between 0.0001% and 10% 
 * ERC20 compliance: pool tokens must be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. Future releases may allow non-standard ERC20's.
-* There are a few additional ratio and balance constraints that can be found at [Limitations](../protocol/limitations.md)
+* There are a few additional ratio and balance constraints that can be found at [Limitations](../core-concepts/protocol/limitations.md)
 
 ### How are Balancer Pools continuously rebalanced?
 
@@ -94,7 +94,7 @@ Balancer pools charge a percentage of the input amount traded for each trade. Th
 
 ### What types of Balancer pools are there?
 
-Core Balancer Pools can be controlled or finalized. Essentially, finalized pools are "public" - their parameters are fixed, and anyone can add/remove liquidity and swap tokens. Controlled pools are "private" - their parameters are not fixed, but only the pool creator can add liquidity. See more details in [Core Concepts](../protocol/concepts.md).
+Core Balancer Pools can be controlled or finalized. Essentially, finalized pools are "public" - their parameters are fixed, and anyone can add/remove liquidity and swap tokens. Controlled pools are "private" - their parameters are not fixed, but only the pool creator can add liquidity. See more details in [Core Concepts](../smart-contracts/smart-pools/concepts.md).
 
 There are also various kinds of Smart Pools - Core Balancer Pools controlled by a smart contract. Balancer is designed to be easily extensible; the Core Concepts page referenced above has some suggestions for Smart Pool designs.
 

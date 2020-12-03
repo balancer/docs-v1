@@ -4,7 +4,7 @@
 
 This contract includes swap forwarding proxy logic and on-chain smart order routing functionality.
 
-`batchSwap` functions allows users to batch execute swaps recommended by [off-chain SOR](../sor/development.md).
+`batchSwap` functions allows users to batch execute swaps recommended by [off-chain SOR](sor/development.md).
 
 `viewSplit` functions query the [On Chain Registry](on-chain-registry.md) to provide best swap information using on-chain data.
 

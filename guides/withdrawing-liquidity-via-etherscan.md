@@ -1,4 +1,4 @@
-# Withdrawing Liquidity via Etherscan
+# Interact via Etherscan
 
 Our UI allows for any liquidity provider to withdraw liquidity by clicking on the button "Remove Liquidity" on the detailed pool view page. This article though focus on how to withdraw liquidity without our UI \(in case it is down or inaccessible\). To do that we'll be using Etherscan.io.
 
