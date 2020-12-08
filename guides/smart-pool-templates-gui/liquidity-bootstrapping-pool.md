@@ -23,7 +23,7 @@ Since the core of the strategy is changing weights, you absolutely need to enabl
 
 The add/remove tokens right depends on your future intentions, since there are two ways to remove your liquidity at the conclusion of the sale. If this is a one-off auction, you can enable the right, and redeem through two "removeToken" calls. This is simple, but destroys the pool.
 
-If you want to re-use the pool \(e.g., there are "phases" or multiple releases\), you can leave this right disabled, and retrieve the proceeds through repeated calls to exitPool \(1/3 at a time, due to token ratio constraints\). To add more project tokens, you would need to add yourself to the whitelist, and joinPool.
+If you want to re-use the pool \(e.g., there are "phases" or multiple releases\), you can leave this right disabled, and retrieve the proceeds through repeated calls to exitPool. You cannot remove 100% of the liquidity through exitPool, since token balances cannot go to zero, and single asset exit is limited to 1/3 of the total balance per transaction. To add more project tokens, you would need to add yourself to the whitelist, and joinPool.
 
 In a token sale \(vs an investment pool\), you don't want anyone else providing liquidity. Only the pool creator should be issued pool tokens, and only they should be able to redeem the proceeds at the end. This is most easily accomplished by using the whitelist. If you enable this right and don't add anyone to the whitelist, no one can "join" the pool.
 
