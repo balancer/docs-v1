@@ -113,3 +113,5 @@ Also note that these only apply to gradual updates. The controller can call upda
 
 You can use [this simulator](https://docs.google.com/spreadsheets/d/1t6VsMJF8lh4xuH_rfPNdT5DM3nY4orF9KFOj2HdMmuY/edit#gid=1392289526) to explore how weight changes and updates work, estimate slippage and impermanent loss, etc. There is also a [demo video](https://vimeo.com/466075719) illustrating the simulator functionality.
 
+Complex functionality = lots of simulators! [This one](https://docs.google.com/spreadsheets/d/1eELxUXdPZ2srDs82xI1paod6_IvgNps-hf4hvUvHDWM/edit#gid=1103637370) helps you calculate single- and multi-asset entry and exit.
+

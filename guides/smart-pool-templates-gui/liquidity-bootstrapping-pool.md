@@ -49,6 +49,8 @@ Note that `pokeWeights` changes weights, but not balances - therefore, it can ch
 
 The controller function `updateWeight` changes weights directly - but not the price. This means it must also adjust the balances at the same time \(i.e., transfer tokens\). So the controller can set weights arbitrarily -- but not while an `updateWeightsGradually` is running. And they must have the tokens available to do it.
 
+Though most LBPs are two-token pools \(e.g., a project token and a single reserve currency, usually a stable coin\), it is possible to have three tokens, or more. For instance, a stable coin and WETH, in addition to the project token. [One project](https://pools.balancer.exchange/#/pool/0x10996ec4f3e7a1b314ebd966fa8b1ad0fe0f8307/) was recently launched that way. There is a [simulator](https://docs.google.com/spreadsheets/d/10434m342Rt0rTarCd2SCtMizT9GrMHrK/edit#gid=1694604160) available for this case.
+
 
 
 
