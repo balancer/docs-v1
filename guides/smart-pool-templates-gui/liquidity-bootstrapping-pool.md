@@ -1,6 +1,6 @@
 # Liquidity Bootstrapping Pool
 
-Here again is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the legal and regulatory issues.
+Here again is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the worst of the legal and regulatory issues. \(The latest term seems to be IDO - Initial DEX Offering.\)
 
 The idea is to launch a token with low capital requirements, by setting up a two-token pool with a project and a collateral token. The weights are initially set heavily in favor of the project token, then gradually "flip" to favor the collateral coin by the end of the sale. The sale can be calibrated to keep the price more or less steady \(maximizing revenue\), or declining to a desired minimum \(e.g., the initial offering price\).
 
