@@ -82,9 +82,9 @@ Refer to [Exchange and Reward Listing](../../core-concepts/bal-liquidity-mining/
 {% endhint %}
 
 {% hint style="danger" %}
-If your smart pool is eligible for BAL rewards, rewards will be redirected to LPs - as long as you create the pool through our standard factory. If you create a new pool using a different factory, or deploy a pool contract directly, you will need to apply for a redirect or redistribution.
+If your smart pool is eligible for BAL rewards, rewards will be redirected to LPs - as long as you create the pool through our standard factory. If you create a new pool using a different factory, or deploy a pool contract directly, you will need to apply for a redirect or redistribution. \(You will also need a redirect if your CRP controller is a contract that holds BPTs, and doesn't have a way to withdraw them.\)
 
-The process for the redirect is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\). Here's an [example request](https://github.com/balancer-labs/bal-mining-scripts/pull/11). \(Redistribution will be similar, but is not yet released.\)
+The process for the redirect is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/config/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\). Here's an [example request](https://github.com/balancer-labs/bal-mining-scripts/pull/11). Similarly, if you have a CRP and want to handle the redistribution differently, you can make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/config/redistribute.json).
 {% endhint %}
 
 {% hint style="warning" %}
