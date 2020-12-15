@@ -6,6 +6,14 @@ To make the token distribution as fair as possible, we distribute BAL tokens pro
 
 Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
 
+[This diagram](https://drive.google.com/file/d/13QOMv-PVNZqJwdz9g6QKFqBUJwOypkZY/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
+
+* For private pools, BAL accrue to the pool controller
+* For shared pools, BAL accrue to the LPs \(pool token holders\)
+* For smart pools created through the standard factory, BAL accrue to smart pool token holders \(LPs\)
+* For smart pools created by other means, register to "redistribute" if you want BAL assigned automatically to token holders, or "redirect" to handle the distribution yourself
+*  If smart pool tokens are held in a contract that cannot withdraw them \(e.g., a staking contract\), you can use redirect to assign their BAL to an account
+
 In practice, every week Balancer Labs has to:
 
 * Define the starting and ending block of the week. Both are chosen as the block with the closest timestamp to a fixed weekly time \(e.g. Sunday 1:00pm UTC\). For example, the starting block for a given week might be \#10,100,000 and the ending block \#10,140,000.
