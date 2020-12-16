@@ -68,7 +68,8 @@ The cost of the output token in ETH multiplied by the gas cost to perform the sw
 Below is an example snippet that uses the SOR to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
 
 ```javascript
-import { sor } from '@balancer-labs/sor';
+require('dotenv').config();
+import { SOR } from '@balancer-labs/sor';
 import { BigNumber } from 'bignumber.js';
 import { JsonRpcProvider } from '@ethersproject/providers';
 
@@ -81,25 +82,27 @@ const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // WETH
     const provider = new JsonRpcProvider(
         `https://mainnet.infura.io/v3/${process.env.INFURA}`
     );
-    
+
     const poolsUrl = `https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools`;
-    
+
     const gasPrice = new BigNumber('30000000000');
-    
+
     const maxNoPools = 4;
-    
-    const SOR = new sor.SOR(provider, gasPrice, maxNoPools, poolsUrl);
-    
+
+    const chainId = 1;
+
+    const sor = new SOR(provider, gasPrice, maxNoPools, chainId, poolsUrl);
+
     // isFetched will be true on success
-    let isFetched = await SOR.fetchPools();
-    
-    await SOR.setCostOutputToken(tokenOut);
-    
+    let isFetched = await sor.fetchPools();
+
+    await sor.setCostOutputToken(tokenOut);
+
     const swapType = 'swapExactIn';
-    
+
     const amountIn = new BigNumber('1000000000000000000');
-    
-    let [swaps, amountOut] = await SOR.getSwaps(
+
+    let [swaps, amountOut] = await sor.getSwaps(
         tokenIn,
         tokenOut,
         swapType,
@@ -117,7 +120,7 @@ Balancer labs makes use of a [ExchangeProxy contract](https://github.com/balance
 
 ```javascript
 require('dotenv').config();
-import { sor } from '@balancer-labs/sor';
+import { SOR } from '@balancer-labs/sor';
 import { BigNumber } from 'bignumber.js';
 import { JsonRpcProvider } from '@ethersproject/providers';
 import { Wallet } from '@ethersproject/wallet';
@@ -126,7 +129,7 @@ import { Contract } from '@ethersproject/contracts';
 
 async function makeSwap() {
     // If running this example make sure you have a .env file saved in root DIR with INFURA=your_key, KEY=pk_of_wallet_to_swap_with
-    const isMainnet = false;
+    const isMainnet = true;
 
     let provider, WETH, USDC, DAI, chainId, poolsUrl, proxyAddr;
 
@@ -163,23 +166,23 @@ async function makeSwap() {
         proxyAddr = '0x4e67bf5bD28Dd4b570FBAFe11D0633eCbA2754Ec'; // Kovan proxy
     }
 
-    const SOR = new sor.SOR(provider, gasPrice, maxNoPools, chainId, poolsUrl);
+    const sor = new SOR(provider, gasPrice, maxNoPools, chainId, poolsUrl);
 
     // This fetches all pools list from URL in constructor then onChain balances using Multicall
     console.log('Fetching pools...');
-    await SOR.fetchPools();
+    await sor.fetchPools();
     console.log('Pools fetched, get swap info...');
 
     let tokenIn = WETH;
     let tokenOut = USDC;
     let swapType = 'swapExactIn';
     let amountIn = new BigNumber('1e16');
-    // This calculates the cost to make a swap which is used as an input to SOR to allow it to make gas efficient recommendations.
+    // This calculates the cost to make a swap which is used as an input to sor to allow it to make gas efficient recommendations.
     // Can be set once and will be used for further swap calculations.
-    // Defaults to 0 if not called or can be set manually using: await SOR.setCostOutputToken(tokenOut, manualPriceBn)
-    await SOR.setCostOutputToken(tokenOut);
+    // Defaults to 0 if not called or can be set manually using: await sor.setCostOutputToken(tokenOut, manualPriceBn)
+    await sor.setCostOutputToken(tokenOut);
 
-    let [swaps, amountOut] = await SOR.getSwaps(
+    let [swaps, amountOut] = await sor.getSwaps(
         tokenIn,
         tokenOut,
         swapType,
@@ -233,14 +236,14 @@ async function makeSwap() {
     await tx.wait();
     console.log('Approved.');
 
-    await SOR.setCostOutputToken(tokenOut);
+    await sor.setCostOutputToken(tokenOut);
 
     // We want to fetch pools again to make sure onchain balances are correct and we have most accurate swap info
     console.log('Update pool balances...');
-    await SOR.fetchPools();
+    await sor.fetchPools();
     console.log('Pools fetched, get swap info...');
 
-    [swaps, amountIn] = await SOR.getSwaps(
+    [swaps, amountIn] = await sor.getSwaps(
         tokenIn,
         tokenOut,
         swapType,
@@ -266,6 +269,5 @@ async function makeSwap() {
 }
 
 makeSwap();
-
 ```
 
