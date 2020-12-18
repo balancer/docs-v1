@@ -6,6 +6,8 @@ First, we give the token a symbol and name, set the basic pool parameters, and d
 
 As noted earlier, setting the permissions as strict as possible minimizes the trust investors need to place in the pool creator. Liquidity providers for this pool can rest assured that the fee can never be changed, no tokens can be added or removed, and they cannot be prevented from adding liquidity \(e.g., by being removed from the whitelist, or having the cap lowered\).
 
+**Note that balances must be "normalized" for the number of decimals in the token. For instance, USDC has 6 decimals, so "10" is "10000000" - not "10000000000000000000"!**
+
 ```text
 // XYZ and DAI are addresses
 // XYZ is the "project token" we're launching
@@ -25,8 +27,7 @@ const permissions = {
     canChangeWeights: true,
     canAddRemoveTokens: false,
     canWhitelistLPs: false,
-    canChangeCap: false,
-    canRemoveAllTokens: false,
+    canChangeCap: false
 };
 ```
 

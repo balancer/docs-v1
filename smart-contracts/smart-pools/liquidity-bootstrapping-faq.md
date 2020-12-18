@@ -14,7 +14,7 @@ This is a fully customizable parameter that is up to you, based on your objectiv
 
 Considering the fast pace and unpredictability of events happening regularly in DeFi, making your LBP too short could allow obstacles that are unrelated to your project \(i.e., a spike in Ethereum network congestion or a new yield farming craze\) to get in the way of a successful sale. We would recommend at least 3 days, but you are certainly free to make it shorter if you believe it would better serve your particular case.
 
-Note that the default minimum duration is approximately 2 weeks \(and 2 hours for the add token time lock\); using a shorter period will require overriding that default when you create the pool.
+#### _Note that the default minimum duration is approximately 2 weeks \(and 2 hours for the add token time lock\); using a shorter period will require overriding that default when you create the pool. This mainly applies to those writing scripts; if you use the smart pool GUI, the defaults are very short \(both 10 blocks\)._
 
 ### How should I choose a starting price?
 
@@ -28,7 +28,7 @@ For example, if you believe the fair price for your token is $2, you may want to
 
 The general idea is to start with the pool weights skewed towards your token and end with the pool weights skewed towards the reserve asset\(s\). This configuration is designed to make it so that the majority of your tokens end up being exchanged for the reserve asset\(s\) you have chosen.
 
-Be sure to think all the way through your intended sale, since there are some technical subtleties. For instance, if your weights are very close to the min/max weight boundaries, `pokeWeights` could fail in some edge cases where the total would temporarily be exceeded. Unless you need the maximum 98%/2% \(49/1 denorm\) weights, it's best to use weights that sum to a lower total number \(e.g., 38/2\), and put the project token first in the list when you create the pool, so that the weight _decrease_ would be processed first.
+Be sure to think all the way through your intended sale, since there are some technical subtleties. For instance, if your weights are very close to the min/max weight boundaries, `pokeWeights` could fail in some edge cases where the total would temporarily be exceeded. Unless you need the maximum 98%/2% \(49/1 denorm\) weights, it's best to use weights that sum to a lower total number \(e.g., 38/2\), and put the project token first in the list when you create the pool, so that the weight _decrease_ would be processed first. \(We may be updating the GUI to avoid this issue by lowering the "resolution" in these cases - the max for a pool with canChangeWeights enabled would then be 96%/4%.\)
 
 ### How can I use an LBP to conduct a token sale with minimal seed capital?
 
@@ -76,11 +76,28 @@ The Balancer team regularly monitors the crypto landscape and adds new tokens to
 
 If you are launching an LBP and want to make sure that your token is listed on the exchange before launch, please [contact the team](mailto:contact@balancer.finance) for assistance.
 
-### How do I get my token whitelisted for BAL mining rewards?
+### How do I get my token whitelisted for BAL mining earnings?
 
 [This page](../../core-concepts/bal-liquidity-mining/exchange-and-reward-listing.md) describes the process.
 
 ### After providing the initial seed capital needed to launch an LBP, do I need to deposit additional capital later?
 
 No, you do not need any additional capital beyond the initial seed amount based on the starting weights you’ve selected for your pool. However, you do have the optional ability to deposit new capital into the pool as a buyback mechanism while the LBP is running.
+
+  
+If you use the LP whitelisting to disable public LPs, and wish to add liquidity yourself later, you will need to add your DSProxy address \(if you're using the GUI\) to the whitelist in order to do so. \(On the smart pool GUI, this address can be found on the About page, under "smart pool controller".\)
+
+### Can I deploy/control the LBP from a script?
+
+Yes. Conversely, if you wrote your own script to deploy the pool \(vs using the smart pool GUI\), you can also manage it from the GUI. To do this, you would call setController \(or use that feature on the Settings page, if you're starting from the GUI\), and set it to the address you want to control the pool. You could deploy through the GUI, then `setController` to the account running the script \(e.g., to set the swap fee dynamically based on an off-chain algorithm\). To transfer it back, just call `setController` again from that script, setting it to your DSProxy address.
+
+DSProxy contracts are "helper contracts" deployed per user account to make interacting with multiple pools easier and more gas-efficient. If you're starting from a script and don't have one, you can start to create a pool through the GUI, and it will prompt you to create a proxy as the first step.
+
+The[ Pool Management GUI](https://github.com/balancer-labs/pool-management-vue) and [Configurable Rights Pool](https://github.com/balancer-labs/configurable-rights-pool) are both open source. You can refer to the large test suite for many examples of how to interact with the CRP, and both the CRP suite and the Vue app contain helper functions for things like slippage and adding/removing liquidity. There are also many simulators available, linked at the bottom of the [CRP Tutorial](../../guides/crp-tutorial/).
+
+We've tried to make it as clear and straightforward as possible - but there are subtleties the GUI handles that you would need to hand-code in a script. For instance, balances for tokens with less than 18 must be "normalized." This includes many common tokens; e.g., USDC has 6, Compound cTokens all have 8, etc.
+
+For instance, a balance of "10" in wei would be "10000000000000000000" for DAI \(with 18 decimals\), but "10000000" for USDC \(with 6 decimals\).
+
+One final note - if you deploy a CRP through a script, we recommend using the standard `CRPFactory` \(addresses [here](../addresses.md)\). If you deploy it "directly", it will still work, but will not be recognized by the BAL mining scripts, and you will need to do a [redirect](../../core-concepts/bal-liquidity-mining/).
 

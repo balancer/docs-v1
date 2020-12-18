@@ -16,8 +16,6 @@ function newCrp(
 
 The factoryAddress is that of the BFactory \(see [Core Concepts](../../smart-contracts/smart-pools/concepts.md)\). The Configurable Rights Pool is the Smart Pool "wrapper" around the underlying Core Pool \(BPool\). You \(caller of newCRP\) are the controller of the Smart Pool. The Smart Pool is the controller of the Core Pool. So the Smart Pool needs to deploy a Core Pool - and requires the BFactory to do that.
 
-This is also a bit of future-proofing. At the moment all the Core Pools are "Bronze," but at some point we will release "Silver" and "Gold" versions of the Core Pools, and corresponding factories to create them.
-
 The next argument is PoolParams - this is where you define the structure and basic parameters of the pool, such as the tokens it will hold, their initial weights and balances, and the swap fee.
 
 ```text
@@ -36,6 +34,8 @@ struct PoolParams {
 Since the [Balancer Pool Tokens]() are themselves ERC20 tokens, they have symbols and names. You can set both when creating your pool.
 
 The tokens must be addresses of conforming ERC20 tokens. Balances and weights are expressed in Wei - and the weights are denormalized, not percentages. Valid denormalized weights range from 1 to 49, since the maximum total denormalized weight is 50. \(This corresponds to a percentage range from 2% to 98%: 1/\(1+49\) = 2%; 49/\(1+49\) = 98%\)
+
+**Note that balances must be "normalized" for the number of decimals in the token. For instance, USDC has 6 decimals, so "10" is "10000000" - not "10000000000000000000"!**
 
 {% hint style="warning" %}
 Note that if you're going to be doing gradual weight updates, using denorm totals near the maximum 50 can be problematic! It is possible for `pokeWeights`to fail if the weights are 45/5, since the contract will never allow the total to go over 50 - even temporarily during an intermediate step. Unless you truly need the full range, best practice is to use a lower total, like 40; e.g.; for 90/10, use 36/4. \(If you need to use extreme weights, put tokens whose weights should go down first in the array; that way the weight reductions will be processed before the increases.\)
@@ -78,13 +78,15 @@ await crpPool.createPool(toWei('100'));
 Now we're in business! The pool will already be set up for public swapping, and depending on the permissions settings, possibly public liquidity provision as well. The Core Pool will show up on the Exchange GUI.
 
 {% hint style="info" %}
-Refer to [Exchange and Reward Listing](../../core-concepts/bal-liquidity-mining/exchange-and-reward-listing.md) for instructions on adding any new tokens you might be introducing to the Exchange GUI, and making them eligible for BAL governance token rewards. Rewards are distributed weekly, and are not applied retroactively, so you'll need to have the token approved by 00:00 UTC the Monday **before** you launch your pool.
+Refer to [Exchange and Reward Listing](../../core-concepts/bal-liquidity-mining/exchange-and-reward-listing.md) for instructions on adding any new tokens you might be introducing to the Exchange GUI, and making them eligible for BAL governance tokens. Earnings are distributed weekly, and are not applied retroactively, so you'll need to have the token approved by 00:00 UTC the Monday **before** you launch your pool.
 {% endhint %}
 
 {% hint style="danger" %}
-If your smart pool is eligible for BAL rewards, rewards will be redirected to LPs - as long as you create the pool through our standard factory. If you create a new pool using a different factory, or deploy a pool contract directly, you will need to apply for a redirect or redistribution. \(You will also need a redirect if your CRP controller is a contract that holds BPTs, and doesn't have a way to withdraw them.\)
+If your smart pool is eligible for BAL, earnings will be redirected to LPs - as long as you create the pool through our standard factory. If you create a new pool using a different factory, or deploy a pool contract directly, you will need to apply for a redirect or redistribution. \(You will also need a redirect if your CRP controller is a contract that holds BPTs, and doesn't have a way to withdraw them.\)
 
 The process for the redirect is to make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/config/redirect.json) in our script repository with the CRP and your wallet address, along with proof that you own the pool \(e.g., the CRP deployment transaction hash\). Here's an [example request](https://github.com/balancer-labs/bal-mining-scripts/pull/11). Similarly, if you have a CRP and want to handle the redistribution differently, you can make a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/config/redistribute.json).
+
+Here is a [diagram](https://drive.google.com/file/d/13QOMv-PVNZqJwdz9g6QKFqBUJwOypkZY/view) detailing how we compute BAL mining earnings.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -107,7 +109,7 @@ _initialSupply_ can be set to a value of your choice - within min/max limits \(c
 
 _minimumWeightChangeBlockPeriod_ enforces a minimum time between the start and end blocks of a gradual update. _addTokenTimeLockInBlocks_ is used when adding a token \(if you have the AddRemoveTokens permission\), as the minimum wait time between committing a new token, and applying it \(i.e., actually adding it to the pool\). There is one additional constraint: _minimumWeightChangeBlockPeriod &gt;= addTokenTimeLockInBlocks._
 
-These parameters have default values, and can only be changed by overriding them in this version of createPool. The addTokenTimeLock defaults to 500 blocks \(~ 2 hours\), and the blockPeriod defaults to 90,000 \(~ 2 weeks\). If you want to use different minimum values, be sure to set them in createPool, since they are immutable thereafter!
+These parameters have default values, and can only be changed by overriding them in this version of createPool. The addTokenTimeLock defaults to 500 blocks \(~ 2 hours\), and the blockPeriod defaults to 90,000 \(~ 2 weeks\). _**If you want to use different minimum values, be sure to set them in createPool, since they are immutable thereafter!**_
 
 Also note that these only apply to gradual updates. The controller can call updateWeight directly at any time, as long as no gradual update is in progress.
 
