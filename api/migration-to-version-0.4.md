@@ -19,6 +19,7 @@ SOR now has three main functions:
 * Calculates gas cost for swapping token on Balancer. 
 * The result is used to make more gas efficient swap recommendations.
 * Result is cached for future use but can be updated by re-calling.
+* Notice that outputToken is tokenOut if swapType == 'swapExactIn' and tokenIn if swapType == 'swapExactOut'
 
 #### `const isSuccess = await SOR.fetchPools()`
 

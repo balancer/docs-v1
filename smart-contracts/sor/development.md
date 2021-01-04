@@ -63,6 +63,8 @@ The `getSwaps` function will use the pool data and the trade parameters to perfo
 
 The cost of the output token in ETH multiplied by the gas cost to perform the swap. This is used to determine whether the lower price obtained through including an additional pool in the transaction outweigh the gas costs. This function can be called before getSwaps to retrieve and cache the cost which will then be used in any getSwap calls using that token. Defaults to 0 for a token if not previously set.
 
+Notice that tokenOut is tokenOut if swapType == 'swapExactIn' and tokenIn if swapType == 'swapExactOut.
+
 ## Example - Using SOR To Get List Of Swaps
 
 Below is an example snippet that uses the SOR to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
