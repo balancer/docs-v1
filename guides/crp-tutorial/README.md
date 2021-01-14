@@ -31,7 +31,7 @@ struct PoolParams {
 }
 ```
 
-Since the [Balancer Pool Tokens]() are themselves ERC20 tokens, they have symbols and names. You can set both when creating your pool.
+Since the Balancer Pool Tokens are themselves ERC20 tokens, they have symbols and names. You can set both when creating your pool.
 
 The tokens must be addresses of conforming ERC20 tokens. Balances and weights are expressed in Wei - and the weights are denormalized, not percentages. Valid denormalized weights range from 1 to 49, since the maximum total denormalized weight is 50. \(This corresponds to a percentage range from 2% to 98%: 1/\(1+49\) = 2%; 49/\(1+49\) = 98%\)
 
@@ -56,7 +56,11 @@ struct Rights {
 }
 ```
 
- At this point \(after calling newCRP\), we have a deployed Configurable Rights Object with all its permissions and parameters defined. But we can't do much with it - mainly because there is no Core Pool yet. We need to deploy a new Core Pool, with our Smart Pool as the controller, by calling createPool\(initialSupply\). \(There is also an overloaded version of createPool; more on that later.\) 
+{% hint style="warning" %}
+Note that if you are whitelisting LPs, and intend for the whitelisted users to Add Liquidity through the Balancer GUI, you will need to whitelist their DSProxy addresses - not their wallet address. \(The DSProxy address can be found at the bottom of the wallet page. New users will need to create a DSProxy before adding liquidity.\)
+{% endhint %}
+
+At this point \(after calling newCRP\), we have a deployed Configurable Rights Object with all its permissions and parameters defined. But we can't do much with it - mainly because there is no Core Pool yet. We need to deploy a new Core Pool, with our Smart Pool as the controller, by calling createPool\(initialSupply\). \(There is also an overloaded version of createPool; more on that later.\) 
 
 We've already defined the tokens and balances we want the pool to hold. When we call createPool with a value for initialSupply, it will mint _initialSupply_ Balancer Pool Tokens \(BPTs\) and transfer them to the caller, simultaneously pulling the correct amount of collateral tokens into the contract. \(They end up in the Core Pool, passed through the CRP.\)
 
