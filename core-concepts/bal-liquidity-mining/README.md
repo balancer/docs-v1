@@ -6,7 +6,7 @@ To make the token distribution as fair as possible, we distribute BAL tokens pro
 
 Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
 
-[This diagram](https://drive.google.com/file/d/13QOMv-PVNZqJwdz9g6QKFqBUJwOypkZY/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
+[This diagram](https://drive.google.com/file/d/1GOjIAzu0K31tD-J_aIa1gIHI3ezKBmYN/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
 
 * For private pools, BAL accrue to the pool controller
 * For shared pools, BAL accrue to the LPs \(pool token holders\)
