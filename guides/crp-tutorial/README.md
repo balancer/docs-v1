@@ -120,7 +120,7 @@ Also note that these only apply to gradual updates. The controller can call upda
 {% hint style="warning" %}
 The GUI displays the approximate dates for the block numbers you enter. Some protocols \(e.g., UMA\) use UNIX timestamps for time-related inputs. If you are calling it programmatically, make sure you use _block numbers_, not timestamps!
 
-Luckily, `updateWeightsGradually` is forgiving - even if this happens, you don't have to wait seven centuries for the block numbers to catch up to the timestamp \(currently ~ 2800 AD\); just call it again with the correct values.
+Luckily, `updateWeightsGradually` is forgiving - even if this happens, you don't have to wait five centuries for the block numbers to catch up to the timestamp \(currently ~ 2600 AD\); just call it again with the correct values.
 {% endhint %}
 
 You can use [this simulator](https://docs.google.com/spreadsheets/d/1t6VsMJF8lh4xuH_rfPNdT5DM3nY4orF9KFOj2HdMmuY/edit#gid=1392289526) to explore how weight changes and updates work, estimate slippage and impermanent loss, etc. There is also a [demo video](https://vimeo.com/466075719) illustrating the simulator functionality.
