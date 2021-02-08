@@ -16,6 +16,21 @@ Considering the fast pace and unpredictability of events happening regularly in 
 
 #### _Note that the default minimum duration is approximately 2 weeks \(and 2 hours for the add token time lock\); using a shorter period will require overriding that default when you create the pool. This mainly applies to those writing scripts; if you use the smart pool GUI, the defaults are very short \(both 10 blocks\)._
 
+### Should I start the sale immediately after deploying the pool?
+
+Most LBPs do this, but some choose delay the start of the sale. There are many reasons for this, including waiting for the whitelisting/price feed to be set up, and wanting more time for pre-sale marketing/community building.
+
+Projects that choose this method typically reserve the right to "pause swapping," and invoke it immediately after creating the pool. Since smart pools are created with swapping enabled, pausing is a separate transaction, so it is possible to "front-run" the pause transaction and perform a swap before the pause takes effect. \(Don't laugh - it's happened!\)
+
+This is not generally a problem - if you've designed the LBP properly, the initial price should be far above market value - and the LBP design tends to keep the price stable or declining, so it is less likely that front-running \(and bots/arbing in general\) will be profitable.
+
+Nevertheless, if you want to do a delayed sale and are worried about this, there are steps you can take to mitigate it:
+
+* Ensure the initial price is far above market, discouraging early buyers
+* Reserve the right to change the swap fee, and initialize it to 10% \(the max\). That way anybody front-running your pause transaction will pay a 10% fee on top of the high price. After the pause transaction is mined, you can drop the fee to the desired sale rate
+
+There could still be an initial price surge when the sale starts - it's irrational, but that's human nature for you. One strategy to mitigate this would be to start the fee relatively high \(e.g., 4%\), and announce that you will drop it periodically until it reaches 0.5% or whatever final value you want. That might prevent the initial spike - and even if it doesn't, those early buyers will at least be paying extra for raising the price.
+
 ### How should I choose a starting price?
 
 You can think of the starting price of your LBP as the ceiling you’d want to set for the token sale. This may seem counterintuitive, but since LBPs work differently than other token sales, your starting price should be set much higher than what you believe is the fair price. 
