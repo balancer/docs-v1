@@ -23,16 +23,16 @@ There is a case where you might want to retain both pausing and swap fee rights:
 
 Since pools are created with swapping enabled, you would have to pause trading in a separate transaction \(unless you wrote code to do it atomically\), so there is a tiny window where it's possible to "front run" and swap between creation and disabling swaps. \(Don't laugh - it's happened!\)
 
-This is generally not a problem, since they would be buying at the initial price \(which should be set higher than market\). Since the price generally stays fairly steady or decreases during the sale, front-running \(or bots/arber activity in general\) should not generally be profitable.
+You would think this wouldn't be much of a problem, since they would be buying at the initial price \(which should be set higher than market\). The price generally stays fairly steady or decreases during the sale, so front-running \(or bots/arber activity in general\) should not generally be profitable.
 
-Of course, you can design a perfect system - but you can never beat human nature. Many buyers still have "2017 PTSD," and think they have to buy immediately - not understanding that they would get a better price by waiting. We have observed an initial price spike on LBPs \(possibly just lots of retail volume on the initial announcement\) - and avoiding this is one reason to delay the start of the LBP. You then have time to educate your consumers to buy slowly and not get rekt.
+Of course, you can design a perfect system - but you can never beat human nature. Many buyers still have "2017 PTSD," and think they have to buy immediately - not understanding that they would get a better price by waiting. We have observed an initial price spike on just about every LBP \(possibly just lots of retail volume on the initial announcement\) - and avoiding this is one reason to delay the start of the LBP. You then have time to educate your consumers to buy slowly and not get rekt.
 
-If you want to do an LBP this way, while ensuring there won't be a price spike, you have several options:
+The bottom line is, there will very likely be an initial price spike, so "delayed" LBPs are vulnerable to this kind of front-running. If you want to do an LBP this way, while ensuring there won't be a price spike, you have several options:
 
 1\) The only absolute sure way, for teams with the technical expertise to do so, is to deploy and pause in the same transaction  
-2\) You can start the price really high, making it unlikely anyone will buy at the initial price  
-3\) You can reserve the canChangeSwapFee right, and initialize it to 10%. After pausing trading, drop it to the much lower value you want for the sale \(e.g., 0.15%\). That way, any front-runners will be heavily "taxed," making such a trade much less likely to be profitable  
-4\) If you want to discourage the price spike for everyone \(not just front-runners\), you could set the initial swap fee to something fairly high \(e.g., 4-5%\), and announce you will be dropping it gradually over the first few hours. That way, people who \*really\* want your token can still buy it right away, but most should wait until the price and fees both go down. I don't believe anyone has tried this; it would be an interesting experiment.
+2\) In addition to setting the starting price high, you can reserve the canChangeSwapFee right, and initialize it to 10%. This is probably the best you can do without writing code. After pausing trading, drop it to the much lower value you want for the sale \(e.g., 0.15%\). That way, any front-runners will be heavily "taxed," making such a trade much less likely to be profitable
+
+If you want to discourage the price spike for everyone \(not just front-runners\), you could set the initial swap fee to something fairly high \(e.g., 4-5%\), and announce you will be dropping it gradually over the first few hours. That way, people who \*really\* want your token can still buy it right away, but most should wait until the price and fees both go down. I don't believe anyone has tried this; it would be an interesting experiment.
 
 Since the core of the strategy is changing weights, you absolutely need to enable that right.
 
