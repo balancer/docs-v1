@@ -113,3 +113,23 @@ For instance, a balance of "10" in wei would be "10000000000000000000" for DAI \
 
 One final note - if you deploy a CRP through a script, we recommend using the standard `CRPFactory` \(addresses [here](../addresses.md)\). If you deploy it "directly", it will still work, but will not be recognized by the BAL mining scripts, and you will need to do a [redirect](../../core-concepts/bal-liquidity-mining/).
 
+### Can I use a "Pausable" token in the LBP?
+
+You can, but there are special considerations in this case! Since Balancer is a permissionless protocol, once your tokens are "in the wild," anyone can do anything they want with them - including creating new Balancer pools \(or Uniswap pools, or pools on any other protocol\).
+
+Normally this doesn't hurt anything - but if you pause the token contract after the sale - preventing all transfers - anyone who added liquidity to any of these other pools will no longer be able to withdraw their funds.
+
+For this reason, your LBP pool definitely needs to use the "Must whitelist LPs" right to prevent public LPs - otherwise they could get "stuck" in this manner.
+
+Since there is no way to prevent token holders from creating new Uniswap, Balancer, etc. pools during the sale, it would be a good idea to mention in your announcement that there is only **one** official pool - which does **not** allow adding liquidity - and any users who add liquidity to any "imposter" pools, or send them to any account they do not control, will lose funds if they fail to withdraw them before the end of the sale.
+
+### Can I allow public Liquidity Providers?
+
+You can \(though see above for special considerations when using non-standard token contracts\). If you do not reserve the "Must whitelist LPs" right, anyone will be able to add liquidity to your pool. It is also possible to use the "cap" right to limit the total BPT supply \(and therefore total value of the pool\).
+
+If you take this approach, there are a few things to keep in mind.
+
+* You will not be able to end the sale with removeToken, since you will not have anough BPT, and will need to "Remove Liquidity" to terminate the sale. \(Note that you cannot remove 100% from a smart pool, since there are minimum balance requirements, but you can remove 99.9%.\)
+* It is possible for "whales" to unbalance your pool by adding large amounts of "single-sided" liquidity, instantaneously changing the prices, possibly enough to induce arbitrage and impermanent loss. Large initial balances \(and swap fees\) mitigate this risk. Also, the protocol prevents adding more than half the current balance of any token in a single transaction.
+* Since Balancer is a permissionless protocol, anyone can create new pools. Perhaps you have a staking protocol, and encourage LPs to stake their BPTs for additional earnings. In this case, it's important to make your users aware there might be "counterfeit" pools, and clearly direct them to **your** pool, whose tokens your staking contract accepts.
+

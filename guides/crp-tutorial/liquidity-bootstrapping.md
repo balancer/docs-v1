@@ -1,6 +1,6 @@
 # Liquidity Bootstrapping Example
 
-Let's walk through a complete example, using the [Liquidity Bootstrapping](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) use case.
+Let's walk through a complete example, using the [Liquidity Bootstrapping](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) use case. There is also extensive higher-level discussion in the [Liquidity Bootstrapping FAQ](../../smart-contracts/smart-pools/liquidity-bootstrapping-faq.md).
 
 First, we give the token a symbol and name, set the basic pool parameters, and determine the permissions. All we really need to be able to do is change the weights, so we can set all the other permissions false.
 
