@@ -72,6 +72,10 @@ Note that it may not always be possible to sell all available tokens in the desi
 
 Unless you deposit tokens yourself during the sale \(e.g, by adding additional liquidity through joinPool\), the only way to affect prices during an LBP is by setting the target pool weights. Changing the target pool weights influences price, such that increasing the weight of an asset increases its relative price, and vice versa. The change in price gradually incentivizes investors to buy your token in exchange for the reserve asset\(s\), which then changes the balances of assets in the pool.
 
+The design of the LBP tends to keep the sale price fairly even \(or slightly declining\) during the sale. However, this depends on the market buying pressure, which can only be estimated until the sale actually begins. If you have a really great project, or strong marketing, it is possible for buyers to "overpower" the weight changes and make the price drift upwards.
+
+Conversely, if there is too little buy pressure, the price might drop faster than expected. In either case, it is possible to make the "price curve" steeper or shallower by adjusting the end weights. You can do this \(as described below\), up until the end of the sale, limited by your "minimum duration." For instance, if you've set the minimum duration to 2 hours, you can adjust the weights \(or fine-tune the end block\) until 2 hours before the final block, without extending the sale.
+
 ### How do I change the weights of my LBP while it’s live?
 
 Use the `updateWeightsGradually` function to put the contract into a state where it will respond to the `pokeWeights` call by setting all the weights according to the point on the "weight curve" corresponding to the current block. `pokeWeights` can be called by you, or anyone, to update the weights according to your LBP’s configuration.
