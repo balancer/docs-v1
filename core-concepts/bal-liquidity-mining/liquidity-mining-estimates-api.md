@@ -1,3 +1,5 @@
+# Liquidity Mining Estimates API
+
 # Retrieving Pool Rewards Data
 These endpoints can be used to pull the rewards associated with either a particular Pool, or a list of Pools
 
