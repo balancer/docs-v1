@@ -1,6 +1,6 @@
 # Liquidity Mining Estimates API
-
-# Retrieving Pool Rewards Data
+Estimated BAL earned at each pool and by each liquidity provider can be retrieved via an API. Cumulative estimates for the week in progress are computed every hour, and the velocity with each BAL is accruing is computed from the difference between two consecutive estimates. Clients can then use the velocity to update the estimates retrieved from the API.
+# Retrieving Pool Data
 These endpoints can be used to pull the rewards associated with either a particular Pool, or a list of Pools
 
 ## Single Pool
@@ -190,10 +190,10 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-providers
 # Response Definitions
 | Parameter | Definition |
 |---|---|
-|success|True/False dependant on if an error occurred|
-|current_timestamp|The timestamp of when the request was received by the server - this is the timestamp used to calculate any estimates|
-|snapshot_timestamp|The last time a snapshot was run, and the rewards were calculated/velocity determined|
-|address|The address of the Pool/Liquidity Provider|
-|velocity|The rate at which the rewards were increasing when the last snapshot took place - this is in bal/second|
-|reward_estimate|An estimated current reward amount|
-|week| |
+| success | True/False dependant on if an error occurred |
+| current_timestamp | The timestamp of when the request was received by the server |
+| snapshot_timestamp | The last time the mining estimator script was executed and velocity was determined |
+| address | The address of the Pool or the Liquidity Provider, depending on the endpoint used |
+| velocity | The estimated rate, in `BAL/second`, at which BAL was being mined by the address |
+| reward_estimate | The estimated total BAL mined in the `week` up to time `current_timestamp` |
+| week | The number of week that the estimates refer to, `1` being the first week of the liquidity mining program |
