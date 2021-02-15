@@ -31,7 +31,7 @@ Of course, Balancer has no control over the contracts of ERC20 tokens placed in 
 
 ### What is the development roadmap?
 
-We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) went live on February 26, 2020. Silver is currently in a design phase and will likely be released in late 2020.
+We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) went live on February 26, 2020. Silver is currently in a design phase and will likely be released in 2021.
 
 Bronze, Silver, and eventually Gold releases refer to the "base" Balancer Pool contract - which actually holds the assets.
 
