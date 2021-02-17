@@ -30,12 +30,16 @@ https://api.balancer.finance/liquidity-mining/v1/pool/ASDF123
 ```jsx
 {
     "success": true,
-    "current_timestamp": "2020-12-28T23:14:56.645Z",
-    "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-    "address": "ASDF123",
-    "reward_estimate": "5024.909403748167893273",
-    "velocity": "0.001617089323107406",
-    "week": "1",
+    "result": {
+	"current_timestamp": "2020-12-28T23:14:56.645Z",
+    	"pools": [
+	    "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+	    "address": "ASDF123",
+	    "reward_estimate": "5024.909403748167893273",
+	    "velocity": "0.001617089323107406",
+	    "week": "1",
+	]
+    }
 }
 ```
 
@@ -65,7 +69,7 @@ https://api.balancer.finance/liquidity-mining/v1/pools
 
 ```json
 {
-	"addresses": ["liquidity_mining_estimates","ASDF123"]
+	"addresses": ["abcd12345","ASDF123"]
 }
 ```
 
@@ -74,23 +78,25 @@ https://api.balancer.finance/liquidity-mining/v1/pools
 ```jsx
 {
     "success": true,
-    "current_timestamp": "2020-12-28T23:16:52.893Z",
-    "pools": [
-        {
-            "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-            "address": "abcd12345",
-            "reward_estimate": "123.012609369747328786",
-            "velocity": "0.000000000123123123",
-            "week": "1",
-        },
-        {
-            "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-            "address": "ASDF123",
-            "reward_estimate": "5025.096986109648352369",
-            "velocity": "0.001617089323107406",
-            "week": "1",
-        }
-    ]
+    result: {
+        "current_timestamp": "2020-12-28T23:16:52.893Z",
+	"pools": [
+	    {
+		"snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+		"address": "abcd12345",
+		"reward_estimate": "123.012609369747328786",
+		"velocity": "0.000000000123123123",
+		"week": "1",
+	    },
+	    {
+		"snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+		"address": "ASDF123",
+		"reward_estimate": "5025.096986109648352369",
+		"velocity": "0.001617089323107406",
+		"week": "1",
+	    }
+	]
+    }
 }
 ```
 
@@ -123,12 +129,16 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-provider/ASDF123
 ```jsx
 {
     "success": true,
-    "current_timestamp": "2020-12-28T23:14:56.645Z",
-    "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-    "address": "ASDF123",
-    "reward_estimate": "5024.909403748167893273",
-    "velocity": "0.001617089323107406",
-    "week": "1",
+    "result": {
+	"current_timestamp": "2020-12-28T23:14:56.645Z",
+    	"liquidity-providers": [
+	    "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+	    "address": "ASDF123",
+	    "reward_estimate": "5024.909403748167893273",
+	    "velocity": "0.001617089323107406",
+	    "week": "1",
+	]
+    }
 }
 ```
 
@@ -167,23 +177,25 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-providers
 ```jsx
 {
     "success": true,
-    "current_timestamp": "2020-12-28T23:16:52.893Z",
-    "liquidity-providers": [
-        {
-            "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-            "address": "abcd12345",
-            "reward_estimate": "123.012609369747328786",
-            "velocity": "0.000000000123123123",
-            "week": "1",
-        },
-        {
-            "snapshot_timestamp": "2020-11-30T00:05:18.000Z",
-            "address": "ASDF123",
-            "reward_estimate": "5025.096986109648352369",
-            "velocity": "0.001617089323107406",
-            "week": "1",
-        }
-    ]
+    result: {
+    	"current_timestamp": "2020-12-28T23:16:52.893Z",
+	"liquidity-providers": [
+	    {
+		"snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+		"address": "abcd12345",
+		"reward_estimate": "123.012609369747328786",
+		"velocity": "0.000000000123123123",
+		"week": "1",
+	    },
+	    {
+		"snapshot_timestamp": "2020-11-30T00:05:18.000Z",
+		"address": "ASDF123",
+		"reward_estimate": "5025.096986109648352369",
+		"velocity": "0.001617089323107406",
+		"week": "1",
+	    }
+	]
+    }
 }
 ```
 
