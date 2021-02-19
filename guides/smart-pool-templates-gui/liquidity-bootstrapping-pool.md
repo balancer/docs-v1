@@ -25,6 +25,10 @@ Since pools are created with swapping enabled, you would have to pause trading i
 
 You would think this wouldn't be much of a problem, since they would be buying at the initial price \(which should be set higher than market\). The price generally stays fairly steady or decreases during the sale, so front-running \(or bots/arber activity in general\) should not generally be profitable.
 
+Another thing that can happen when there is strong demand and price volatility is transaction failures due to "slippage." In this era of high gas prices \(not to mention high ETH prices\), many traders try to lower the fees by entering lower values. This leads to longer confirmation times, and greater risk that the price will change in the time between initiating the transaction and the confirmation. If it changes too much, the transaction will be rejected - but you will still be charged some gas. This gets expensive fast - especially if it happens repeatedly.
+
+To combat this, the simplest strategy is to simply wait for things to calm down. Most sales last multiple days; there will inevitably be quieter periods - and as a bonus, the price might be lower later in the sale. If you really want your tokens right now, the Balancer exchange lets you choose the amount of slippage you will tolerate. Buyers can set this to a higher value \(e.g., 1-2%\), to increase the chances of success.
+
 Of course, you can design a perfect system - but you can never beat human nature. Many buyers still have "2017 PTSD," and think they have to buy immediately - not understanding that they would get a better price by waiting. We have observed an initial price spike on just about every LBP \(possibly just lots of retail volume on the initial announcement\) - and avoiding this is one reason to delay the start of the LBP. You then have time to educate your consumers to buy slowly and not get rekt.
 
 The bottom line is, there will very likely be an initial price spike, so "delayed" LBPs are vulnerable to this kind of front-running. If you want to do an LBP this way, while ensuring there won't be a price spike, you have several options:

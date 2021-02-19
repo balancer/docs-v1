@@ -6,7 +6,7 @@ All the interactions to add liquidity or to create Balancer pools on our UIs hap
 
 You'll be asked to setup a proxy when your address is interacting with our UI for the first time. For example, when you click on "Create Pool" on our [pool management interface](https://pools.balancer.exchange/#/):
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 After clicking on "Create Pool," you'll see the setup button:
 
