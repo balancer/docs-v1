@@ -38,6 +38,12 @@ The bottom line is, there will very likely be an initial price spike, so "delaye
 
 If you want to discourage the price spike for everyone \(not just front-runners\), you could set the initial swap fee to something fairly high \(e.g., 4-5%\), and announce you will be dropping it gradually over the first few hours. That way, people who \*really\* want your token can still buy it right away, but most should wait until the price and fees both go down. I don't believe anyone has tried this; it would be an interesting experiment.
 
+Another untried mechanism is "reverse price discovery." This is a variant of the "delayed" LBP, where you launch the pool but do not start the sale right away. But instead of pausing trading after deployment, you leave swapping enabled for a significant time before the sale.
+
+This means people can buy tokens "before" the sale - but because the weights are fixed until you call updateWeightsGradually, the price will go up steadily as people buy them. It is essentially a "Uniswap" pool before the sale starts. People will stop buying when the price goes above market, so this is another way to discover market value. Instead of starting high and letting the price drop until people start buying, you start at or even below your estimate, and let people bid the price \*up\* to market value.
+
+This method has the advantage of a lower capital requirement; the higher the initial price, the more capital you need for the sale. The disadvantage is mainly that people could take those tokens and create other pools \(on Balancer or elsewhere\), that could compete with the sale. \(Of course, people can do that anyway as soon as the sale starts.\)
+
 Since the core of the strategy is changing weights, you absolutely need to enable that right.
 
 The add/remove tokens right depends on your future intentions, since there are two ways to remove your liquidity at the conclusion of the sale. If this is a one-off auction, you can enable the right, and redeem through two "removeToken" calls. This is simple, but destroys the pool.
