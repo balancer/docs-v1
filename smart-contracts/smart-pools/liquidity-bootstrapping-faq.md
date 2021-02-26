@@ -133,7 +133,7 @@ You can \(though see above for special considerations when using non-standard to
 
 If you take this approach, there are a few things to keep in mind.
 
-* You will not be able to end the sale with removeToken, since you will not have anough BPT, and will need to "Remove Liquidity" to terminate the sale. \(Note that you cannot remove 100% from a smart pool, since there are minimum balance requirements, but you can remove 99.9%.\)
+* You will not be able to end the sale with removeToken, since you will not have anough BPT, and will need to "Remove Liquidity" to terminate the sale. Note that you cannot remove 100% from a smart pool, since there are minimum balance requirements, but you can remove very close to 100%, down to dust - whatever leaves all balances &gt; 10^-6. One safe technique is to remove 99.9% first, see what's left, and then remove 99.9% again \(if it's worth the gas\).
 * It is possible for "whales" to unbalance your pool by adding large amounts of "single-sided" liquidity, instantaneously changing the prices, possibly enough to induce arbitrage and impermanent loss. Large initial balances \(and swap fees\) mitigate this risk. Also, the protocol prevents adding more than half the current balance of any token in a single transaction.
 * Since Balancer is a permissionless protocol, anyone can create new pools. Perhaps you have a staking protocol, and encourage LPs to stake their BPTs for additional earnings. In this case, it's important to make your users aware there might be "counterfeit" pools, and clearly direct them to **your** pool, whose tokens your staking contract accepts.
 
