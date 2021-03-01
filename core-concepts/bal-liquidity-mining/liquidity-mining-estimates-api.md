@@ -34,14 +34,21 @@ https://api.balancer.finance/liquidity-mining/v1/pool/0x1eff8af5d577060ba4ac8a29
 {
   "success": true,
   "result": {
-    "current_timestamp": "2021-02-18T20:14:58.945Z",
+    "current_timestamp": "2021-03-01T21:05:49.590Z",
     "pools": [
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
         "address": "0x1eff8af5d577060ba4ac8a29a13525bb0ee2a3d5",
-        "current_estimate": "15641.269416764125622345",
-        "velocity": "0.047098212932782470",
-        "week": 38
+        "current_estimate": "24891.553499185869441135",
+        "velocity": "0",
+        "week": 39
+      },
+      {
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
+        "address": "0x1eff8af5d577060ba4ac8a29a13525bb0ee2a3d5",
+        "current_estimate": "2844.376110032700538769",
+        "velocity": "0.036697707708281742",
+        "week": 40
       }
     ]
   }
@@ -85,21 +92,35 @@ https://api.balancer.finance/liquidity-mining/v1/pools
 {
   "success": true,
   "result": {
-    "current_timestamp": "2021-02-18T20:16:19.616Z",
+    "current_timestamp": "2021-03-01T21:05:51.354Z",
     "pools": [
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
         "address": "0x49ff149d649769033d43783e7456f626862cd160",
-        "current_estimate": "491.552587731498458112",
-        "velocity": "0.001479777794362991",
-        "week": 38
+        "current_estimate": "940.916868590979561304",
+        "velocity": "0",
+        "week": 39
       },
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
         "address": "0x1eff8af5d577060ba4ac8a29a13525bb0ee2a3d5",
-        "current_estimate": "15645.084372011681002415",
-        "velocity": "0.047098212932782470",
-        "week": 38
+        "current_estimate": "24891.553499185869441135",
+        "velocity": "0",
+        "week": 39
+      },
+      {
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
+        "address": "0x49ff149d649769033d43783e7456f626862cd160",
+        "current_estimate": "117.508925428870877674",
+        "velocity": "0.001506078239721282",
+        "week": 40
+      },
+      {
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
+        "address": "0x1eff8af5d577060ba4ac8a29a13525bb0ee2a3d5",
+        "current_estimate": "2844.449505448117102253",
+        "velocity": "0.036697707708281742",
+        "week": 40
       }
     ]
   }
@@ -134,14 +155,21 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-provider/0xAfC2F2D803
 {
   "success": true,
   "result": {
-    "current_timestamp": "2021-02-18T20:16:21.439Z",
+    "current_timestamp": "2021-03-01T21:05:52.906Z",
     "liquidity-providers": [
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
         "address": "0xAfC2F2D803479A2AF3A72022D54cc0901a0ec0d6",
-        "current_estimate": "4648.386462398353610112",
-        "velocity": "0.013993535037820807",
-        "week": 38
+        "current_estimate": "412.683708232827449422",
+        "velocity": "0.005255637365620232",
+        "week": 40
+      },
+      {
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
+        "address": "0xAfC2F2D803479A2AF3A72022D54cc0901a0ec0d6",
+        "current_estimate": "2873.562341070192815096",
+        "velocity": "0",
+        "week": 39
       }
     ]
   }
@@ -185,21 +213,35 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-providers/
 {
   "success": true,
   "result": {
-    "current_timestamp": "2021-02-18T20:16:22.899Z",
+    "current_timestamp": "2021-03-01T21:05:54.532Z",
     "liquidity-providers": [
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
-        "address": "0x49a2DcC237a65Cc1F412ed47E0594602f6141936",
-        "current_estimate": "3472.144685499055635212",
-        "velocity": "0.010452505653507421",
-        "week": 38
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
+        "address": "0xAfC2F2D803479A2AF3A72022D54cc0901a0ec0d6",
+        "current_estimate": "412.694219507558689886",
+        "velocity": "0.005255637365620232",
+        "week": 40
       },
       {
-        "snapshot_timestamp": "2021-02-18T18:52:20.000Z",
+        "snapshot_timestamp": "2021-03-01T19:50:35.000Z",
+        "address": "0x49a2DcC237a65Cc1F412ed47E0594602f6141936",
+        "current_estimate": "764.231138137508674059",
+        "velocity": "0.010903977227043695",
+        "week": 40
+      },
+      {
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
         "address": "0xAfC2F2D803479A2AF3A72022D54cc0901a0ec0d6",
-        "current_estimate": "4648.414449468429251726",
-        "velocity": "0.013993535037820807",
-        "week": 38
+        "current_estimate": "2873.562341070192815096",
+        "velocity": "0",
+        "week": 39
+      },
+      {
+        "snapshot_timestamp": "2021-02-28T23:51:04.000Z",
+        "address": "0x49a2DcC237a65Cc1F412ed47E0594602f6141936",
+        "current_estimate": "6078.915337562162676477",
+        "velocity": "0",
+        "week": 39
       }
     ]
   }
