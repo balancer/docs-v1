@@ -4,7 +4,7 @@
 
 To make the token distribution as fair as possible, we distribute BAL tokens proportional to the amount of liquidity each address contributed, relative to the total liquidity on Balancer. Since there is liquidity in several different tokens, we use the USD value as the common measure.
 
-Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
+Head over to [claim.balancer.finance](https://claim.balancer.finance/) Tuesday evenings, New York City time, to claim your BAL from liquidity mining. You can review and vote on pending governance proposals at [vote.balancer.finance](https://vote.balancer.finance/#/balancer/pending) and discuss further in the forums at [forum.balancer.finance](https://forum.balancer.finance/) or in the #👑governance [Discord](https://discord.com/invite/ARJWaeF) channel.
 
 [This diagram](https://drive.google.com/file/d/1GOjIAzu0K31tD-J_aIa1gIHI3ezKBmYN/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
 
