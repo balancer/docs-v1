@@ -81,10 +81,10 @@ Thus the incentives of both participants are aligned. Liquidity providers earn t
 
 Only a few. Balancer Protocol limits pools in the following ways:
 
-* Number of tokens: pools must contain at least two, and may contain up to eight tokens.
+* Number of tokens: pools must contain at least two, and may contain up to eight tokens on V1 \(16 on V2 Weighted pools\).
 * Swap fee: the fee must be between 0.0001% and 10% 
-* ERC20 compliance: pool tokens must be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. Future releases may allow non-standard ERC20's.
-* There are a few additional ratio and balance constraints that can be found at [Limitations](../core-concepts/protocol/limitations.md)
+* ERC20 compliance: pool tokens must be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. V2 is a bit more flexible, but will not support some token types, such as tokens that change balances \(e.g., elastic supply tokens\).
+* There are a few additional ratio and balance constraints that can be found at [Limitations](../core-concepts/protocol/limitations.md).
 
 ### How are Balancer Pools continuously rebalanced?
 
@@ -100,11 +100,11 @@ For further technical details, please refer to our [white paper](https://balance
 
 ### How do Balancer Pools charge fees and how much are they?
 
-Balancer pools charge a percentage of the input amount traded for each trade. The fee goes entirely to the Balancer Pool liquidity providers.
+Balancer pools charge a percentage of the input amount traded for each trade. The fee goes entirely to the Balancer Pool liquidity providers. In V2, there is a small additional protocol fee, charged as a percentage of the pool's swap fee percentage \(which can be zero\).
 
 ### What types of Balancer pools are there?
 
-Core Balancer Pools can be controlled or finalized. Essentially, finalized pools are "public" - their parameters are fixed, and anyone can add/remove liquidity and swap tokens. Controlled pools are "private" - their parameters are not fixed, but only the pool creator can add liquidity. See more details in [Core Concepts](../smart-contracts/smart-pools/concepts.md).
+V1 Core Balancer Pools can be controlled or finalized. Essentially, finalized pools are "public" - their parameters are fixed, and anyone can add/remove liquidity and swap tokens. Controlled pools are "private" - their parameters are not fixed, but only the pool creator can add liquidity. See more details in [Core Concepts](../smart-contracts/smart-pools/concepts.md).
 
 There are also various kinds of Smart Pools - Core Balancer Pools controlled by a smart contract. Balancer is designed to be easily extensible; the Core Concepts page referenced above has some suggestions for Smart Pool designs.
 
@@ -112,9 +112,9 @@ Some Smart Pool concepts have already been implemented, and many more are in dev
 
 Since Balancer Pool tokens are also compliant ERC20 tokens, they can also be composed into "meta" pools, which also exist \(e.g., [BTC++/USD++](https://pools.balancer.exchange/#/pool/0x7d2f4bcb767eb190aed0f10713fe4d9c07079ee8/)\).
 
-Balancer Labs will soon release a home-grown Smart Pool called the Configurable Rights Pool. Since Smart Pool creators can \(by definition\) alter the parameters of a "live" Balancer Pool, they are less trustless than Core Balancer Pools. To mitigate this, CRP creators can choose exactly which parameters can be changed, at create time. As the name implies, this is done by granting the Smart Pool contract one or more "Rights" - the right to change one of the parameters. \(A CRP with no rights would be equivalent to a Core Balancer Pool.\)
+The home-grown "Configurable Rights" Smart Pool is less trustless than a Core Balancer Pool, since Smart Pool creators can \(by definition\) alter the parameters of a "live" Balancer Pool that allows public LPs. To mitigate this, CRP creators can choose exactly which parameters can be changed, at create time. As the name implies, this is done by granting the Smart Pool contract one or more "Rights" - the right to change one of the parameters. \(A CRP with no rights would be equivalent to a Core Balancer Pool.\)
 
-[Ampleforth](https://www.ampleforth.org/) is another example of a smart contract system in development. There is also plenty of innovation in the design of tokens. AMPL is an "Elastic Supply" token - instead of a fixed supply, like Bitcoin, and a volatile price -- AMPL is a kind of stable coin where the peg is maintained by adjusting the supply based on demand. These tokenomics can then interact with Balancer Pool settings in creative ways.
+[Ampleforth](https://www.ampleforth.org/) is another example of a smart contract system. There is also plenty of innovation in the design of tokens. AMPL is an "Elastic Supply" token - instead of a fixed supply, like Bitcoin, and a volatile price -- AMPL is a kind of stable coin where the peg is maintained by adjusting the supply based on demand. These tokenomics can then interact with Balancer Pool settings in creative ways. This will not be supported on V2.
 
 ## Using Balancer Protocol
 
