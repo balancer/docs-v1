@@ -31,13 +31,23 @@ Of course, Balancer has no control over the contracts of ERC20 tokens placed in 
 
 ### What is the development roadmap?
 
-We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) went live on February 26, 2020. Silver is currently in a design phase and will likely be released in late 2020.
+We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) of V1 Balancer went live on February 26, 2020.
 
-Bronze, Silver, and eventually Gold releases refer to the "base" Balancer Pool contract - which actually holds the assets.
+The next step is V2 - set to launch in Q1 2021. It will be a quantum leap forward! We've vastly simplified the interfaces, rewritten the UI from scratch, improved gas efficiency and performance, and added significant new functionality.
+
+Balancer V2 is an open, flexible, generalized AMM launch platform, achieved primarily through decoupling token storage and accounting from pool price computation logic. This allows projects to create new kinds of pools optimized for particular tokens or use cases, without changing the core protocol.
+
+V2 also supports Asset Managers - contracts that can remove tokens from the vault for yield farming, staking, voting, etc. - and flash loans.
+
+At launch, we will have two kinds of pools - Weighted pools similar to V1 \(but with up to 16 tokens, vs 8 tokens on V1\), and Stable pools, which have price logic designed for stablecoins or other pegged assets.
+
+See [this article](https://medium.com/balancer-protocol/balancer-v2-generalizing-amms-16343c4563ff) for further details.
 
 ### Does Balancer Protocol charge any fees at the protocol layer?
 
-No. There is a placeholder for an`EXIT_FEE` in the code, but it is currently set to zero - and for technical reasons, this is very unlikely to change. \(In fact, because it is zero, tokens that do not allow zero-value transfers cannot be held in Balancer pools.\)
+No. There is a placeholder for an`EXIT_FEE` in the code, but it is currently set to zero on V1. \(In fact, because it is zero, tokens that do not allow zero-value transfers cannot be held in Balancer pools.\)
+
+V2 Balancer will have three kinds of protocol fees: a swap fee \(charged as a percentage of the pool swap fee, which can be zero\), a withdrawal fee \(charged only when removing tokens from the protocol entirely, not internal trades\), and a flash loan fee.
 
 ### Is there a Balancer Protocol token?
 
