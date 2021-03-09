@@ -51,7 +51,8 @@
 
 * [Interact via Etherscan](guides/withdrawing-liquidity-via-etherscan.md)
 * [Using the SOR](guides/making-a-trade.md)
-* [Creating a Shared Balancer Pool](guides/creating-a-balancer-pool.md)
+* [Creating a Shared Pool](guides/creating-a-balancer-pool.md)
+* [Creating a Smart Pool](guides/creating-a-smart-pool.md)
 * [CRP Tutorial](guides/crp-tutorial/README.md)
   * [Liquidity Bootstrapping Example](guides/crp-tutorial/liquidity-bootstrapping.md)
 * [Smart Pool Use Cases](guides/smart-pool-templates-gui/README.md)

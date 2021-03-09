@@ -1,14 +1,10 @@
-# Creating a Shared Pool
+# Creating a Smart Pool
 
 ## Setting up a proxy
 
 All the interactions to add liquidity or to create Balancer pools on our UIs happen through a proxy. This way our UI can simplify the UX by avoiding token approvals on every new pool the user interacts with.
 
 You'll be asked to setup a proxy when your address is interacting with our UI for the first time. For example, when you click on "Create a Pool" on our [pool management interface](https://pools.balancer.exchange/#/):
-
-![](../.gitbook/assets/createapool.png)
-
-Select "Shared" to create a shared pool. After clicking on "Create a Pool," you'll see the "Setup Proxy" button at the bottom, if it's the first time:
 
 ![](../.gitbook/assets/createproxy.png)
 
@@ -20,12 +16,32 @@ There is only one "action" button. If you have already set up a proxy with this 
 
 Once all tokens have been approved, the button will say "Create," and pressing it will create the transaction to deploy and fund the pool.
 
-### Shared Pool Creation
+### Smart Pool Creation
 
-* **shared pools** are open to anyone to join by adding liquidity and getting BPTs \(Balancer Pool Tokens\) in return, but all the pool parameters are immutable
-* **private pools** only allow the owner to add liquidity to the pool, but all its parameters are flexible. So the owner of the private pool can change the swap fees, pause trades, add/remove tokens, change token weights, etc.
+Smart pools are intermediate between **private** and **shared** pools \(described in [Creating a Shared Pool\)](creating-a-balancer-pool.md). Unless restricted by policy \(more on that later\), smart pools allow public LPs, yet their parameters are not fixed. They can be changed by the controller \(usually the account that deployed the pool\) - but only in certain ways that are configured on deployment and thereafter immutable.
 
-A Balancer pool allows up to 8 tokens and the weights have to be between 2% and 98%. The swap fee can be between 0.0001% and 10%.
+These are called "Rights" \(hence the name "Configurable Rights Pool"\), and reserving a right allows the controller to alter the corresponding parameter.
+
+Select the "Smart" toggle to create a smart pool. Unlike with shared pools, you can set a custom token symbol and name; this will be the BPT \(pool token\), representing shares in the pool. Each pool **is** a token contract. You can also specifiy the initial supply of the token, which is arbitrary \(within the protocol limits of 100 - 1 billion\).
+
+![](../.gitbook/assets/smartcreate-1.png)
+
+Creating a smart pool requires setting the "rights" the pool will have \(and associated parameters\), according to the [purpose of the pool](smart-pool-templates-gui/).
+
+![](../.gitbook/assets/smartcreate-2.png)
+
+* Can pause swapping - the controller can halt trading. This was originally a "panic button," but is more commonly used to delay the start of a liquidity bootstrapping pool - or to prevent arbitrage trades while adjusting weights. All pools start "unpaused" when deployed.
+* Can change swap fee - the controller can alter the swap fee after deployment, still subject to the protocol limits \(0.0001% to 10%\)
+* Can change weights - the controller can either change weights arbitrarily \(which transfers tokens to keep the prices constant\), or set a schedule for the weights to change linearly over time - the heart of the [Liquidity Bootstrapping Pool](../smart-contracts/smart-pools/liquidity-bootstrapping-faq.md). Another important parameter is the minimum duration. The controller cannot initiate a gradual weight change that happens faster than this duration. \(Faster weight change = more trust required.\)
+* Can add/remove tokens - the controller can add a new token through a two-stage process that involves a timelock. The minimum "add token timelock" period is also specified on deployment. This is a "dangerous" right, since the controller could add a worthless token and drain the pool. \(Public LPs have the timelock period to withdraw if the controller is malicious.\)
+
+  
+  The controller can also remove an existing token from the pool, which transfers the entire balance of that token to the controller. Note that the controller must burn BPTs \(pool tokens\) to do this, so if public LPs are allowed, the controller might not have enough BPT to actually do this. It is most commonly used to terminate LBPs.
+
+* Must whitelist LPs - no one can add liquidity to the pool after creation, unless their address is added to  whitelist. This is most commonly used for LBPs and Smart Treasuries.
+* Can change cap - this limits the total supply of pool tokens. It is set to the initial supply upon deployment, so no one can add liquidity unless the controller raises the cap. The controller can set the cap to "unlimited," which makes it behave like a shared pool, or 0 \(preventing new LPs altogether\), or any intermediate value.
+
+Setting up the pool tokens proceeds exactly as with shared pools.
 
 You can enter any numbers you like in the weights field, though it's easiest to simply type the percentages directly. The input values will be converted to percentages, and then denormalized to pass to the contract factory. For instance, 90/10 would be denormalized to 45e18/5e18 \(i.e., 90% of the max total weight of 50, in wei, is 45e18\).
 
@@ -47,13 +63,7 @@ When you actually create the pool, the system will display the internal prices t
 
 If the token you want to add is not listed on the token picker panel, you can add any custom token by pasting its address in the search field.
 
-![Select a token by address](../.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/image%20%282%29.png)
 
 **IMPORTANT**: make sure that the custom token you are adding complies with the ERC20 standard. For example it has to allow 0 value transfers and the transfer function must return a boolean. You can check if the token you are adding is on any of these two lists that gather many tokens that are not ERC20-compliant:
-
-{% embed url="https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca" caption="" %}
-
-{% embed url="https://github.com/sec-bit/awesome-buggy-erc20-tokens" caption="" %}
-
-These lists though are **NOT** exhaustive, so make sure you check your token is compatible before creating a pool with it to avoid losing your tokens forever.
 
