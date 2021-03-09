@@ -1,8 +1,10 @@
 # Liquidity Bootstrapping Pool
 
-Here again is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the worst of the legal and regulatory issues. \(The latest term seems to be IDO - Initial DEX Offering.\)
+Here is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the worst of the legal and regulatory issues. \(The latest term seems to be IDO - Initial DEX Offering.\)
 
-The idea is to launch a token with low capital requirements, by setting up a two-token pool with a project and a collateral token. The weights are initially set heavily in favor of the project token, then gradually "flip" to favor the collateral coin by the end of the sale. The sale can be calibrated to keep the price more or less steady \(maximizing revenue\), or declining to a desired minimum \(e.g., the initial offering price\).
+Liquidity Bootstrapping Pools \(LBPs\) are [Smart Pools](../../smart-contracts/smart-pools/) \(aka Configurable Rights Pools\). A smart pool is a contract that controls a Balancer core pool, which contains the tokens and is used on the exchange. Unlike an immutable shared pool, smart pool controllers can change the parameters of the pool - but only in controlled ways. It is therefore less trustless than a shared pool, but does not require the complete trust of a private pool.
+
+The idea of an LBP is to launch a token with low capital requirements, by setting up a two-token pool with a project and a collateral token. \(It's also possible to have multiple reserve tokens.\) The weights are initially set heavily in favor of the project token, then gradually "flip" to favor the collateral coin by the end of the sale. The sale can be calibrated to keep the price more or less steady \(maximizing revenue\), or declining to a desired minimum \(e.g., the initial offering price\).
 
 Legend**: required;** ~~not required;~~ _optional_
 
