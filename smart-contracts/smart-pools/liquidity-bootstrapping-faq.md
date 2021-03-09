@@ -4,9 +4,16 @@
 
 Decide on critical parameters, such as sale duration, starting and ending weights, and estimate the demand \(i.e., expected sale rate\), using the [LBP simulator](https://docs.google.com/spreadsheets/d/1t6VsMJF8lh4xuH_rfPNdT5DM3nY4orF9KFOj2HdMmuY/edit?usp=sharing) to adjust the settings until you are happy with the resulting price curve. \(Best practice is to copy/download it, then customize to your own use case.\)
 
-Post on [\#token-requests](https://discord.gg/ARJWaeF) to request eligibility for governance token rewards. \(At least a week’s advance notice is recommended, and BAL rewards require an active CoinGecko price feed.\)
+Post on [\#token-requests](https://discord.gg/ARJWaeF) to request eligibility for governance token rewards. \(At least a week’s advance notice is recommended, and BAL rewards require an active CoinGecko price feed, or at least "preview" mode.\) You can submit your pool metadata on [this form](https://docs.google.com/forms/d/18uAtnWJk7eVXl1VTnKAX5NmMJUST9pvvF43E3YtjT4E/) \(e.g., token symbol and name, icons for the token and pool, descriptive text, a url for the sale page, etc.\)
 
-If your pool is eligible for weekly BAL rewards, they will be distributed to your LPs automatically. However, to receive BAL rewards yourself, you must redirect them from the smart pool contract to a wallet that can receive them - otherwise they will be locked in the contract and lost. This is done through a pull request to update [this file](https://github.com/balancer-labs/bal-mining-scripts/blob/master/redirect.json) in the mining repository. 
+If your pool is eligible for weekly BAL rewards, they will be distributed to your LPs automatically. See the [Liquidity Mining ](../../core-concepts/bal-liquidity-mining/)page for staking and other special cases. If you contribute significant long-term liquidity to the platform, you can apply to have smart contract deployment gas costs reimbursed from the Balancer Ecosystem fund [here](https://docs.google.com/forms/d/e/1FAIpQLSeLAowndhx7n_ANMME16ZyPkvZgeJx0gcmP8loxoF0ZNMW6BQ/viewform).
+
+Here's the general process to deploy a Liquidity Bootstrapping Smart Pool, conduct the token sale, and recover the proceeds:
+
+* When you've decided on parameters as described above, [create the smart pool](../../guides/creating-a-smart-pool.md).
+* Call updateWeightsGradually to start the sale. \(Note that unless you pause the pool, it will be visible to the exchange and available for trading immediately, though the weights are fixed until you start the update.\)
+* \(Optionally\) call pokeWeights periodically to cause the weights to change on schedule. This is a public function that anyone can call - including from the public Pool Management interface. You can advertise this, and encourage buyers to poke for you \(it can be fairly expensive\). Large buyers would do well to pokeWeights before buying.
+* At the end of the sale, Remove Liquidity to recover the proceeds; i.e., the reserve balance, plus any unsold tokens. If you reserved the add/remove tokens right \(and disallowed public LPs\), you can simply call removeToken. Otherwise, you can remove liquidity directly - though you need to leave at least some dust behind, since there is a minimum balance of each token.
 
 ### How long should an LBP last?
 
