@@ -6,7 +6,7 @@ Decide on critical parameters, such as sale duration, starting and ending weight
 
 Post on [\#token-requests](https://discord.gg/ARJWaeF) to request eligibility for governance token rewards. \(At least a week’s advance notice is recommended, and BAL rewards require an active CoinGecko price feed, or at least "preview" mode.\) You can submit your pool metadata on [this form](https://docs.google.com/forms/d/18uAtnWJk7eVXl1VTnKAX5NmMJUST9pvvF43E3YtjT4E/) \(e.g., token symbol and name, icons for the token and pool, descriptive text, a url for the sale page, etc.\)
 
-If your pool is eligible for weekly BAL rewards, they will be distributed to your LPs automatically. See the [Liquidity Mining ](../../core-concepts/bal-liquidity-mining/)page for staking and other special cases. If you contribute significant long-term liquidity to the platform, you can apply to have smart contract deployment gas costs reimbursed from the Balancer Ecosystem fund [here](https://docs.google.com/forms/d/e/1FAIpQLSeLAowndhx7n_ANMME16ZyPkvZgeJx0gcmP8loxoF0ZNMW6BQ/viewform).
+If your pool is eligible for weekly BAL rewards, they will be distributed to your LPs automatically. See the [Liquidity Mining ](../../core-concepts/bal-mining/bal-liquidity-mining/)page for staking and other special cases. If you contribute significant long-term liquidity to the platform, you can apply to have smart contract deployment gas costs reimbursed from the Balancer Ecosystem fund [here](https://docs.google.com/forms/d/e/1FAIpQLSeLAowndhx7n_ANMME16ZyPkvZgeJx0gcmP8loxoF0ZNMW6BQ/viewform).
 
 Here's the general process to deploy a Liquidity Bootstrapping Smart Pool, conduct the token sale, and recover the proceeds:
 
@@ -101,7 +101,7 @@ If you are launching an LBP and want to make sure that your token is listed on t
 
 ### How do I get my token whitelisted for BAL mining earnings?
 
-[This page](../../core-concepts/bal-liquidity-mining/exchange-and-reward-listing.md) describes the process.
+[This page](../../core-concepts/bal-mining/bal-liquidity-mining/exchange-and-reward-listing.md) describes the process.
 
 ### After providing the initial seed capital needed to launch an LBP, do I need to deposit additional capital later?
 
@@ -122,7 +122,7 @@ We've tried to make it as clear and straightforward as possible - but there are 
 
 For instance, a balance of "10" in wei would be "10000000000000000000" for DAI \(with 18 decimals\), but "10000000" for USDC \(with 6 decimals\).
 
-One final note - if you deploy a CRP through a script, we recommend using the standard `CRPFactory` \(addresses [here](../addresses.md)\). If you deploy it "directly", it will still work, but will not be recognized by the BAL mining scripts, and you will need to do a [redirect](../../core-concepts/bal-liquidity-mining/).
+One final note - if you deploy a CRP through a script, we recommend using the standard `CRPFactory` \(addresses [here](../addresses.md)\). If you deploy it "directly", it will still work, but will not be recognized by the BAL mining scripts, and you will need to do a [redirect](../../core-concepts/bal-mining/bal-liquidity-mining/).
 
 ### Can I use a "Pausable" token in the LBP?
 

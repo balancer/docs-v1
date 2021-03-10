@@ -82,7 +82,7 @@ await crpPool.createPool(toWei('100'));
 Now we're in business! The pool will already be set up for public swapping, and depending on the permissions settings, possibly public liquidity provision as well. The Core Pool will show up on the Exchange GUI.
 
 {% hint style="info" %}
-Refer to [Exchange and Reward Listing](../../core-concepts/bal-liquidity-mining/exchange-and-reward-listing.md) for instructions on adding any new tokens you might be introducing to the Exchange GUI, and making them eligible for BAL governance tokens. Earnings are distributed weekly, and are not applied retroactively, so you'll need to have the token approved by 00:00 UTC the Monday **before** you launch your pool.
+Refer to [Exchange and Reward Listing](../../core-concepts/bal-mining/bal-liquidity-mining/exchange-and-reward-listing.md) for instructions on adding any new tokens you might be introducing to the Exchange GUI, and making them eligible for BAL governance tokens. Earnings are distributed weekly, and are not applied retroactively, so you'll need to have the token approved by 00:00 UTC the Monday **before** you launch your pool.
 {% endhint %}
 
 {% hint style="danger" %}
