@@ -1,2 +1,0 @@
-# BAL Mining
-

@@ -6,7 +6,7 @@ To make the token distribution as fair as possible, we distribute BAL tokens pro
 
 Head over to [claim.balancer.finance](https://claim.balancer.finance/) Tuesday evenings, New York City time, to claim your BAL from liquidity mining. You can review and vote on pending governance proposals at [vote.balancer.finance](https://vote.balancer.finance/#/balancer/pending) and discuss further in the forums at [forum.balancer.finance](https://forum.balancer.finance/) or in the \#👑governance [Discord](https://discord.com/invite/ARJWaeF) channel.
 
-[This diagram](https://drive.google.com/file/d/1GOjIAzu0K31tD-J_aIa1gIHI3ezKBmYN/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
+[This diagram](https://drive.google.com/file/d/1GOjIAzu0K31tD-J_aIa1gIHI3ezKBmYN/view?usp=sharing) details the different types of pool configurations that are possible, and which interventions are necessary to ensure correct BAL attribution. The [CRP Tutorial](../../guides/crp-tutorial/) describes the mechanics of redirection and redistribution, but in a nutshell:
 
 * For private pools, BAL accrue to the pool controller
 * For shared pools, BAL accrue to the LPs \(pool token holders\)
@@ -21,11 +21,11 @@ In practice, every week Balancer Labs has to:
 * For each snapshot block, and for each Balancer pool, get the USD price of the tokens in the pool from [CoinGecko](https://www.coingecko.com/api/documentations/v3#/contract/get_coins__id__contract__contract_address__market_chart_), and calculate the total USD liquidity.
 * Since liquidity in pools that have lower trading fees contribute more to protocol usage than liquidity in pools with higher fees, we multiply the USD pool liquidity by a feeFactor that down-weights pools according to their fee percentage:
 
-![](../../../.gitbook/assets/fee_factor_calc.png)
+![](../../.gitbook/assets/fee_factor_calc.png)
 
 The constant, `k`, was initially set to 0.5, but beginning in week 8 \(July 20th 00:00 UTC\), the community approved a [proposal to to change `k` to 0.25](https://forum.balancer.finance/t/modifying-feefactor-toward-reducing-the-mining-penalty-for-high-fee-pools/103) in order to ease the penalty for higher-fee pools. This creates the following bell-shaped curve for feeFactor, which means, for example, that a pool with a 0.5% fee has a feeFactor of ~0.98, a pool with a 1% fee has a feeFactor of ~0.94, and a pool with a 2% fee has a feeFactor of ~0.78:
 
-![](../../../.gitbook/assets/fee_factor_plot.png)
+![](../../.gitbook/assets/fee_factor_plot.png)
 
 * **UPDATED for week 2** \(starting June 8th 00:00 UTC\), multiply the pool liquidity by a `ratioFactor`. Since pools that are imbalanced contribute less to trading volume \(because the slippage is higher\), the community approved a [proposal to add a ratioFactor](https://forum.balancer.finance/t/introduction-of-a-weight-ratio-factor-in-liquidity-mining/15). This way highly imbalanced pools \(such as those with 98%/2% weights\) have a much lower weight in the final BAL distribution.
 * **UPDATED for week 3** \(starting June 15th 00:00 UTC\), multiply the pool liquidity by a `wrapFactor`. Since pools containing pairs of tokens that have a hard peg \(e.g. DAI and cDAI\) do not contribute much trading volume \(because traders can wrap DAI for cDAI and vice-versa\), the community approved a [proposal to add a wrapFactor](https://forum.balancer.finance/t/wrapfactor-penalizing-pairs-of-equivalent-tokens-in-liquidity-mining/28/3). This way, liquidity in such pairs \(like cETH/ WETH\) has a 0.1 wrapFactor \(i.e. counts 10 times less than for other regular pairs\), reducing the amount of BAL received by their liquidity providers. In week 8 \(starting July 20th 00:00 UTC\), the community approved a [proposal to add a wrapFactor for soft pegged pairs](https://forum.balancer.finance/t/modifying-wrapfactor-applying-a-0-7-factor-to-soft-pegged-pairs/108) \(initially set at 0.7, [later reduced to 0.2\)](https://snapshot.page/#/balancer/proposal/QmUadcUgd3jAhJbofgrnKNMfeuGFvMmybhCkttW4gGfYYJ).A soft pegged pair is one in which the two assets are not directly convertible, but they do track the same underlying asset's price by design. Examples include a pair of USD stable coins \(e.g. DAI and USDC\) or a synthetic paired with its real-world asset \(e.g. sETH and WETH\).
@@ -56,6 +56,6 @@ All the calculations described above depend exclusively on on-chain data and his
 Only Balancer pools containing two or more whitelisted tokens will be eligible for BAL liquidity mining.
 
 {% hint style="danger" %}
-Note that if you've created a [Smart Pool](../../../smart-contracts/smart-pools/configurable-rights-pool.md) eligible for BAL rewards - without going through our standard factory - you must apply to either redirect them to a regular account \(e.g., for a single-LP, private pool\), or redistribute the rewards directly to LPs. \(See the [CRP Tutorial](../../../guides/crp-tutorial/) for more details.\)
+Note that if you've created a [Smart Pool](../../smart-contracts/smart-pools/configurable-rights-pool.md) eligible for BAL rewards - without going through our standard factory - you must apply to either redirect them to a regular account \(e.g., for a single-LP, private pool\), or redistribute the rewards directly to LPs. \(See the [CRP Tutorial](../../guides/crp-tutorial/) for more details.\)
 {% endhint %}
 
