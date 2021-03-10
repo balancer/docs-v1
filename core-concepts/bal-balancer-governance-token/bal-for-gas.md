@@ -1,21 +1,21 @@
 # BAL for Gas
 
-Following a 6 weeks pilot, on March 7th 2021 the Balancer community approved a campaign to increase BAL distribution. To ensure lasting robustness of the governance process, both liquidity providers and traders should have a say in how the protocol evolves.
+Following a 6 week pilot, on March 7th 2021 the Balancer community approved a campaign to increase BAL distribution. To ensure lasting robustness of the governance process, both liquidity providers and traders should have a say in how the protocol evolves.
 
-While liquidity providers receive BAL as a function of the amount of liquidity provided in the system, traders earn BAL for swapping tokens on the Balancer Exchange dapp. 
+While liquidity providers receive BAL as a function of the amount of liquidity provided in the system, traders earn BAL for swapping tokens on the Balancer Exchange dApp. 
 
 Every eligible trade made through the Balancer Exchange Proxy results in some BAL being allocated to the address \(EOAs only\) that sent the transaction. An eligible trade is a trade containing one or more eligible swaps, where an eligible swap is one between any two tokens on the [whitelist](https://github.com/balancer-labs/assets/blob/master/lists/eligible.json). Claims are made available at the [BAL claims interface](https://claim.balancer.finance/) on Wednesday \(UTC time\) following the end \(00:00 UTC Monday\) of the weekly period in which the trade occurred.
 
-The amount of BAL awarded to a trade is a function of the number of eligible swaps in the trade \(N\), which determines a number of gas units \(G\); the median gas price of the block the transaction was included in \(M\); and the BAL/ETH price provided by the CoinGecko closest to the block time \(P\).
+The amount of BAL awarded to a trade is a function of the number of eligible swaps in the trade \(N\), which determines a number of gas units \(G\), the median gas price of the block the transaction was included in \(M\), and the BAL/ETH price provided by the CoinGecko closest to the block time \(P\).
 
 * 1 swap: `G=130000` gas units
 * 2 swaps: `G=220000` gas units
 * 3 swaps: `G=300000` gas units
 * 4+ swaps: `G=400000` gas units
 
-The amount of BAL `B`to be received by the user for a trade is computed as `G*M/P` 
+The amount of BAL to be received by the user for a trade is computed as `G*M/P` 
 
-Because this program only partially covers gas costs \(with very specific caps to prevent attempts at gaming the system\) and doesn’t cover trading fees, it does not incentivize wash trading or trading any more than a user was initially planning on doing. Estimates are provided on the UI, but actual values are computed off-chain weekly using an open source script so that any suspicious activity can be filtered out.
+Because this program only partially covers gas costs \(with very specific caps to prevent attempts at gaming the system\), and doesn’t cover trading fees, it does not incentivize wash trading or trading any more than a user was initially planning. Estimates are provided on the UI, but actual values are computed off-chain weekly using an open source script, so that any suspicious activity can be filtered out.
 
 30,000 BAL from the Ecosystem Fund have been allocated to the “BAL for Gas’’ campaign, starting on March 8th 2021. There is no fixed time period; the budget is consumed on a first-come, first-served basis. When the budget is exhausted, the campaign is suspended until it is replenished by BAL governance.
 
