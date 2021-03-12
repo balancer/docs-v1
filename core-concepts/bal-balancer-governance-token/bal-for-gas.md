@@ -21,7 +21,7 @@ Because this program only partially covers gas costs \(with very specific caps t
 
 ### Notes
 
-1. Transactions with a gas price of 1 Gwei or less are not considered for the purposes of determining the median gas price of the block
+1. Transactions sent by the miner of the block or having a gas price of 10 Gwei or less are not considered for the purposes of determining the median gas price of the block
 
 ### References
 
