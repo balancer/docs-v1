@@ -6,7 +6,7 @@ While liquidity providers receive BAL as a function of the amount of liquidity p
 
 Every eligible trade made through the Balancer Exchange Proxy results in some BAL being allocated to the address \(EOAs only\) that sent the transaction. An eligible trade is a trade containing one or more eligible swaps, where an eligible swap is one between any two tokens on the [whitelist](https://github.com/balancer-labs/assets/blob/master/lists/eligible.json). Claims are made available at the [BAL claims interface](https://claim.balancer.finance/) on Wednesday \(UTC time\) following the end \(00:00 UTC Monday\) of the weekly period in which the trade occurred.
 
-The amount of BAL awarded to a trade is a function of the number of eligible swaps in the trade \(N\), which determines a number of gas units \(G\), the median gas price¹ of the block the transaction was included in \(M\), and the BAL/ETH price provided by the CoinGecko closest to the block time \(P\).
+The amount of BAL awarded to a trade is a function of the number of eligible swaps in the trade \(N\), which determines a number of gas units \(G\), the median gas price \[1\] of the block the transaction was included in \(M\), and the BAL/ETH price provided by the CoinGecko closest to the block time \(P\).
 
 * 1 swap: `G=130000` gas units
 * 2 swaps: `G=220000` gas units
@@ -15,13 +15,13 @@ The amount of BAL awarded to a trade is a function of the number of eligible swa
 
 The amount of BAL to be received by the user for a trade is computed as `G*M/P` 
 
-Because this program only partially covers gas costs \(with very specific caps to prevent attempts at gaming the system\), and doesn’t cover trading fees, it does not incentivize wash trading or trading any more than a user was initially planning. Estimates are provided on the UI, but actual values are computed off-chain weekly using an open source script, so that any suspicious activity can be filtered out.
+Because this program only partially covers gas costs \(with very specific caps to prevent attempts at gaming the system\), and doesn’t cover trading fees, it does not incentivize wash trading or trading any more than a user was initially planning. Estimates are provided on the UI, but actual values are computed off-chain weekly using an [open source script](https://github.com/balancer-labs/bal-mining-scripts/), so that any suspicious activity can be filtered out.
 
 30,000 BAL from the Ecosystem Fund have been allocated to the “BAL for Gas’’ campaign, starting on March 8th 2021. There is no fixed time period; the budget is consumed on a first-come, first-served basis. When the budget is exhausted, the campaign is suspended until it is replenished by BAL governance.
 
 ### Notes
 
-1. Transactions sent by the miner of the block or having a gas price of 10 Gwei or less are not considered for the purposes of determining the median gas price of the block
+\[1\] Transactions sent by the miner of the block or having a gas price of 10 Gwei or less are not considered for the purposes of determining the median gas price of the block
 
 ### References
 
