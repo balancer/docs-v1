@@ -89,6 +89,10 @@ Use the `updateWeightsGradually` function to put the contract into a state where
 
 You can also call `updateWeight` \(as long as a gradual update is not running\) to set weights arbitrarily - but this will not affect the price. It will transfer tokens as required such that the new balances and weights maintain current prices.
 
+The GUI handles this for you, but in case you're **not** going through the GUI, and setting weights manually or programmatically, take care to use the same total denorm weights at the starting and ending points. For instance, to go from 96%/4% to 30%/70%, the start weights would be 24/1, and the end weights would be 7.5/17.5 - notice that both total to 25. The contract always interpolates linearly between the start and end weights - but the resulting price curve will only be linear if the weight totals match.
+
+For instance, if you started at 24/1, and ended at 15/35, the percentages work out the same - but the weight curve would be shallower \(i.e., go down slower\).
+
 ### What are the reserve assets I can sell my token for?
 
 You can sell your token for any ERC-20 tokens. You can choose up to 7 other tokens to be used as reserve assets in your LBP token sale. Projects typically sell their tokens for highly liquid stablecoins such as DAI or USDC; and/or for WETH.
