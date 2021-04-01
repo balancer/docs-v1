@@ -21,8 +21,9 @@ Where:
 * MaxPools is the max number of pools to split the trade across. Limit to a reasonable number given gas costs.
 * ChainId is the network chain ID \(i.e. 1=mainnet, 42=Kovan\)
 * PoolsUrl is a URL used to retrieve a JSON list of Balancer Pools to be considered. Balancer labs currently keeps an updated list at:
-  * Mainnet: [https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools](https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools)​
-  * Kovan: [https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools](https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools)
+  * Mainnet: [https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools](https://ipfs.fleek.co/ipns/balancer-bucket.storage.fleek.co/balancer-exchange/pools)​
+  * Kovan: [https://ipfs.fleek.co/ipns/balancer-bucket.storage.fleek.co/balancer-exchange-kovan/pools](https://ipfs.fleek.co/ipns/balancer-bucket.storage.fleek.co/balancer-exchange-kovan/pools)
+  * Due to lots of IPNS caching issues the static storage can be used instead: [https://storageapi.fleek.co/balancer-bucket/balancer-exchange/pools](https://storageapi.fleek.co/balancer-bucket/balancer-exchange/pools)
 
 ## Fetching Pool Data
 
