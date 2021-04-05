@@ -262,7 +262,7 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-providers/
 
 ## Client side updates
 
-Clients can update the real time estimate by increasing the `current_estimate` retrieved from the API by `velocity` every second. The underlying data served by the API is updated hourly, but it takes about 40 minutes to run the script, so clients should not expect any changes before at least 100 minutes have passed since `snapshot_timestamp`.
+Clients can update the real time estimate by increasing the `current_estimate` retrieved from the API by `velocity` every second. The underlying data served by the API is updated every other hour, but it takes about 40 minutes to run the script, so clients should not expect any changes before at least 160 minutes have passed since `snapshot_timestamp`.
 
 ## Notes
 
