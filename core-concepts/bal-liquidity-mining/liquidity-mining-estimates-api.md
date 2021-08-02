@@ -6,27 +6,25 @@ This API provides an estimate amount of tokens earned by a liquidity provider at
 
 ## Retrieving Liquidity Provider Data
 
-### Single Liquidity Provider
-
-#### HTTP Request
+### HTTP Request
 
 ```jsx
 GET https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/:address
 ```
 
-#### URL Parameters
+### URL Parameters
 
 | Param | Description | Required |
 | :--- | :--- | :--- |
 | address | The address of the liquidity provider | TRUE |
 
-#### Example Request
+### Example Request
 
 ```jsx
 https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/0xa9F8E7337eBb7982f9f5497BC5Ae98e69e1a39A7
 ```
 
-#### Example Response
+### Example Response
 
 ```jsx
 {
@@ -108,8 +106,10 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/0
       }
     ]
   }
-}Response Definitions
+}
 ```
+
+### Response Definitions
 
 | Parameter | Definition |
 | :--- | :--- |
