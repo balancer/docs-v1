@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/README)
+
 # Hackathons
 
 This section provides resources and info for everyone who is hacking and building on Balancer - the potentail is huge and we're excited to see what you create!

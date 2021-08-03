@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/smart-treasury)
+
 # Smart Treasury
 
 This is an emerging use case, based in large part on [this article](https://www.placeholder.vc/blog/2020/9/17/stop-burning-tokens-buyback-and-make-instead) by Placeholder \(see image below, from that article, and the related [simulator](https://drive.google.com/file/d/1xTyQAQgTyl6Ajkl7AYzA6yB_X2H-5RVn/view).\)
