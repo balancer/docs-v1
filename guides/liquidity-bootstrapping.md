@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/liquidity-bootstrapping)
-
 # Liquidity Bootstrapping Example
 
 Let's walk through a complete example, using the [Liquidity Bootstrapping](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) use case.

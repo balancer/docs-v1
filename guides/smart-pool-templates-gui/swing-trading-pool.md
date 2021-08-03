@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/swing-trading-pool)
-
 # Swing Trading Pool
 
 Recall the basic design of investment pools: traders profit through arbitrage opportunities, created when "internal" prices diverge from token market values, and pay fees for the privilege, which accrue to the liquidity providers.

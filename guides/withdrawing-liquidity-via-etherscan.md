@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/withdrawing-liquidity-via-etherscan)
-
 # Interact via Etherscan
 
 Our UI allows for any liquidity provider to withdraw liquidity by clicking on the button "Remove Liquidity" on the detailed pool view page. This article though focus on how to withdraw liquidity without our UI \(in case it is down or inaccessible\). To do that we'll be using Etherscan.io.

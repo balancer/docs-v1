@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/glossary)
-
 # Glossary
 
 * **Core Pool**: A `BPool` contract object - this is the "base" pool that actually holds the tokens

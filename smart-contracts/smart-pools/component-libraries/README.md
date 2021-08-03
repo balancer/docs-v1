@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/component-libraries/README)
-
 # Component Libraries
 
 The Configurable Rights Pool uses several externally linked libraries to implement all its functionality, detailed below.

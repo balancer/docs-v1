@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/README)
-
 # Liquidity Mining
 
 ## BAL Distribution Proportional to Liquidity on Balancer <a id="353e"></a>

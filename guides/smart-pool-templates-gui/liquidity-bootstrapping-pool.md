@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/liquidity-bootstrapping-pool)
-
 # Liquidity Bootstrapping Pool
 
 Here is the [article](https://balancer.finance/2020/03/04/building-liquidity-into-token-distribution/) describing this common case - basically a sustainable 2020 reboot of the 2017 "ICO" - minus the worst of the legal and regulatory issues. \(The latest term seems to be IDO - Initial DEX Offering.\)

@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/creating-a-smart-pool)
-
 # Creating a Smart Pool
 
 ## Setting up a proxy
