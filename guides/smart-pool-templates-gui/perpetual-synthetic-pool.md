@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/perpetual-synthetic-pool)
-
 # Perpetual Synthetic Pool
 
 Synthetic tokens, through the efforts of [UMA](https://umaproject.org/) and others, are coming into their own, grabbing the spotlight and bringing a type of derivative familiar from the traditional financial markets to crypto.

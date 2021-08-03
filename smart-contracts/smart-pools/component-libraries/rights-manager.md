@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/smart-contracts/smart-pools/component-libraries/rights-manager)
-
 # Rights Manager
 
 The Rights Manager library defines all the ways you can customize a Configurable Rights Pool. In general, granting more rights to a Smart Pool requires users to place greater trust in the smart pool creator.

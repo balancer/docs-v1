@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/investors-club)
-
 # Investors' Club
 
 With Smart Pools, it is possible to restrict liquidity providers to a defined group. For instance, accredited investors, or those who have complied with a KYC process \(e.g., for STOs\). However, the privileged addresses could be determined by anything - holders of certain tokens, those who participated in community building or voting, winners of a "lottery" for investment slots, etc.

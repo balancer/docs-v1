@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/smart-contracts/configurable-rights-pool)
-
 # Configurable Rights Pool
 
 The Balancer **Configurable Rights Pool** is the reference implementation of a smart contract-controlled Balancer Pool. It is flexible enough to be used directly to create customizable Smart Pools. Like the Core Pool \(BPool\), it is created from a factory - and as the name implies, its functionality can be customized to meet the needs of your project.

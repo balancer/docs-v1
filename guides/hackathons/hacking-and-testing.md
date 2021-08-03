@@ -1,5 +1,3 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/guides/hackathons/hacking-and-testing)
-
 ---
 description: Some useful specifics to get you started
 ---
