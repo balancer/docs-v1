@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/protocol/bal-balancer-governance-token)
+
 # BAL - Balancer Governance Token
 
 Since inception, our goal at Balancer Labs has been to decentralize and diversify governance of the [Balancer Protocol](http://balancer.finance/). We have looked into several approaches and designs, and have landed on an approach we are proud to share: the Balancer Protocol Governance Token \(BAL\).

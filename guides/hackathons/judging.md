@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/judging)
+
 ---
 description: Some things we like to see (i.e. help yourself to win)
 ---

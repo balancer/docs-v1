@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/creating-a-balancer-pool)
+
 # Creating a Shared Pool
 
 ## Setting up a proxy

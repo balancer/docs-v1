@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/liquidity-bootstrapping-faq)
+
 # Liquidity Bootstrapping FAQ
 
 ### How do I launch a Liquidity Bootstrapping Pool?

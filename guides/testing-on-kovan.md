@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/testing-on-kovan)
+
 # Testing on Kovan
 
 ## Overview

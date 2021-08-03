@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/index/approxing)
+
 # Exponentiation
 
 The main formulas used in Balancer protocol make use of a form of exponentiation where both the base and exponent are fixed-point \(non-integer\) values. Take for example the `swap` functions, where the weights in both the exponent and the base are fractions:
