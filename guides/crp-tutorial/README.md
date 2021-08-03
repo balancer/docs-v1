@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/guides/crp-tutorial/README)
+
 # CRP Tutorial
 
 Similar to Core Pools, Configurable Rights Pools are created from a public factory. Refer to [Addresses](../../smart-contracts/addresses.md) to find the contract on your network of choice.

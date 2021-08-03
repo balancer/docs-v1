@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/sor/migration-to-version-0.4)
+
 # Migration to Version 1.0
 
 The SOR Version 1.0.0-0 introduces breaking changes but should be fairly easy to update. Benefits of updating include - support for multihop swaps and an easier to use wrapper interface as well as more efficient/faster processing.

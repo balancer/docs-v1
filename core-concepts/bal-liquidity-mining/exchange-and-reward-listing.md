@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/exchange-and-reward-listing)
+
 # Exchange and BAL Mining Listing
 
 Token listings are managed in [this repository](https://github.com/balancer-labs/assets), with the following categories:

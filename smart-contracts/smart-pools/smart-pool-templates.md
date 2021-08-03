@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/smart-contracts/smart-pools/smart-pool-templates)
+
 # Smart Pool Templates
 
 Balancer provides templates at two levels. At the contract level, templates are examples of how to extend the core Smart Pool contract for custom use cases \(see below\).

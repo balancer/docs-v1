@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/smart-contracts/sor/development)
+
 # Development & Examples
 
 Documentation for working with the `@balancer-labs/sor` package. For a description of the SOR and math, see this [page](./#overview).

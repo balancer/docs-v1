@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/experimental)
+
 # Experimental
 
 If you've been in the crypto space since 2017, you'll remember well the ICO hype. People were throwing money at every new token with a website. \(If you're just a bit older, you'll remember the .com boom of '99 as well - when it was every company with a website.\)

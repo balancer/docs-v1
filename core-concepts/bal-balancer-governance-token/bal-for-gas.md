@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/core-concepts/bal-balancer-governance-token/bal-for-gas)
+
 # BAL for Gas
 
 Following a 6 week pilot, on March 7th 2021 the Balancer community approved a campaign to increase BAL distribution. To ensure lasting robustness of the governance process, both liquidity providers and traders should have a say in how the protocol evolves.

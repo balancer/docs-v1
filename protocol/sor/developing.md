@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/protocol/sor/developing)
+
 # Developing
 
 WIP - still needs to be cleaned up

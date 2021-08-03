@@ -1,3 +1,5 @@
+# This page has been deprecated. V1 documentation is partially maintained [here](docs.balancer.fi/v/v1/protocol/limitations)
+
 # Limitations
 
 Balancer is meant to be a flexible and agnostic DeFi primitive. Due to constraints such as gas and math approximations, there are some limitations built into the protocol.
