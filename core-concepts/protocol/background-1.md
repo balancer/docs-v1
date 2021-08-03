@@ -1,16 +1,18 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/background-1)
-
 # Background
 
-Automated Market Makers \(AMMs\) have been around in some form for as long as trades could be automated, starting in the traditional financial markets. AMMs are essentially automated agents, controlled by algorithms, that define rules for matching buyers and sellers to facilitate trades. Usually AMMs are continuously active in both directions of a trading pair. The liquidity provider's profit comes  from the spread between buy and sell prices.
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/background-1)
+
+## Background
+
+Automated Market Makers \(AMMs\) have been around in some form for as long as trades could be automated, starting in the traditional financial markets. AMMs are essentially automated agents, controlled by algorithms, that define rules for matching buyers and sellers to facilitate trades. Usually AMMs are continuously active in both directions of a trading pair. The liquidity provider's profit comes from the spread between buy and sell prices.
 
 Smart contract platforms like Ethereum have brought AMMs to a whole new level. They have, for the first time in history, combined the _trading algorithms_ with _custody_ of the underlying assets. This has led to interesting new features like atomic trading \(sometimes incorporating [flash loans](https://aave.com/flash-loans)\), instant feedback loops for correcting prices offered by an AMM, and more.
 
-## AMMs in Ethereum
+### AMMs in Ethereum
 
 Alan Lu from [Gnosis](https://gnosis.io/) was the first in the Ethereum community to propose the simplest version of an AMM: a "pool," containing two tokens \(let's call them A and B\), in which the token prices are derived internally, using only the token balances, according to the simple invariant formula: balance\(A\) \* balance\(B\) = \(constant\) k, most commonly written as x\*y=k.
 
- Martin Köppelmann and Vitalik Buterin also promoted this idea, which Hayden Adams eventually implemented on [Uniswap](https://uniswap.org/).
+Martin Köppelmann and Vitalik Buterin also promoted this idea, which Hayden Adams eventually implemented on [Uniswap](https://uniswap.org/).
 
 ![V. Buterin, &quot;On Path Independence&quot; \(linked below\)](../../.gitbook/assets/xyk.png)
 
@@ -20,7 +22,7 @@ The pool assets also have external market prices, so we can plot this "point" on
 
 Balancer is essentially a generalization of the constant product rule to pools containing two or more tokens. In addition, Balancer Pools assign relative weights to each token, to accommodate pools of tokens with significantly different valuations. The weights represent the proportion of each token in the total pool. This flexibility greatly expands the utility of these pools, and allows for many interesting strategies and use cases, as we shall see.
 
-## Further Reading
+### Further Reading
 
 [Euler: The simplest exchange and currency](https://www.reddit.com/r/ethereum/comments/54l32y/euler_the_simplest_exchange_and_currency/)
 

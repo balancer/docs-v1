@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/api/core-contracts)
-
 # Events
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/api/core-contracts)
+
+## Events
 
 ### Events
 
@@ -14,7 +16,7 @@ event LOG_CALL(
 ) anonymous;
 ```
 
-`LOG_SWAP` is fired \(along with `LOG_CALL`\) for all [swap variants]().
+`LOG_SWAP` is fired \(along with `LOG_CALL`\) for all [swap variants](core-contracts.md).
 
 ```text
 event LOG_SWAP(

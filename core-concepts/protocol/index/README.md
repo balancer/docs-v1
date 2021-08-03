@@ -1,14 +1,16 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/index/)
-
 # Math
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/index/)
+
+## Math
 
 The [Balancer whitepaper](https://balancer.finance/whitepaper.html) describes a set of formulas derived from the value function for interacting with the protocol. The formulas in the Theory section are sufficient to describe the functional specification, but they are not straightforward to implement for the EVM, in part due to a lack of mature fixed-point math libraries.
 
 Our implementation uses a combination of a few algebraic transformations, approximation functions, and numerical hacks to compute these formulas with bounded maximum error and reasonable gas cost.
 
-## Exponentiation Approximation
+### Exponentiation Approximation
 
-### Spot Price
+#### Spot Price
 
 $$
 SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} }
@@ -27,9 +29,9 @@ $$
 SP^o_i = \frac{ \frac{B_i}{W_i} }{ \frac{B_o}{W_o} } \cdot \frac{1}{(1-swapFee)}
 $$
 
-### Out-Given-In
+#### Out-Given-In
 
-In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula to calculate the amount of tokens out –$$A_o$$– a trader gets in return for a given amount of tokens in –$$A_i$$, considering a Balancer pool without any swap fees: 
+In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula to calculate the amount of tokens out –$$A_o$$– a trader gets in return for a given amount of tokens in –$$A_i$$, considering a Balancer pool without any swap fees:
 
 $$
 A_{o} = B_{o}  \cdot \left(1 - \left(\frac{B_{i}}{B_{i}+A_{i}}\right)^{\frac{W_{i}}{W_{o}}}\right)
@@ -41,9 +43,9 @@ $$
 A_{o} = B_{o}  \cdot \left(1 - \left(\frac{B_{i}}{B_{i}+A_{i} \cdot (1-swapFee)}\right)^{\frac{W_{i}}{W_{o}}}\right)
 $$
 
-### In-Given-Out
+#### In-Given-Out
 
-In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula for the amount of tokens in –$$A_i$$– a trader needs to swap to get a desired amount$$A_o$$of tokens out in return, considering a Balancer pool without any swap fees: 
+In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula for the amount of tokens in –$$A_i$$– a trader needs to swap to get a desired amount$$A_o$$of tokens out in return, considering a Balancer pool without any swap fees:
 
 $$
 A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right)
@@ -55,7 +57,7 @@ $$
 A_{i} = B_{i} \cdot \left(\left(\frac{B_{o}}{B_{o}-A_{o}}\right)^{\frac{W_{o}}{W_{i}}}-1\right) \cdot \frac{1}{(1-swapFee)}
 $$
 
-### All-Asset Deposit/Withdrawal
+#### All-Asset Deposit/Withdrawal
 
 Anyone can be issued Balancer pool tokens \(provided the pool is finalized\) by depositing proportional amounts of each of the assets contained in the pool. So, for each token _k_ in the pool, the amounts of token _k_ –$$D_k$$– that need to be deposited for someone to get $$P_{issued}$$pool tokens are:
 
@@ -71,19 +73,19 @@ $$
 
 All Balancer Protocol smart contracts were coded supporting a protocol-level exit fee to be charged that goes to Balancer Labs for supporting the development of the protocol. However, after careful consideration the Balancer Labs team decided to launch the first version of Balancer without any protocol fees whatsoever. \(For technical reasons, this is unlikely to change.\)
 
-### Single-Asset Deposit / Withdrawal
+#### Single-Asset Deposit / Withdrawal
 
-#### Single-Asset Deposit
+**Single-Asset Deposit**
 
-In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula for the amount of pool tokens –$$P_{issued}$$– a liquidity provider gets in return for depositing an amount $$A_t$$of a single token _t_  present in the pool: 
+In the [Whitepaper](https://balancer.finance/whitepaper/), we derive the following formula for the amount of pool tokens –$$P_{issued}$$– a liquidity provider gets in return for depositing an amount $$A_t$$of a single token _t_ present in the pool:
 
 $$
 P_{issued} = P_{supply} \cdot \left(\left(1+\frac{A_t}{B_t}\right)^{W_t} -1\right)
 $$
 
-Since Balancer allows for depositing and withdrawing liquidity to Balancer pools using only one of the tokens present in the pool, this could be used to do the equivalent of a swap: provide liquidity depositing token A, and immediately withdraw that liquidity in token B. Therefore a swap fee has to be charged, proportional to the tokens that would need to be swapped for an all-asset deposit. 
+Since Balancer allows for depositing and withdrawing liquidity to Balancer pools using only one of the tokens present in the pool, this could be used to do the equivalent of a swap: provide liquidity depositing token A, and immediately withdraw that liquidity in token B. Therefore a swap fee has to be charged, proportional to the tokens that would need to be swapped for an all-asset deposit.
 
-Another justification for charging a swap fee when a liquidity provider does a single-asset deposit is that they are getting a share of a pool that contains a basket of different assets. So what they are really doing is trading one of the pool assets \(the token _t_ being deposited\) for proportional shares of all the pool assets. 
+Another justification for charging a swap fee when a liquidity provider does a single-asset deposit is that they are getting a share of a pool that contains a basket of different assets. So what they are really doing is trading one of the pool assets \(the token _t_ being deposited\) for proportional shares of all the pool assets.
 
 Since the pool already has a share of its value in token _t_, represented by the weight$$W_t$$, it only makes sense to charge a swap fee for the remaining portion of the deposit $$A_t \cdot(1 - W_t)$$
 
@@ -105,9 +107,9 @@ $$
 A_t = B_t \cdot \frac{\left(\left(1+\frac{P_{issued}}{P_{supply}}\right)^{\frac{1}{W_t}} -1\right)}{(1 - W_t)\cdot swapFee}
 $$
 
-#### Single-Asset Withdrawal
+**Single-Asset Withdrawal**
 
-Without considering swap fees, each withdrawal formula is simply the inverse of the corresponding deposit formula. In other words, if you deposit a given amount of token _t_  for pool tokens and then immediately redeem these pool tokens for token _t_, you should receive exactly what you started off with.
+Without considering swap fees, each withdrawal formula is simply the inverse of the corresponding deposit formula. In other words, if you deposit a given amount of token _t_ for pool tokens and then immediately redeem these pool tokens for token _t_, you should receive exactly what you started off with.
 
 The formula without considering swap fees is then:
 
@@ -115,7 +117,7 @@ $$
 A_t = B_t \cdot \left(1-\left(1-\frac{P_{redeemed}}{P_{supply}}\right)^\frac{1}{W_t}\right)
 $$
 
-Where $$A_t$$ is the amount of token _t_  one receives when redeeming $$P_{redeemed}$$pool tokens.
+Where $$A_t$$ is the amount of token _t_ one receives when redeeming $$P_{redeemed}$$pool tokens.
 
 Considering swap fees, we have the following:
 
@@ -131,7 +133,7 @@ $$
 P_{redeemed} = P_{supply} \cdot \left(1-\left(1-\frac{A_t}{B_t}\right)^{W_t} \right)
 $$
 
-Where $$A_t$$ is the amount of token _t_  one receives when redeeming $$P_{redeemed}$$pool tokens.
+Where $$A_t$$ is the amount of token _t_ one receives when redeeming $$P_{redeemed}$$pool tokens.
 
 Considering swap fees, we have the following:
 

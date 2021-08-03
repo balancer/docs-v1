@@ -1,8 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/creating-a-balancer-pool)
-
 # Creating a Shared Pool
 
-## Setting up a proxy
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/creating-a-balancer-pool)
+
+## Creating a Shared Pool
+
+### Setting up a proxy
 
 All the interactions to add liquidity or to create Balancer pools on our UIs happen through a proxy. This way our UI can simplify the UX by avoiding token approvals on every new pool the user interacts with.
 
@@ -22,7 +24,7 @@ There is only one "action" button. If you have already set up a proxy with this 
 
 Once all tokens have been approved, the button will say "Create," and pressing it will create the transaction to deploy and fund the pool.
 
-### Shared Pool Creation
+#### Shared Pool Creation
 
 * **shared pools** are open to anyone to join by adding liquidity and getting BPTs \(Balancer Pool Tokens\) in return, but all the pool parameters are immutable
 * **private pools** only allow the owner to add liquidity to the pool, but all its parameters are flexible. So the owner of the private pool can change the swap fees, pause trades, add/remove tokens, change token weights, etc.
@@ -31,13 +33,13 @@ A Balancer pool allows up to 8 tokens and the weights have to be between 2% and 
 
 You can enter any numbers you like in the weights field, though it's easiest to simply type the percentages directly. The input values will be converted to percentages, and then denormalized to pass to the contract factory. For instance, 90/10 would be denormalized to 45e18/5e18 \(i.e., 90% of the max total weight of 50, in wei, is 45e18\).
 
-#### Similar Pools
+**Similar Pools**
 
 Note the "similar pools" information block in the example above. If there are already pools with the same tokens with similar weights, it might be better to add liquidity to those instead of creating a new pool. We discourage having many similar pools, since it fragments liquidity and leads to higher slippage for traders. Large liquidity pools \(especially with relatively low fees\), provide the best experience for traders. It has also become quite expensive to deploy pools in this era of all-time high ETH and gas prices!
 
-#### Amounts entry
+**Amounts entry**
 
-By default \(with the padlock "locked"\), the interface uses a CoinGecko price feed to assist in calculating the token amounts given the weights.  
+By default \(with the padlock "locked"\), the interface uses a CoinGecko price feed to assist in calculating the token amounts given the weights.
 
 ![&quot;Unlocked&quot; amounts](../.gitbook/assets/padlock.png)
 

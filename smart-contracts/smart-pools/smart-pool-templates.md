@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/smart-pool-templates)
-
 # Smart Pool Templates
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/smart-pool-templates)
+
+## Smart Pool Templates
 
 Balancer provides templates at two levels. At the contract level, templates are examples of how to extend the core Smart Pool contract for custom use cases \(see below\).
 
@@ -11,6 +13,4 @@ Smart Pool Template contracts are example subclasses of the Configurable Rights 
 Updating weights in a regular Configurable Rights Pool transfers tokens \(to keep prices stable\). In the case of AMPL, a combination of "rebasing" \(altering the token supply\) and changing weights accomplishes this without transferring tokens. In Elastic Supply Pools, weights are "resynced" instead of "updated."
 
 To disallow both kinds of updates in the same pool, the Elastic Supply Pool overrides and reverts the existing update functions, and implements the new resync\(\) method.
-
-
 

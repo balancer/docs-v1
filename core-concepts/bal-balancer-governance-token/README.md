@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-balancer-governance-token/)
-
 # BAL Governance Token
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-balancer-governance-token/)
+
+## BAL Governance Token
 
 Since inception, our goal at Balancer Labs has been to decentralize and diversify governance of the [Balancer Protocol](http://balancer.finance/). We have looked into several approaches and designs, and have landed on an approach we are proud to share: the Balancer Protocol Governance Token \(BAL\).
 
@@ -24,7 +26,7 @@ We expect token holders to help guide the protocol to its fullest potential thro
 
 ### Token Supply and Distribution <a id="14a8"></a>
 
-The total supply of BAL tokens will be capped at 100M. This does NOT mean that this cap will ever be reached. It will be up to governance \(controlled by BAL token holders\) to decide if the distribution should end before this cap is reached. 
+The total supply of BAL tokens will be capped at 100M. This does NOT mean that this cap will ever be reached. It will be up to governance \(controlled by BAL token holders\) to decide if the distribution should end before this cap is reached.
 
 **25M** BAL tokens were initially allocated to founders, stock options, advisors and investors, all subject to vesting periods.
 
@@ -32,9 +34,9 @@ The total supply of BAL tokens will be capped at 100M. This does NOT mean that t
 
 **5M** were allocated for the [Fundraising Fund](https://etherscan.io/token/0xba100000625a3754423978a60c9317c58a424e3d?a=0xb129f73f1afd3a49c701241f374db17ae63b20eb). Balancer Labs raised a pre-seed and seed round. This fund will be used for future fundraising rounds to support Balancer Labs' operations and growth. BAL tokens will never be sold to retail investors.
 
-The remaining 65M tokens are intended to be mostly distributed to liquidity providers in the coming years. 
+The remaining 65M tokens are intended to be mostly distributed to liquidity providers in the coming years.
 
-Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. This means that in the first year of BAL’s existence there would be 30% supply inflation from the initial supply of 25M tokens \(here we are not considering the two funds, since they are not yet allocated\). 
+Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. This means that in the first year of BAL’s existence there would be 30% supply inflation from the initial supply of 25M tokens \(here we are not considering the two funds, since they are not yet allocated\).
 
 This high rate of supply inflation is meant to kickstart the distribution of governance rights of the protocol to those who earn it. At the the current rate of 145,000 BAL per week, it would take 8.666 years to distribute the whole 65M BAL remaining, before reaching the 100M cap.
 

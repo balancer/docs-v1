@@ -1,8 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/exchange-proxy)
-
 # Exchange Proxy
 
-## Summary
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/exchange-proxy)
+
+## Exchange Proxy
+
+### Summary
 
 This contract includes swap forwarding proxy logic and on-chain smart order routing functionality.
 
@@ -12,50 +14,50 @@ This contract includes swap forwarding proxy logic and on-chain smart order rout
 
 `smartSwap` functions combine view and batch functionality to provide complete optimised on-chain swaps.
 
-## API
+### API
 
-### **Batch Swap Functions**
+#### **Batch Swap Functions**
 
-#### **multihopBatchSwapExactIn**
+**multihopBatchSwapExactIn**
 
 `multihopBatchSwapExactIn(Swap[][] memory swapSequences, TokenInterface tokenIn, TokenInterface tokenOut, uint totalAmountIn, uint minTotalAmountOut) public payable`
 
 Execute multi-hop swaps returned from off-chain SOR for swapExactIn trade type.
 
-#### multihopBatchSwapExactOut
+**multihopBatchSwapExactOut**
 
 `multihopBatchSwapExactOut(Swap[][] memory swapSequences, TokenInterface tokenIn, TokenInterface tokenOut, uint maxTotalAmountIn) public payable`
 
 Execute multi-hop swaps returned from off-chain SOR for swapExactOut trade type.
 
-#### batchSwapExactIn
+**batchSwapExactIn**
 
 `batchSwapExactIn(Swap[] memory swaps, TokenInterface tokenIn, TokenInterface tokenOut, uint totalAmountIn, uint minTotalAmountOut) public payable`
 
 Execute single-hop swaps for swapExactIn trade type. Used for swaps returned from viewSplit function and legacy off-chain SOR.
 
-#### batchSwapExactOut
+**batchSwapExactOut**
 
 `batchSwapExactOut(Swap[] memory swaps, TokenInterface tokenIn, TokenInterface tokenOut, uint maxTotalAmountIn) public payable`
 
 Execute single-hop swaps for swapExactOut trade type. Used for swaps returned from viewSplit function and legacy off-chain SOR.
 
-### **View Split Functions**
+#### **View Split Functions**
 
-#### viewSplitExactIn
+**viewSplitExactIn**
 
 `viewSplitExactIn(address tokenIn, address tokenOut, uint swapAmount, uint nPools)`
 
 View function that calculates most optimal swaps \(exactIn swap type\) across a max of nPools. Returns an array of Swaps and the total amount out for swap.
 
-#### viewSplitExactOut
+**viewSplitExactOut**
 
 `viewSplitExactOut(address tokenIn, address tokenOut, uint swapAmount, uint nPools)`
 
-View function that calculates most optimal swaps \(exactOut swap type\) across a max of nPools. Returns an array of Swaps and the total amount in for swap.   
+View function that calculates most optimal swaps \(exactOut swap type\) across a max of nPools. Returns an array of Swaps and the total amount in for swap.  
 \(! Please be aware the return parameter "totalOutput" in the contract is a misnomer and actually represents totalInput !\)
 
-### **Smart Swap Functions**
+#### **Smart Swap Functions**
 
 **smartSwapExactIn**
 
@@ -63,7 +65,7 @@ View function that calculates most optimal swaps \(exactOut swap type\) across a
 
 Calculates and executes most optimal swaps across a max of nPools for tokenIn &gt; tokenOut swap with an input token amount = totalAmountIn.
 
-#### smartSwapExactOut
+**smartSwapExactOut**
 
 `smartSwapExactOut(TokenInterface tokenIn, TokenInterface tokenOut, uint totalAmountOut, uint maxTotalAmountIn, uint nPools) public payable`
 

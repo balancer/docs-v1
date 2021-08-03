@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/concepts)
-
 # Overview
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/smart-pools/concepts)
+
+## Overview
 
 ### Smart Contract Owned Controlled Pools \("Smart Pools"\)
 

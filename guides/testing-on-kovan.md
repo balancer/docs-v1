@@ -1,12 +1,14 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/testing-on-kovan)
-
 # Testing on Kovan
 
-## Overview
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/testing-on-kovan)
+
+## Testing on Kovan
+
+### Overview
 
 This guide will walk through the process of interacting with Balancer on Kovan directly with the smart contracts along with additional tooling such as the subgraph and SOR.
 
-### Setup
+#### Setup
 
 This guide will use `seth` - a tool built by Dapphub to interact directly with smart contracts. To install, run the below command. Note: the Dapp Tools suite installs Nix OS.
 
@@ -40,7 +42,7 @@ export ANT=0x37f03a12241E9FD3658ad6777d289c3fb8512Bc9
 export ZRX=0xccb0F4Cf5D3F97f4a55bb5f5cA321C3ED033f244
 ```
 
-### Acquire Test Funds
+#### Acquire Test Funds
 
 All pools use wrapped ETH. In order to get WETH, either use the faucet at [https://faucet.kovan.network](https://faucet.kovan.network/) and then `deposit()` into the WETH contract. Or the faucet below may have some available WETH.
 
@@ -73,7 +75,7 @@ seth --from-wei $(seth --to-dec $(seth call $DAI "balanceOf(address)" $ETH_FROM)
 
 Repeat the above steps for any additional tokens you would like to interact with on the Balancer test deployment.
 
-### Pool Creation
+#### Pool Creation
 
 Next we're going to create a new pool. This guide will create a 50% WETH, 25% DAI, 25% MKR pool. Feel free to use any of the tokens
 

@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-balancer-governance-token/bal-for-gas)
-
 # BAL for Gas
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-balancer-governance-token/bal-for-gas)
+
+## BAL for Gas
 
 Following a 6 week pilot, on March 7th 2021 the Balancer community approved a campaign to increase BAL distribution. To ensure lasting robustness of the governance process, both liquidity providers and traders should have a say in how the protocol evolves.
 
@@ -28,11 +30,11 @@ Because this program only partially covers gas costs \(with very specific caps t
 
 80,000 BAL from the Ecosystem Fund have been allocated to the “BAL for Gas’’ campaign, starting on March 8th 2021. There is no fixed time period; the budget is consumed on a first-come, first-served basis. When the budget is exhausted, the campaign is suspended until it is replenished by BAL governance.
 
-## Notes
+### Notes
 
 \[1\] Transactions sent by the miner of the block or having a gas price of 10 Gwei or less are not considered for the purposes of determining the median gas price of the block
 
-## References
+### References
 
 * [BAL for Gas proposal](https://forum.balancer.finance/t/proposal-bal-for-gas/1437)
 * [Original pilot](https://forum.balancer.finance/t/proposal-balancer-exchange-gas-reimbursement/705) and [Expansion of the list of eligible tokens](https://forum.balancer.finance/t/proposal-expand-the-exchange-gas-reimbursement-to-all-whitelisted-tokens/799)

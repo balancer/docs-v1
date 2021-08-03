@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/)
-
 # Smart Pool Use Cases
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/smart-pool-templates-gui/)
+
+## Smart Pool Use Cases
 
 Here we detail several applications of the core Configurable Rights Pool, and show how you would configure your custom pool \(on creation from the factory\), to accommodate each use case. \(Eventually we will have a GUI wizard to guide you through this process.\)
 

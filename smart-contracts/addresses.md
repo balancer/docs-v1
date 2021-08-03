@@ -1,8 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/addresses)
-
 # Addresses
 
-## Mainnet
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/addresses)
+
+## Addresses
+
+### Mainnet
 
 * Core Pool Factory: `0x9424B1412450D0f8Fc2255FAf6046b98213B76Bd`
 * BalancerSafeMath \(library\): `0xCfE28868F6E0A24b7333D22D8943279e76aC2cdc`
@@ -14,7 +16,7 @@
 * Onchain Registry: `0x7226DaaF09B3972320Db05f5aB81FF38417Dd687`
 * [MerkleRedeem](https://github.com/balancer-labs/erc20-redeemable) \(BAL Distribution\) `0x6d19b2bF3A36A61530909Ae65445a906D98A2Fa8`
 
-## Kovan
+### Kovan
 
 * Core Pool Factory: `0x8f7F78080219d4066A8036ccD30D588B416a40DB`
 * BalancerSafeMath \(library\): `0x0fd81EFddb4f8b2948B164145FbbcC8084136DcB`
@@ -26,7 +28,7 @@
 * Onchain Registry: `0xC5570FC7C828A8400605e9843106aBD675006093`
 * [MerkleRedeem](https://github.com/balancer-labs/erc20-redeemable) \(BAL Distribution\) `0x3bc73D276EEE8cA9424Ecb922375A0357c1833B3`
 
-## Rinkeby
+### Rinkeby
 
 * Core Pool Factory: `0x9C84391B443ea3a48788079a5f98e2EaD55c9309`
 * BActions: `0xA492414f528175f7F5D7881eC01434eF62779502`
@@ -38,7 +40,7 @@
 * Smart Pool Factory \(CRPFactory\): `0xA3F9145CB0B50D907930840BB2dcfF4146df8Ab4`
 * MerkleRedeem \(BAL Distribution\): `0x7DB3C2060F0e3754aae29EDe47ABF9153acAeffB`
 
-## Mumbai \(Matic Testnet\)
+### Mumbai \(Matic Testnet\)
 
 * Core Pool Factory: `0x39D7de7Cf0ad8fAAc56bbb7363f49695808efAf5`
 * BalancerSafeMath \(library\) `0x0F811b1AF2B6B447B008eFF31eCceeE5A0b1d842`

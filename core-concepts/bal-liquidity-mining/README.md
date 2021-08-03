@@ -1,8 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/)
-
 # Liquidity Mining
 
-## BAL Distribution Proportional to Liquidity on Balancer <a id="353e"></a>
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/)
+
+## Liquidity Mining
+
+### BAL Distribution Proportional to Liquidity on Balancer <a id="353e"></a>
 
 To make the token distribution as fair as possible, we distribute BAL tokens proportional to the amount of liquidity each address contributed, relative to the total liquidity on Balancer. Since there is liquidity in several different tokens, we use the USD value as the common measure.
 
@@ -51,7 +53,7 @@ The constant, `k`, was initially set to 0.5, but beginning in week 8 \(July 20th
 
 All the calculations described above depend exclusively on on-chain data and historical token prices openly accessible on CoinGecko. This whole calculation process is fully auditable via an [open source script](https://github.com/balancer-labs/bal-mining-scripts/).
 
-## Token Whitelist and Eligible Pools for Liquidity Mining <a id="84fc"></a>
+### Token Whitelist and Eligible Pools for Liquidity Mining <a id="84fc"></a>
 
 **UPDATED for week 9** \(starting June 29th 00:00 UTC\): All tokens present in the whitelist created by the community \(see whitelist proposal\) are eligible for BAL liquidity mining. The [most up to date list](https://github.com/balancer-labs/assets/blob/master/lists/eligible.json) is maintained on Balancer's Github. All tokens listed under the `"homestead"` list in the json file linked are eligible. This list will evolve over time with input from the community.
 

@@ -1,14 +1,16 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/getting-started/faq)
-
 # FAQ
 
-## Basics
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/getting-started/faq)
 
-### What is the Balancer Protocol?
+## FAQ
+
+### Basics
+
+#### What is the Balancer Protocol?
 
 Balancer is a protocol for multi-token [automated market-making](../core-concepts/protocol/background-1.md). It enables portfolio owners to create Balancer Pools, and traders to trade against them. Balancer Pools contain two or more tokens, each with an independent weight representing its proportion of the total pool value. The pools provide the Balancer Protocol with liquidity, and charge traders a fee for access to it. Pools can be considered automated market-makers, since anyone can swap any two tokens, in any pool.
 
-### How is the Balancer Protocol useful?
+#### How is the Balancer Protocol useful?
 
 There are two categories of users who can benefit from the Balancer Protocol: liquidity providers - who own Balancer Pools or participate in shared pools, and traders - who buy or sell the underlying pool assets on the open market.
 
@@ -25,13 +27,13 @@ There are three main categories:
 * Arbitrageurs seeking profit through leveling market inefficiencies between DEXs or CEXs 
 * Ethereum smart contracts seeking liquidity for a variety of reasons, such as liquidating positions on other protocols, trading on behalf of users, etc. 
 
-### Is Balancer Protocol fully permissionless?
+#### Is Balancer Protocol fully permissionless?
 
 Yes. Balancer Pools cannot be censored or whitelisted. Traders cannot be censored or whitelisted. Balancer Labs does not have the power to halt or edit the smart contracts in any way after they’ve been deployed. The contracts are not upgradeable, and there is no admin functionality or "backdoor" present in the code.
 
 Of course, Balancer has no control over the contracts of ERC20 tokens placed in Balancer pools. If a centralized token \(e.g., USDC\) were to blacklist an address or freeze all transfers, that would affect all USDC tokens everywhere, including those in Balancer Pools.
 
-### What is the development roadmap?
+#### What is the development roadmap?
 
 We are working on putting together a more detailed roadmap. The [bronze release](https://github.com/balancer-labs/balancer-core/releases/tag/v1.0.0) of V1 Balancer went live on February 26, 2020.
 
@@ -45,17 +47,17 @@ At launch, we will have two kinds of pools - Weighted pools similar to V1 \(but 
 
 See [this article](https://medium.com/balancer-protocol/balancer-v2-generalizing-amms-16343c4563ff) for further details.
 
-### Does Balancer Protocol charge any fees at the protocol layer?
+#### Does Balancer Protocol charge any fees at the protocol layer?
 
 No. There is a placeholder for an`EXIT_FEE` in the code, but it is currently set to zero on V1. \(In fact, because it is zero, tokens that do not allow zero-value transfers cannot be held in Balancer pools.\)
 
 V2 Balancer will have three kinds of protocol fees: a swap fee \(charged as a percentage of the pool swap fee, which can be zero\), a withdrawal fee \(charged only when removing tokens from the protocol entirely, not internal trades\), and a flash loan fee.
 
-### Is there a Balancer Protocol token?
+#### Is there a Balancer Protocol token?
 
 Not currently. A token will never be required to trade or interact with the protocol. Any protocol upgrade in that direction would be discussed with the community well in advance.
 
-### Is there a Balancer Governance Token?
+#### Is there a Balancer Governance Token?
 
 Yes, Balancer Governance Token, [BAL](https://github.com/balancer-labs/docs/tree/1d12c9a19497529cf518328e06d801f8f1c89d7f/protocol/bal-balancer-governance-token/README.md), can be used to vote on proposals and steer the direction of the protocol. Every week 145,000 BALs, or approximately 7.5M per year, are distributed to liquidity providers. They are typically distributed directly to liquidity providers on Tuesdays at 2300 UTC.
 
@@ -64,9 +66,9 @@ Yes, Balancer Governance Token, [BAL](https://github.com/balancer-labs/docs/tree
 * 5M were allocated for the Fundraising Fund. Balancer Labs raised a pre-seed and seed round. This fund will be used for future fundraising rounds to support Balancer Labs' operations and growth. BAL tokens will never be sold to retail investors.
 * The remaining 65M tokens are intended to be mostly distributed to liquidity providers in the coming years.
 
-## Balancer Pools
+### Balancer Pools
 
-### What is a Balancer Pool?
+#### What is a Balancer Pool?
 
 The fundamental building block of the Balancer Protocol is the Balancer Pool. Pools are smart contracts that implement the Balancer Protocol, and hold value in two or more ERC20 tokens.
 
@@ -79,7 +81,7 @@ The value proposition of Balancer flows from two main features:
 
 Thus the incentives of both participants are aligned. Liquidity providers earn trading fees, while the overall value of their portfolio is preserved through continuous rebalancing. Traders pay these fees for the opportunity to either swap tokens with low slippage, or profit from arbitrage opportunities between pools and the open market.
 
-### Are there constraints for setting up a Balancer Pool?
+#### Are there constraints for setting up a Balancer Pool?
 
 Only a few. Balancer Protocol limits pools in the following ways:
 
@@ -88,7 +90,7 @@ Only a few. Balancer Protocol limits pools in the following ways:
 * ERC20 compliance: pool tokens must be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. V2 is a bit more flexible, but will not support some token types, such as tokens that change balances \(e.g., elastic supply tokens\).
 * There are a few additional ratio and balance constraints that can be found at [Limitations](../core-concepts/protocol/limitations.md).
 
-### How are Balancer Pools continuously rebalanced?
+#### How are Balancer Pools continuously rebalanced?
 
 We believe this is the main innovation introduced by the Balancer Protocol. Pools are efficiently rebalanced through a multi-dimensional invariant function used to continuously define swap prices between any two tokens in a pool. Essentially, it is an n-dimensional generalization of Uniswap's x \* y = k formula.
 
@@ -100,11 +102,11 @@ So instead of doing work and _paying_ fees to rebalance their portfolio, Balance
 
 For further technical details, please refer to our [white paper](https://balancer.finance/whitepaper.html).
 
-### How do Balancer Pools charge fees and how much are they?
+#### How do Balancer Pools charge fees and how much are they?
 
 Balancer pools charge a percentage of the input amount traded for each trade. The fee goes entirely to the Balancer Pool liquidity providers. In V2, there is a small additional protocol fee, charged as a percentage of the pool's swap fee percentage \(which can be zero\).
 
-### What types of Balancer pools are there?
+#### What types of Balancer pools are there?
 
 V1 Core Balancer Pools can be controlled or finalized. Essentially, finalized pools are "public" - their parameters are fixed, and anyone can add/remove liquidity and swap tokens. Controlled pools are "private" - their parameters are not fixed, but only the pool creator can add liquidity. See more details in [Core Concepts](../smart-contracts/smart-pools/concepts.md).
 
@@ -118,16 +120,16 @@ The home-grown "Configurable Rights" Smart Pool is less trustless than a Core Ba
 
 [Ampleforth](https://www.ampleforth.org/) is another example of a smart contract system. There is also plenty of innovation in the design of tokens. AMPL is an "Elastic Supply" token - instead of a fixed supply, like Bitcoin, and a volatile price -- AMPL is a kind of stable coin where the peg is maintained by adjusting the supply based on demand. These tokenomics can then interact with Balancer Pool settings in creative ways. This will not be supported on V2.
 
-## Using Balancer Protocol
+### Using Balancer Protocol
 
-### How can I use Balancer as a trader?
+#### How can I use Balancer as a trader?
 
 There are two ways a trader can interact with Balancer Protocol:
 
 * Through our [Exchange](https://balancer.exchange/#/swap) front-end
 * Directly through our smart contracts on Ethereum Mainnet
 
-### How can I use Balancer as a liquidity provider or portfolio manager?
+#### How can I use Balancer as a liquidity provider or portfolio manager?
 
 There are two main ways a liquidity provider or portfolio manager can interact with Balancer Protocol:
 
@@ -136,7 +138,7 @@ There are two main ways a liquidity provider or portfolio manager can interact w
 
 Please [contact us](mailto:contact@balancer.finance) if you have a portfolio worth more than 100,000 USD and need special assistance.
 
-### How can I claim BAL tokens as a Liquidity Provider?
+#### How can I claim BAL tokens as a Liquidity Provider?
 
 Head over to [https://claim.balancer.finance/](https://claim.balancer.finance/) to claim your BAL from liquidity mining.
 
@@ -144,21 +146,21 @@ BAL tokens for liquidity mining of any given week will be available to be claime
 
 This claiming mechanism will allow you to choose if you want to claim on a weekly basis or accrue and claim at a later date. At this time, BAL earned through liquidity mining does not expire, so you can take your time to claim them. If for some reason this changes in the future, everyone will be notified well in advance.
 
-### Can Balancer be used as an Index Fund?
+#### Can Balancer be used as an Index Fund?
 
 Balancer Protocol is ideal for Index Funds, as it takes away all the hassle that managers have regarding rebalancing - and on top of that generates fees from trading.
 
-## Miscellaneous
+### Miscellaneous
 
-### Does using Balancer Protocol generate taxable events?
+#### Does using Balancer Protocol generate taxable events?
 
 We cannot provide tax or accounting advice. Tax regulations are specific to jurisdiction where you or your company reside. For any legal or tax matters we recommend consulting your own attorney.
 
-### Are there risks in using Balancer Protocol?
+#### Are there risks in using Balancer Protocol?
 
 Balancer Protocol smart contracts have been designed with security as a top priority. The core protocol code has been reviewed by Consensys Diligence, and formally audited by both [Trail of Bits](https://github.com/balancer-labs/balancer-core/blob/master/Trail%20of%20Bits%20Full%20Audit.pdf) and [Open Zeppelin](https://blog.openzeppelin.com/balancer-contracts-audit/). \(Of course, we cannot guarantee that bugs won’t be found in the future.\)
 
-Balancer Pools are not [upgradeable](https://medium.com/consensys-diligence/upgradeability-is-a-bug-dba0203152ce) \(though other third-party Smart Pool implementations might be\), and there are no admin keys or backdoors. 
+Balancer Pools are not [upgradeable](https://medium.com/consensys-diligence/upgradeability-is-a-bug-dba0203152ce) \(though other third-party Smart Pool implementations might be\), and there are no admin keys or backdoors.
 
 Remember that the tokens held in Balancer Pools are also smart contracts - not controlled by Balancer - and may have their own risks. Balancer does not support non-ERC20-conforming tokens, but pools may have been created that use them anyway.
 

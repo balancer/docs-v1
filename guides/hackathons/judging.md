@@ -1,10 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/judging)
-
----
-description: Some things we like to see (i.e. help yourself to win)
----
-
 # Judging
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/judging)
+
+### description: Some things we like to see \(i.e. help yourself to win\)
+
+## Judging
 
 * Novel and innovative uses of Balancer are great to see. 
 * Provide a short presentation or video that explains your idea, how it uses Balancer and where the project could go next.

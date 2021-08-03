@@ -1,14 +1,16 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/limitations)
-
 # Limitations
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/protocol/limitations)
+
+## Limitations
 
 Balancer is meant to be a flexible and agnostic DeFi primitive. Due to constraints such as gas and math approximations, there are some limitations built into the protocol.
 
-## V1 Limits
+### V1 Limits
 
 **ERC20 Tokens**
 
-ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. ****There are no upgrade mechanisms in the contracts to allow for token upgrades. Any upgrade will need to be manually coordinated and moved into new pools.
+ERC20 compliance: pool tokens have to be ERC20 compliant. Bronze does not support ERC20 tokens that do not return `bools` for `transfer` and `transferFrom`. _\*\*_There are no upgrade mechanisms in the contracts to allow for token upgrades. Any upgrade will need to be manually coordinated and moved into new pools.
 
 Tokens that have internal transfer fees or other non-standard balance updates may create arbitrage opportunities. Ex: DGX has both a demurrage and a transfer fee that will change a pool's balance compared to the internal accounting balance
 
@@ -44,7 +46,7 @@ The minimum balance of any token in a pool is 10^6 wei. **Important**: this is a
 
 Core Balancer Pools have a fixed initial token supply of 100 \(i.e., BPTs that represent shares of the pool's liquidity\). Smart Pools allow the pool creator to specify an initial supply within these bounds.
 
-## V2 Limits
+### V2 Limits
 
 Note - these are current values, and may change until release.
 
@@ -56,7 +58,7 @@ Tokens that have internal transfer fees or other non-standard balance updates ma
 
 **Minimum Bound Tokens - 2**
 
-Weighted and Stabe pools must contain at least two tokens. 
+Weighted and Stabe pools must contain at least two tokens.
 
 **Maximum Bound Tokens - 16**
 
@@ -85,6 +87,4 @@ The initial supply is computed in the new V2 math, and is not passed in by the u
 #### Protocol Fees
 
 The max protocol swap fee is 50% of the pool's swap fee \(which is in turn capped at 10%\). The max protocol withdrawal fee is 0.5%. The max flash loan fee is 1%.
-
-
 

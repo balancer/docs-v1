@@ -1,14 +1,14 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/hacking-and-testing)
-
----
-description: Some useful specifics to get you started
----
-
 # Hacking & Testing
 
-The [contracts are opensource](https://github.com/balancer-labs/balancer-core) and everything is deployed on Kovan as well as Mainnet. 
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/hacking-and-testing)
 
-We use the Subgraph to make it easy to query data \(Repo: [balancer-subgraph](https://github.com/balancer-labs/balancer-subgraph)\). 
+### description: Some useful specifics to get you started
+
+## Hacking & Testing
+
+The [contracts are opensource](https://github.com/balancer-labs/balancer-core) and everything is deployed on Kovan as well as Mainnet.
+
+We use the Subgraph to make it easy to query data \(Repo: [balancer-subgraph](https://github.com/balancer-labs/balancer-subgraph)\).
 
 There are also apps for Pool Management and Token Exchanges. The source code for these are also available \([Exchange](https://github.com/balancer-labs/balancer-exchange), [Pool Management](https://github.com/balancer-labs/pool-management)\).
 

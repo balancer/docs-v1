@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/api/api)
-
 # API Index
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/api/api)
+
+## API Index
 
 | Function |
 | :--- |
@@ -37,35 +39,35 @@
 | [`getController()->address`](api.md#getcontroller) |
 | - |
 
-## Functions
+### Functions
 
-### Controller and View Functions
+#### Controller and View Functions
 
-#### `isBound`
+**isBound**
 
 `isBound(address T) -> (bool)`
 
 A bound token has a valid balance and weight. A token cannot be bound without valid parameters which will enable e.g. `getSpotPrice` in terms of other tokens. However, disabling `isSwapPublic` will disable any interaction with this token in practice \(assuming there are no existing tokens in the pool, which can always `exitPool`\).
 
-#### `getNumTokens`
+**getNumTokens**
 
 `getNumTokens() -> (uint)`
 
 How many tokens are bound to this pool.
 
-#### `getNormalizedWeight`
+**getNormalizedWeight**
 
 `getNormalizedWeight(address token) -> (uint)`
 
 The normalized weight of a token. The combined normalized weights of all tokens will sum up to 1. \(Note: the actual sum may be 1 plus or minus a few wei due to division precision loss\)
 
-#### `getController`
+**getController**
 
 `getController() -> (address)`
 
 Get the "controller" address, which can call `CONTROL` functions like `rebind`, `setSwapFee`, or `finalize`.
 
-#### `bind`
+**bind**
 
 `bind(address token, uint balance, uint denorm)`
 
@@ -80,31 +82,31 @@ Possible errors:
 * `ERR_MAX_TOKENS` -- Only 8 tokens are allowed per pool
 * unspecified error thrown by token
 
-#### `rebind`
+**rebind**
 
 `rebind(address token, uint balance, uint denorm)`
 
 Changes the parameters of an already-bound token. Performs the same validation on the parameters.
 
-#### `unbind`
+**unbind**
 
 `unbind(address token)`
 
 Unbinds a token, clearing all of its parameters. Exit fee is charged and the remaining balance is sent to caller.
 
-#### `setPublicSwap`
+**setPublicSwap**
 
 `setPublicSwap(bool isPublic)`
 
 Makes `isPublicSwap` return `_publicSwap` Requires caller to be controller and pool not to be finalized. Finalized pools always have public swap.
 
-#### `finalize`
+**finalize**
 
 `finalize()`
 
 This makes the pool **finalized**. This is a one-way transition. `bind`, `rebind`, `unbind`, `setSwapFee` and `setPublicSwap` will all throw `ERR_IS_FINALIZED` after pool is finalized. This also switches `isSwapPublic` to true.
 
-#### `gulp`
+**gulp**
 
 `gulp(address token)`
 
@@ -112,21 +114,21 @@ This syncs the internal `balance` of `token` within a pool with the actual `bala
 
 As an example, pools that contain `COMP` tokens can have the `COMP` balance [updated with the rewards sent by Compound protocol](https://etherscan.io/tx/0xeccd42bf2b8a180a561c026717707d9024a083059af2f22c197ee511d1010e23). In order for any airdrop balance to be gulped, the token must be bound to the pool. So if a shared pool \(which is immutable\) does not have a given token, any airdrops in that token will be locked in the pool forever.
 
-#### `setSwapFee`
+**setSwapFee**
 
 `setSwapFee(uint swapFee)`
 
 Caller must be controller. Pool must NOT be finalized.
 
-#### `isFinalized`
+**isFinalized**
 
 `isFinalized() -> (bool)`
 
 The `finalized` state lets users know that the weights, balances, and fees of this pool are immutable. In the `finalized` state, `SWAP`, `JOIN`, and `EXIT` are public. [`CONTROL` capabilities](api.md#access-control) are disabled.
 
-### Trading and Liquidity Functions
+#### Trading and Liquidity Functions
 
-#### `swapExactAmountIn`
+**swapExactAmountIn**
 
 ```text
 swapExactAmountIn(
@@ -143,7 +145,7 @@ Trades an exact `tokenAmountIn` of `tokenIn` taken from the caller by the pool, 
 
 Returns `(tokenAmountOut, spotPriceAfter)`, where `tokenAmountOut` is the amount of token that came out of the pool, and `spotPriceAfter` is the new marginal spot price, ie, the result of `getSpotPrice` after the call. \(These values are what are limited by the arguments; you are guaranteed `tokenAmountOut >= minAmountOut` and `spotPriceAfter <= maxPrice`\).
 
-#### `swapExactAmountOut`
+**swapExactAmountOut**
 
 ```text
 swapExactAmountOut(
@@ -156,7 +158,7 @@ swapExactAmountOut(
     returns (uint tokenAmountIn, uint spotPriceAfter)
 ```
 
-#### `joinPool`
+**joinPool**
 
 `joinPool(uint poolAmountOut, uint[] calldata maxAmountsIn)`
 
@@ -164,33 +166,33 @@ Join the pool, getting `poolAmountOut` pool tokens. This will pull some of each 
 
 If the balances you are adding are 10% of the current pool balances, then you should set `poolAmountOut` as 10% of the current `poolSupply`. Bear in mind that the proportions of the different underlying token balances might change until your transaction gets mined: therefore you should have a buffer to avoid the transaction being reverted. We usually suggest 1% if you use high gas prices for fast confirmation. So calculate `poolAmountOut` as described above with 99% of the `maxAmountsIn`.
 
-#### `exitPool`
+**exitPool**
 
 `exitPool(uint poolAmountIn, uint[] calldata minAmountsOut)`
 
 Exit the pool, paying `poolAmountIn` pool tokens and getting some of each of the currently trading tokens in return. These values are limited by the array of `minAmountsOut` in the order of the pool tokens.
 
-To define `minAmountsOut`, consider the percentage of the pool liquidity you are withdrawing, which is `poolAmountIn/poolSupply` and multiply that percentage by each of the underlying pool token balances. If you expect to receive say 10 units of each of the underlying tokens in the pool, consider setting `minAmountsOut` as 9.9 to allow for variations in the balances proportions that may happen before your transaction gets mined. 
+To define `minAmountsOut`, consider the percentage of the pool liquidity you are withdrawing, which is `poolAmountIn/poolSupply` and multiply that percentage by each of the underlying pool token balances. If you expect to receive say 10 units of each of the underlying tokens in the pool, consider setting `minAmountsOut` as 9.9 to allow for variations in the balances proportions that may happen before your transaction gets mined.
 
-#### `joinswapExternAmountIn`
+**joinswapExternAmountIn**
 
 `joinswapExternAmountIn(address tokenIn, uint tokenAmountIn, uint minPoolAmountOut) -> (uint poolAmountOut)`
 
 Pay `tokenAmountIn` of token `tokenIn` to join the pool, getting `poolAmountOut` of the pool shares.
 
-#### `exitswapExternAmountOut`
+**exitswapExternAmountOut**
 
 `exitswapExternAmountOut(address tokenOut, uint tokenAmountOut, uint maxPoolAmountIn) -> (uint poolAmountIn)`
 
 Specify `tokenAmountOut` of token `tokenOut` that you want to get out of the pool. This costs `poolAmountIn` pool shares \(these went into the pool\).
 
-#### `joinswapPoolAmountOut`
+**joinswapPoolAmountOut**
 
 `joinswapPoolAmountOut(address tokenIn, uint poolAmountOut, uint maxAmountIn) -> (uint tokenAmountIn)`
 
 Specify `poolAmountOut` pool shares that you want to get, and a token `tokenIn` to pay with. This costs `tokenAmountIn` tokens \(these went into the pool\).
 
-#### `exitswapPoolAmountIn`
+**exitswapPoolAmountIn**
 
 `exitswapPoolAmountIn(address tokenOut, uint poolAmountIn, uint minAmountOut) -> (uint tokenAmountOut)`
 

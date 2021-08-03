@@ -1,10 +1,12 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/)
-
 # Hackathons
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/)
+
+## Hackathons
 
 This section provides resources and info for everyone who is hacking and building on Balancer - the potentail is huge and we're excited to see what you create!
 
-## Getting To Know Balancer Protocol
+### Getting To Know Balancer Protocol
 
 For an introduction and overview we recommend taking the time to read through the earlier sections of this documentation. You can find more technical information covering Smart Contracts and libraries in the later sections. Included below are some links to helpful info:
 

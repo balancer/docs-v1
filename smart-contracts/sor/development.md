@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/sor/development)
-
 # Development & Examples
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/sor/development)
+
+## Development & Examples
 
 Documentation for working with the `@balancer-labs/sor` package. For a description of the SOR and math, see this [page](./#overview).
 
@@ -10,7 +12,7 @@ Please take caution as the SOR is under heavy development and may have breaking 
 
 The SOR package includes a primary `SOR` object with an `SOR.getSwaps` function and several helper functions for retireving Balancer pool data.
 
-## SOR Object
+### SOR Object
 
 When instantiating a new SOR object we must pass five parameters to the constructor:
 
@@ -27,11 +29,11 @@ Where:
   * Kovan: [https://ipfs.fleek.co/ipns/balancer-bucket.storage.fleek.co/balancer-exchange-kovan/pools](https://ipfs.fleek.co/ipns/balancer-bucket.storage.fleek.co/balancer-exchange-kovan/pools)
   * Due to lots of IPNS caching issues the static storage can be used instead: [https://storageapi.fleek.co/balancer-bucket/balancer-exchange/pools](https://storageapi.fleek.co/balancer-bucket/balancer-exchange/pools)
 
-## Fetching Pool Data
+### Fetching Pool Data
 
 The SOR requires an up to date list of pool data when calculating swap information and retrieves on-chain token balances for each pool. There are two available methods:
 
-####  `await SOR.fetchPools()` <a id="await-sor-fetchpools"></a>
+#### `await SOR.fetchPools()` <a id="await-sor-fetchpools"></a>
 
 This will fetch all pools \(using the URL in constructor\) and on-chain balances. Returns `true` on success or `false` if there has been an error.
 
@@ -39,7 +41,7 @@ This will fetch all pools \(using the URL in constructor\) and on-chain balances
 
 A subset of valid pools for token pair, TokenIn/TokenOut, is found and on-chain balances retrieved. Returns `true` on success or `false` if there has been an error. This can be a quicker alternative to using fetchPools but will need to be called for every token pair of interest.
 
-## Processing Swaps <a id="processing-swaps"></a>
+### Processing Swaps <a id="processing-swaps"></a>
 
 #### `async SOR.getSwaps(...)` <a id="async-sor-getswaps"></a>
 
@@ -68,7 +70,7 @@ The cost of the output token in ETH multiplied by the gas cost to perform the sw
 
 Notice that tokenOut is tokenOut if swapType == 'swapExactIn' and tokenIn if swapType == 'swapExactOut.
 
-## Example - Using SOR To Get List Of Swaps
+### Example - Using SOR To Get List Of Swaps
 
 Below is an example snippet that uses the SOR to return a final list of swaps and the expected output. The `swaps` returned can then be passed on to the exchange proxy or otherwise used to atomically execute the trades.
 
@@ -119,7 +121,7 @@ const tokenOut = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // WETH
 })()
 ```
 
-## Example - SOR & ExchangeProxy
+### Example - SOR & ExchangeProxy
 
 Balancer labs makes use of a [ExchangeProxy contract](https://github.com/balancer-labs/balancer-registry) that allows users to batch execute swaps recommended by the SOR. The following example shows how SOR and ExchangeProxy can be used together to execute on-chain trades.
 

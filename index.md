@@ -1,8 +1,10 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/index)
-
 # Home
 
-_Looking for the V2 docs? --&gt;_ [_https://docs-v2.balancer.finance/_](https://docs-v2.balancer.finance/)\_\_
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/index)
+
+## Home
+
+_Looking for the V2 docs? --&gt;_ [_https://docs.balancer.fi/_](https://docs.balancer.fi/)\_\_
 
 **Balancer** is an automated **portfolio manager**, **liquidity provider**, and **price sensor**.
 

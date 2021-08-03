@@ -1,6 +1,8 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/ideas)
-
 # Ideas
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/guides/hackathons/ideas)
+
+## Ideas
 
 We’re excited to see what you could build and to get you started here’s some ideas:
 

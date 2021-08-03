@@ -1,32 +1,34 @@
-# This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/liquidity-mining-estimates-api)
-
 # Liquidity Mining Estimates API
+
+## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/core-concepts/bal-liquidity-mining/liquidity-mining-estimates-api)
 
 ## Liquidity Mining Estimates API
 
+### Liquidity Mining Estimates API
+
 This API provides an estimate amount of tokens earned by a liquidity provider at the current week \(and previous week if tokens weren't sent out yet\). Cumulative estimates for the week in progress are computed every hour, and the velocity with each tokens are being accrued is computed from the difference between two consecutive estimates. Clients can then use the velocity to update in real time the estimates retrieved from the API.
 
-## Retrieving Liquidity Provider Data
+### Retrieving Liquidity Provider Data
 
-### HTTP Request
+#### HTTP Request
 
 ```jsx
 GET https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/:address
 ```
 
-### URL Parameters
+#### URL Parameters
 
 | Param | Description | Required |
 | :--- | :--- | :--- |
 | address | The address of the liquidity provider | TRUE |
 
-### Example Request
+#### Example Request
 
 ```jsx
 https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/0xa9F8E7337eBb7982f9f5497BC5Ae98e69e1a39A7
 ```
 
-### Example Response
+#### Example Response
 
 ```jsx
 {
@@ -111,7 +113,7 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/0
 }
 ```
 
-### Response Definitions
+#### Response Definitions
 
 | Parameter | Definition |
 | :--- | :--- |
@@ -125,11 +127,11 @@ https://api.balancer.finance/liquidity-mining/v1/liquidity-provider-multitoken/0
 | current\_estimate | The estimated total amount of `token` mined by `address` in the `week` up to time `current_timestamp` |
 | week | The number of the week that the estimates refer to, `1` being the week between `Jun-01-2020 00:00:00` and `Jun-07-2020 23:59:59` |
 
-## Client side updates
+### Client side updates
 
 Clients can update the real time estimate by increasing the `current_estimate` retrieved from the API by `velocity` every second. The underlying data served by the API is updated every other hour, but it takes about 10 minutes to run the script, so clients should not expect any changes before at least 70 minutes have passed since `snapshot_timestamp`.
 
-## Notes
+### Notes
 
 * Estimates are approximate, as they do not account for liquidity added/removed since the last time the script was run.
 * The API only provides estimates for weeks that have not yet been finalized; as soon as the estimator script detects that the previous weeks claims have been [made available](https://ipfs.fleek.co/ipns/balancer-team-bucket.storage.fleek.co/balancer-claim/snapshot), the estimates for that week are removed from the underlying dataset.
