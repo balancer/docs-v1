@@ -140,7 +140,7 @@ interface BPool {
         uint totalWeight,
         uint poolAmountOut,
         uint swapFee
-    ) public pure returns (uint tokenAmountIn)
+    ) public pure returns (uint tokenAmountIn);
 
     function calcSingleOutGivenPoolIn(
         uint tokenBalanceOut,
@@ -149,7 +149,7 @@ interface BPool {
         uint totalWeight,
         uint poolAmountIn,
         uint swapFee
-    ) public pure returns (uint tokenAmountOut)
+    ) public pure returns (uint tokenAmountOut);
 
     function calcPoolInGivenSingleOut(
         uint tokenBalanceOut,
@@ -158,7 +158,7 @@ interface BPool {
         uint totalWeight,
         uint tokenAmountOut,
         uint swapFee
-    ) public pure returns (uint poolAmountIn)
+    ) public pure returns (uint poolAmountIn);
 
 }
 ```
@@ -185,7 +185,7 @@ interface ExchangeProxy {
         uint maxTotalAmountIn
     )
         public payable
-        returns (uint totalAmountIn)
+        returns (uint totalAmountIn);
 
     function multihopBatchSwapExactIn(
         Swap[][] memory swapSequences,
@@ -195,7 +195,7 @@ interface ExchangeProxy {
         uint minTotalAmountOut
     )
         public payable
-        returns (uint totalAmountOut)
+        returns (uint totalAmountOut);
 
     function multihopBatchSwapExactOut(
         Swap[][] memory swapSequences,
@@ -204,7 +204,7 @@ interface ExchangeProxy {
         uint maxTotalAmountIn
     )
         public payable
-        returns (uint totalAmountIn)
+        returns (uint totalAmountIn);
 
     function smartSwapExactIn(
         TokenInterface tokenIn,
@@ -214,7 +214,7 @@ interface ExchangeProxy {
         uint nPools
     )
         public payable
-        returns (uint totalAmountOut)
+        returns (uint totalAmountOut);
 
     function smartSwapExactOut(
         TokenInterface tokenIn,
@@ -224,7 +224,7 @@ interface ExchangeProxy {
         uint nPools
     )
         public payable
-        returns (uint totalAmountIn)
+        returns (uint totalAmountIn);
 
     function viewSplitExactIn(
         address tokenIn,
@@ -233,7 +233,7 @@ interface ExchangeProxy {
         uint nPools
     )
         public view
-        returns (Swap[] memory swaps, uint totalOutput)
+        returns (Swap[] memory swaps, uint totalOutput);
 
     function viewSplitExactOut(
         address tokenIn,
@@ -242,7 +242,7 @@ interface ExchangeProxy {
         uint nPools
     )
         public view
-        returns (Swap[] memory swaps, uint totalOutput)
+        returns (Swap[] memory swaps, uint totalOutput);
 }
 ```
 
