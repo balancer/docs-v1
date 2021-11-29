@@ -1,6 +1,6 @@
 # Smart Order Router
 
-## This page has been deprecated. V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/sor/)
+## This page has been deprecated. SOR V2 documentation is [here](https://docs.balancer.fi/developers/smart-order-router). V1 documentation is partially maintained [here](https://docs.balancer.fi/v/v1/smart-contracts/sor/). 
 
 ## Smart Order Router
 
